@@ -25,4 +25,24 @@ public class BoxStacks {
 
     }
 
+    public Boolean checkBoxStackNotFull(int boxStackId){
+        for(BoxStack boxStack : boxStacks){
+            if(boxStack.getId() == boxStackId){
+                return boxStack.notFull();
+            }
+        }
+        System.err.println("an non exciting boxStackId was given!!!");
+        return null;
+    }
+
+    public int getTopBoxIdOfBoxStack(int boxStackId){
+        for(BoxStack boxStack : boxStacks){
+            if(boxStack.getId() == boxStackId){
+                return boxStack.peekStack();
+            }
+        }
+        System.err.println("an non exciting boxStackId was given!!!");
+        return -1;
+    }
+
 }

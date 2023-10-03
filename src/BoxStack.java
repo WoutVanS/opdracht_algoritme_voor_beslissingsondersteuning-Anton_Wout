@@ -67,4 +67,8 @@ public class BoxStack {
     public void addBox(Box b) {
         boxes.push(b);
     }
+
+    public int peekStack(){
+        return boxes.peek().getId();
+    }
 }
