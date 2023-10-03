@@ -22,9 +22,10 @@ public class BoxStacks {
         this.boxStacks.add(boxStack);
     }
     public BoxStack getBoxStack(int x, int y) {
-
+        return null;
     }
 
+    // checks if the boxStack , withs id is given, is not full. return true or false unless a non existing id is given
     public Boolean checkBoxStackNotFull(int boxStackId){
         for(BoxStack boxStack : boxStacks){
             if(boxStack.getId() == boxStackId){
@@ -35,6 +36,7 @@ public class BoxStacks {
         return null;
     }
 
+    // returns the id of the top box of a certain boxStack , withs id is given. return positive box id unless a non existing boxStack id is given
     public int getTopBoxIdOfBoxStack(int boxStackId){
         for(BoxStack boxStack : boxStacks){
             if(boxStack.getId() == boxStackId){
@@ -45,4 +47,12 @@ public class BoxStacks {
         return -1;
     }
 
+    // returns an array of the XY coordinates from the boxStack, withs id is given
+    public int[] getXY(int boxStackId){
+        for(BoxStack boxStack: boxStacks){
+            if(boxStack.getId() == boxStackId) {
+                return new int[]{boxStack.getX(), boxStack.getY()};
+            }
+        }
+    }
 }

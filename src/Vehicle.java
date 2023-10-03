@@ -120,5 +120,11 @@ public class Vehicle {
         }
     }
 
+    public int distanceToPoint(int destX, int destY){
+        int deltaX = destX - this.x;
+        int deltaY = destY - this.y;
+
+        return (int)Math.sqrt(deltaX*deltaX - deltaY*deltaY);
+    }
 
 }

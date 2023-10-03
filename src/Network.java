@@ -38,6 +38,9 @@ public class Network {
                     // Search for an empty stack
                 }
 
+                // allocate a vehicle to pick up the box
+                allocateInstructionToVehicle(pickupLocationId, placeLocationId, associatedBoxId);
+
             }
 
         } catch (IOException e) {
@@ -67,6 +70,15 @@ public class Network {
         Box box = new Box(associatedBoxId);
         this.bufferPoint.AddBox(box);
     }
+
+    // this function gets the x and y coordinates of the pickup and place location and gives them to the vehicles object
+    public void allocateInstructionToVehicle(int pickupLocationId, int placeLocationId, int associatedBoxId){
+
+        int[] pickupLocationXY = (pickupLocationId == Constants.BUFFER_POINT_ID) ?  new int[]{bufferPoint.getX(), bufferPoint.getY()} : boxStacks.getXY(pickupLocationId);
+        int[] placeLocationXY = (placeLocationId == Constants.BUFFER_POINT_ID) ?  new int[]{bufferPoint.getX(), bufferPoint.getY()} : boxStacks.getXY(placeLocationId);
+        
+        vehicles.allocateInstructionToFreeVehicle(pickupLocationXY, placeLocationXY, associatedBoxId);
+     }
 
     //getters and setters
     public Allocator getAllocator() {
