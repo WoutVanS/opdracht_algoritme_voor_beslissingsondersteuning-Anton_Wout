@@ -34,13 +34,17 @@ public class Network {
                     // Execute the reallocation algorithm so to associated Box Id gets to the top
                 }
 
-                if(checkPlaceLocation(placeLocationId)){
+                if(!checkPlaceLocation(placeLocationId)){
                     // Search for an empty stack
+                    placeLocationId = allocator.findEmptySpace(boxStacks, placeLocationId);
+
                 }
 
-                // allocate a vehicle to pick up the box
-                allocateInstructionToVehicle(pickupLocationId, placeLocationId, associatedBoxId);
-
+                // allocate a vehicle to pick up the box if the pickup and place location are valid
+                if(pickupLocationId != -1 && placeLocationId != -1)
+                    allocateInstructionToVehicle(pickupLocationId, placeLocationId, associatedBoxId);
+                else
+                    System.err.println("there whas an error that prevent the allocation of the instruction to a vehicle");
             }
 
         } catch (IOException e) {
@@ -76,7 +80,7 @@ public class Network {
 
         int[] pickupLocationXY = (pickupLocationId == Constants.BUFFER_POINT_ID) ?  new int[]{bufferPoint.getX(), bufferPoint.getY()} : boxStacks.getXY(pickupLocationId);
         int[] placeLocationXY = (placeLocationId == Constants.BUFFER_POINT_ID) ?  new int[]{bufferPoint.getX(), bufferPoint.getY()} : boxStacks.getXY(placeLocationId);
-        
+
         vehicles.allocateInstructionToFreeVehicle(pickupLocationXY, placeLocationXY, associatedBoxId);
      }
 
