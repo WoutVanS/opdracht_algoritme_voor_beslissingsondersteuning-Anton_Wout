@@ -7,5 +7,5 @@ public interface Constants {
      String CSV_FILE = "instructions.csv"; // Replace with your CSV file path
      String CSV_DELIMITER = ";"; // Set the delimiter used in your CSV file
 
-    int BUFFER_POINT_ID = 0;
+    Integer BUFFER_POINT_ID = 0;
 }

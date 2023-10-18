@@ -8,7 +8,7 @@ public class Allocator {
 
     //methods
     // methode finds the nearest empty boxStack to the placelocation boxstack
-    public int findEmptySpace(BoxStacks boxStacks, int placeLocationId) {
+    public String findEmptySpace(BoxStacks boxStacks, String placeLocationName) {
         List<BoxStack> nearestEmptyBoxStacks = new ArrayList<>();
         BoxStack placeBoxStack = null;
 
@@ -16,22 +16,22 @@ public class Allocator {
             if(boxStack.notFull())
                 nearestEmptyBoxStacks.add(boxStack);
 
-            if(boxStack.getId() == placeLocationId)
+            if(boxStack.getName().equals(placeLocationName))
                 placeBoxStack = boxStack;
         }
 
         if (placeBoxStack == null ) {
             System.err.println("the coordinates of the place boxStack could not be found");
-            return -1;
+            return "";
         } else if (nearestEmptyBoxStacks.isEmpty()) {
             System.err.println("No empty stack can be found.");
-            return -1;
+            return "";
         } else {
             int x = placeBoxStack.getX();
             int y = placeBoxStack.getY();
 
             nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
-            return nearestEmptyBoxStacks.getFirst().getId();
+            return nearestEmptyBoxStacks.getFirst().getName();
         }
     }
 
@@ -43,7 +43,26 @@ public class Allocator {
 
     }
 
-    public BoxStack relocate(Box b) {
+    public BoxStack realocate(Box b) {
 
     }
+
+//    public Request realocationAlgorithm(BoxStacks boxStacks, String pickupLocationName , String associatedBoxId){
+//        List<BoxStack> nearestEmptyBoxStacks = new ArrayList<>();
+//        BoxStack pickupBoxStack = null;
+//
+//        for(BoxStack boxStack: boxStacks.getBoxStacks()){
+//            if(boxStack.notFull())
+//                nearestEmptyBoxStacks.add(boxStack);
+//
+//            if(boxStack.getName().equals(pickupLocationName))
+//                pickupBoxStack = boxStack;
+//        }
+//
+//        int numberOfReallocations = pickupBoxStack.SearchDepthByID(associatedBoxId);
+//        List<Request> requests;
+//        for(int i = 0; i < numberOfReallocations; i++){
+//
+//        }
+//    }
 }

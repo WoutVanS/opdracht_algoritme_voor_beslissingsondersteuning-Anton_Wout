@@ -2,6 +2,7 @@ import java.sql.Array;
 import java.util.LinkedList;
 
 public class Vehicle {
+    private String name;
     private int x;
     private int y;
     private boolean availible;
@@ -14,8 +15,9 @@ public class Vehicle {
     private LinkedList<BoxStack> destinations;
 
     //constructor
-    public Vehicle(int id, int speed, int x, int y) {
+    public Vehicle(int id, String name, int speed, int x, int y) {
         this.id = id;
+        this.name = name;
         this.speed = speed;
         this.x = x;
         this.y = y;
@@ -31,6 +33,12 @@ public class Vehicle {
     }
     public int getY() {
         return y;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String n) {
+        name = n;
     }
     public boolean isAvailible() {
         return availible;

@@ -1,5 +1,6 @@
 import java.util.*;
 public class BoxStack {
+    private String name;
     private int id;
     private int x;
     private int y;
@@ -7,14 +8,16 @@ public class BoxStack {
     private Stack<Box> boxes;
 
     //Constructors
-    public BoxStack(int id, int x, int y, int capacity){
+    public BoxStack(String name, int id, int x, int y, int capacity){
+        this.name = name;
         this.id = id;
         this.x = x;
         this.y = y;
         this.capacity = capacity;
         this.boxes = new Stack<>();
     }
-    public BoxStack(int id, int x, int y, int capacity, Stack<Box> boxes){
+    public BoxStack(String name, int id, int x, int y, int capacity, Stack<Box> boxes){
+        this.name = name;
         this.id = id;
         this.x = x;
         this.y = y;
@@ -23,6 +26,7 @@ public class BoxStack {
     }
 
     //getters and setters
+    public String getName(){ return name;}
     public int getId() {
         return id;
     }
@@ -68,7 +72,7 @@ public class BoxStack {
         boxes.push(b);
     }
 
-    public int peekStack(){
+    public String peekStack(){
         return boxes.peek().getId();
     }
 
@@ -77,5 +81,13 @@ public class BoxStack {
         int deltaY = destY - this.y;
 
         return (int)Math.sqrt(deltaX*deltaX - deltaY*deltaY);
+    }
+
+    public int SearchDepthByID(String associatedBoxId){
+        for(int i = 0; i < boxes.size(); i++){
+            if(boxes.get(i).getId().equals(associatedBoxId))
+                return i;
+        }
+        return -1;
     }
 }

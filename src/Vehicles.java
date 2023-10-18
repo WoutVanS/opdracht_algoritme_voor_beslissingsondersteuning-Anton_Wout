@@ -7,7 +7,12 @@ public class Vehicles {
     private ArrayList<Vehicle> vehicles;
     private int amountOfVehicles;
 
+    public Vehicles() {
+        vehicles = new ArrayList<Vehicle>();
+    }
+
     public Vehicles(int amountOfVehicles) {
+        vehicles = new ArrayList<Vehicle>();
         this.amountOfVehicles = amountOfVehicles;
     }
 
@@ -16,7 +21,7 @@ public class Vehicles {
     }
 
     // give the closest available vehicle to the pickup location the instruction to execute
-    public boolean allocateInstructionToFreeVehicle(int[] pickupLocationXY, int[] placeLocationXY, int associatedBoxId){
+    public boolean allocateInstructionToFreeVehicle(int[] pickupLocationXY, int[] placeLocationXY, String associatedBoxId){
         List<Vehicle> availableVehicles = new ArrayList<>();                    // make a new list to add the available vehicles to
         for(Vehicle vehicle: vehicles)
             if (vehicle.isAvailible())

@@ -1,85 +1,91 @@
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.Optional;
+import java.nio.Buffer;
+import java.util.*;
 
 public class Network {
     private Allocator allocator;
     private BoxStacks boxStacks;
     private Vehicles vehicles;
-    private final BufferPoint bufferPoint;
+    private BufferPoints bufferPoints;
+
+    private Requests requests;
+
 
     //constructor
-    public Network(Allocator allocator, BoxStacks boxStacks, Vehicles vehicles, BufferPoint bufferPoint) {
+    public Network(Allocator allocator, BoxStacks boxStacks, Vehicles vehicles, BufferPoints bufferPoints) {
         this.allocator = allocator;
         this.boxStacks = boxStacks;
         this.vehicles = vehicles;
-        this.bufferPoint = bufferPoint;
+        this.bufferPoints = bufferPoints;
     }
 
-    // run methode the main of network. It is responsible for handling the instructions in the CSV file.
+    public Network(Allocator allocator, BoxStacks boxStacks, Vehicles vehicles, BufferPoints bufferPoints, Requests requests) {
+        this.allocator = allocator;
+        this.boxStacks = boxStacks;
+        this.vehicles = vehicles;
+        this.bufferPoints = bufferPoints;
+        this.requests = requests;
+    }
+
+    // run methode the main of network. It is responsible for handling the instructions from the requestList
     // it instructs vehicles what to do.
-    public void run(String csvFile, String csvDelimiter){
-        String line = "";
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) { // opening the CSV file
-            while ((line = br.readLine()) != null) {                            // keep going while there are new instructions
-                String[] data = line.split(csvDelimiter);
-                int pickupLocationId = Integer.parseInt(data[0]);               // this is the id number of the location where the box should be picked up
-                int placeLocationId = Integer.parseInt(data[1]);                // this is the id number of the location where the box should be dropped off
-                int associatedBoxId = Integer.parseInt(data[2]);                // the id of the box associated with this instruction
+    public void run(){
+            while(!requests.isEmpty()){
+                Request request = requests.getNextRequest();
+                String pickupLocationName = request.getPickupLocation();               // search for the ID number in the hashmap
+                String placeLocationName = request.getPlaceLocation();
+                String associatedBoxId = request.getBoxID();
 
-                System.out.println("current instruction: " + Arrays.toString(data));
+                System.out.println("current instruction: " + request);
 
-                if(!checkBoxLocationInPickupLocation(pickupLocationId, associatedBoxId)){
-                    // Execute the reallocation algorithm so to associated Box Id gets to the top
+                if(!checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)){         // checks if the Box is in the pickuplocation and if it sits on top
+                                                                                                    // Execute the reallocation algorithm so to associated Box Id gets to the top
                 }
 
-                if(!checkPlaceLocation(placeLocationId)){
-                    // Search for an empty stack
-                    placeLocationId = allocator.findEmptySpace(boxStacks, placeLocationId);
+                if(!checkPlaceLocation(placeLocationName)){                                         // checks if the boxstack is not full
+                    placeLocationName = allocator.findEmptySpace(boxStacks, placeLocationName);     // Search for an empty stack
 
                 }
 
-                // allocate a vehicle to pick up the box if the pickup and place location are valid
-                if(pickupLocationId != -1 && placeLocationId != -1)
-                    allocateInstructionToVehicle(pickupLocationId, placeLocationId, associatedBoxId);
+
+                if(pickupLocationName != null && placeLocationName != null)                             // allocate a vehicle to pick up the box if the pickup and place location are valid
+                    allocateInstructionToVehicle(pickupLocationName, placeLocationName, associatedBoxId);
                 else
                     System.err.println("there whas an error that prevent the allocation of the instruction to a vehicle");
             }
 
-        } catch (IOException e) {
-            System.err.println("error while loading the instrutions CSV file: " + e);
-        }
     }
 
 
     // this methode checks if the box is the first box in the pickup location and thus can be pickup up directly
-    public Boolean checkBoxLocationInPickupLocation(int pickupLocationId, int associatedBoxId){
-        if(pickupLocationId == Constants.BUFFER_POINT_ID){                      // (if the pickup location is the bufferpoint then a box should first be added.)
-            addBoxToBufferPoint(associatedBoxId);
+    public Boolean checkBoxLocationInPickupLocation(String pickupLocationName, String associatedBoxId){
+        if(bufferPoints.isBufferPoint(pickupLocationName)){                             // (if the pickup location is a bufferpoint then a box should first be added.)
+            BufferPoint bp = bufferPoints.getBufferPointByName(pickupLocationName);     // get the correct bufferpoint
+            addBoxToBufferPoint(associatedBoxId, bp);                                   // add box to the bufferpoint
             return true;
         }
         else{
-            return boxStacks.getTopBoxIdOfBoxStack(pickupLocationId) == associatedBoxId;
+            return boxStacks.getTopBoxIdOfBoxStack(pickupLocationName).equals(associatedBoxId);
         }
     }
 
     //this methode checks if the place location is not full
-    public Boolean checkPlaceLocation(int placeLocationId){
-        return placeLocationId == Constants.BUFFER_POINT_ID || boxStacks.checkBoxStackNotFull(placeLocationId);
+    public Boolean checkPlaceLocation(String placeLocationName){
+        return bufferPoints.isBufferPoint(placeLocationName) || boxStacks.checkBoxStackNotFull(placeLocationName);
     }
 
     // Methode that adds the new box to the bufferPoint
-    public void addBoxToBufferPoint(int associatedBoxId){
+    public void addBoxToBufferPoint(String associatedBoxId, BufferPoint bp){
         Box box = new Box(associatedBoxId);
-        this.bufferPoint.AddBox(box);
+        bp.AddBox(box);
     }
 
     // this function gets the x and y coordinates of the pickup and place location and gives them to the vehicles object
-    public void allocateInstructionToVehicle(int pickupLocationId, int placeLocationId, int associatedBoxId){
+    public void allocateInstructionToVehicle(String pickupLocationName, String placeLocationName, String associatedBoxId) {
 
-        int[] pickupLocationXY = (pickupLocationId == Constants.BUFFER_POINT_ID) ?  new int[]{bufferPoint.getX(), bufferPoint.getY()} : boxStacks.getXY(pickupLocationId);
-        int[] placeLocationXY = (placeLocationId == Constants.BUFFER_POINT_ID) ?  new int[]{bufferPoint.getX(), bufferPoint.getY()} : boxStacks.getXY(placeLocationId);
+        int[] pickupLocationXY = (bufferPoints.isBufferPoint(pickupLocationName)) ? bufferPoints.getXY(pickupLocationName) : boxStacks.getXY(pickupLocationName);
+        int[] placeLocationXY = (bufferPoints.isBufferPoint(placeLocationName)) ?  bufferPoints.getXY(placeLocationName) : boxStacks.getXY(placeLocationName);
 
         vehicles.allocateInstructionToFreeVehicle(pickupLocationXY, placeLocationXY, associatedBoxId);
      }
