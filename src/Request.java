@@ -12,6 +12,8 @@ public class Request {
     private Box box;
     private int[] pickupLocationXY;
     private int[] placeLocationXY;
+    private Location pickup;
+    private Location dropOff;
 
     public Request(int ID, String pickupLocation, String placeLocation, String box ){
         this.ID = ID;
@@ -23,6 +25,8 @@ public class Request {
         stopTime = -1;
         pickupLocationXY = new int[]{-1, -1};
         placeLocationXY = new int[]{-1, -1};
+        pickup = null;
+        dropOff = null;
     }
 
     //getters and setters
@@ -77,6 +81,18 @@ public class Request {
     }
     public void setPlaceLocationXY(int[] placeLocationXY) {
         this.placeLocationXY = placeLocationXY;
+    }
+    public Location getPickup() {
+        return pickup;
+    }
+    public void setPickup(Location pickup) {
+        this.pickup = pickup;
+    }
+    public Location getDropOff() {
+        return dropOff;
+    }
+    public void setDropOff(Location dropOff) {
+        this.dropOff = dropOff;
     }
 
     @Override

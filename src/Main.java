@@ -47,10 +47,6 @@ public class Main {
 
                 BoxStack newStack = new BoxStack(name, id, x, y, stackcapacity);
 
-//                String[] boxes = (String[]) stack.get("boxes");
-//                for (int j = 0; j < boxes.length; j++) {
-//                    newStack.addBox(boxes[j]);
-//                }
                 JSONArray boxes = (JSONArray) stack.get("boxes");
                 for (int j = 0; j < boxes.size(); j++) {
                     newStack.addBox(boxes.get(j).toString());
@@ -68,7 +64,7 @@ public class Main {
                 int x = Integer.parseInt(bufferpoint.get("x").toString());
                 int y = Integer.parseInt(bufferpoint.get("y").toString());
 
-                bufferPoints.add(new BufferPoint(id, name, x, y));
+                bufferPoints.add(new BufferPoint(name, id, x, y));
             }
 
             //loop array of vehicles

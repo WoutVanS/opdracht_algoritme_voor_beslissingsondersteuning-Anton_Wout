@@ -86,18 +86,39 @@ public class Network {
 
     // Methode that adds the new box to the bufferPoint
     public void addBoxToBufferPoint(String associatedBoxId, BufferPoint bp){
-        Box box = new Box(associatedBoxId);
-        bp.AddBox(box);
+        bp.addBox(associatedBoxId);
     }
 
     // this function gets the x and y coordinates of the pickup and place location and gives them to the vehicles object
     public void allocateInstructionToVehicle(Request request, String pickupLocationName, String placeLocationName) {
+        int[] pickupLocationXY;
+        Location pickup;
+        int[] placeLocationXY;
+        Location dropOff;
 
-        int[] pickupLocationXY = (bufferPoints.isBufferPoint(pickupLocationName)) ? bufferPoints.getXY(pickupLocationName) : boxStacks.getXY(pickupLocationName);
-        int[] placeLocationXY = (bufferPoints.isBufferPoint(placeLocationName)) ?  bufferPoints.getXY(placeLocationName) : boxStacks.getXY(placeLocationName);
+        if (bufferPoints.isBufferPoint(pickupLocationName)) {
+            pickupLocationXY = bufferPoints.getXY(pickupLocationName);
+            pickup = bufferPoints.getBufferPointByName(pickupLocationName);
+        }
+        else {
+            pickupLocationXY = boxStacks.getXY(pickupLocationName);
+            pickup = boxStacks.getBoxStackByName(pickupLocationName);
+        }
+
+        if (bufferPoints.isBufferPoint(placeLocationName)) {
+            placeLocationXY = bufferPoints.getXY(placeLocationName);
+            dropOff = bufferPoints.getBufferPointByName(placeLocationName);
+        }
+        else {
+            placeLocationXY = boxStacks.getXY(placeLocationName);
+            dropOff = boxStacks.getBoxStackByName(placeLocationName);
+        }
 
         request.setPickupLocationXY(pickupLocationXY);
+        request.setPickup(pickup);
+
         request.setPlaceLocationXY(placeLocationXY);
+        request.setDropOff(dropOff);
 
         vehicles.allocateInstructionToFreeVehicle(request);
      }

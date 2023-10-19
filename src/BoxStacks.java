@@ -36,6 +36,14 @@ public class BoxStacks {
         return null;
     }
 
+    public BoxStack getBoxStackByName(String name) {
+        BoxStack res = null;
+        for (BoxStack b: boxStacks) {
+            if (b.getName().equals(name)) res = b;
+        }
+        return res;
+    }
+
     // returns the id of the top box of a certain boxStack , withs id is given. return positive box id unless a non existing boxStack id is given
     public String getTopBoxIdOfBoxStack(String boxStackName){
         for(BoxStack boxStack : boxStacks){

@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.LookupOp;
 import java.sql.Array;
 import java.util.LinkedList;
 import java.util.concurrent.CountDownLatch;
@@ -13,7 +14,7 @@ public class Vehicle {
     private LinkedList<String> load;   //FIFO datastructure (eerste die geladen wordt is  voor eeste dest)
     private int destX;
     private int destY;
-    private BoxStack currentDest;
+    private Location currentDest;
     private LinkedList<BoxStack> destinations;
     private int loadingCount;
     private int capacity;
@@ -100,7 +101,7 @@ public class Vehicle {
     public void setDestination(BoxStack destination) {
         this.currentDest = destination;
     };
-    public BoxStack getDestination() {
+    public Location getDestination() {
         return currentDest;
     };
     public void setDestinations(LinkedList<BoxStack> destinations) {
@@ -171,6 +172,7 @@ public class Vehicle {
     public void finishLoading() {
         state = Constants.statusVehicle.MOVING;
 
+        currentDest = currentRequest.getDropOff();
 
         //print the result of the dropoff operation
         System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PU");
@@ -184,7 +186,7 @@ public class Vehicle {
         //unload box
         if (currentDest.notFull()) {
             currentDest.addBox(load.removeFirst());
-            destinations.removeFirst();
+            //destinations.removeFirst();
         } else {
             System.out.println("huhhh?");
         }
