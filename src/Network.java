@@ -30,31 +30,40 @@ public class Network {
 
     // run methode the main of network. It is responsible for handling the instructions from the requestList
     // it instructs vehicles what to do.
+
+    //OPM ik zou dit anders aanpakken, elke loop van de while in main (dus een tijdseenheid) kijk je welke vehicles vrij zijn genkomen
+    //en je voert het aantal requests uit dat er vrije vehicles zijn
+
     public void run(){
-            while(!requests.isEmpty()){
+        ArrayList<Vehicle> availableVehicles = vehicles.findAllAvailableVehicles();
+        if (!requests.isEmpty()) {
+            for (int i = 0; i < availableVehicles.size(); i++) {
                 Request request = requests.getNextRequest();
                 String pickupLocationName = request.getPickupLocation();               // search for the ID number in the hashmap
                 String placeLocationName = request.getPlaceLocation();
                 String associatedBoxId = request.getBoxID();
 
+                request.setStartTime(Main.timeCount);                   //set the starttime for the handling of the request
+                request.setStatus(Constants.statusRequest.INPROGRESS);
+
                 System.out.println("current instruction: " + request);
 
-                if(!checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)){         // checks if the Box is in the pickuplocation and if it sits on top
-                                                                                                    // Execute the reallocation algorithm so to associated Box Id gets to the top
+                if (!checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
+                    // Execute the reallocation algorithm so to associated Box Id gets to the top
                 }
 
-                if(!checkPlaceLocation(placeLocationName)){                                         // checks if the boxstack is not full
+                if (!checkPlaceLocation(placeLocationName)) {                                         // checks if the boxstack is not full
                     placeLocationName = allocator.findEmptySpace(boxStacks, placeLocationName);     // Search for an empty stack
 
                 }
 
 
-                if(pickupLocationName != null && placeLocationName != null)                             // allocate a vehicle to pick up the box if the pickup and place location are valid
-                    allocateInstructionToVehicle(pickupLocationName, placeLocationName, associatedBoxId);
+                if (pickupLocationName != null && placeLocationName != null)                             // allocate a vehicle to pick up the box if the pickup and place location are valid
+                    allocateInstructionToVehicle(request, pickupLocationName, placeLocationName);
                 else
                     System.err.println("there whas an error that prevent the allocation of the instruction to a vehicle");
             }
-
+        }
     }
 
 
@@ -82,12 +91,15 @@ public class Network {
     }
 
     // this function gets the x and y coordinates of the pickup and place location and gives them to the vehicles object
-    public void allocateInstructionToVehicle(String pickupLocationName, String placeLocationName, String associatedBoxId) {
+    public void allocateInstructionToVehicle(Request request, String pickupLocationName, String placeLocationName) {
 
         int[] pickupLocationXY = (bufferPoints.isBufferPoint(pickupLocationName)) ? bufferPoints.getXY(pickupLocationName) : boxStacks.getXY(pickupLocationName);
         int[] placeLocationXY = (bufferPoints.isBufferPoint(placeLocationName)) ?  bufferPoints.getXY(placeLocationName) : boxStacks.getXY(placeLocationName);
 
-        vehicles.allocateInstructionToFreeVehicle(pickupLocationXY, placeLocationXY, associatedBoxId);
+        request.setPickupLocationXY(pickupLocationXY);
+        request.setPlaceLocationXY(placeLocationXY);
+
+        vehicles.allocateInstructionToFreeVehicle(request);
      }
 
     //getters and setters
@@ -110,10 +122,6 @@ public class Network {
         this.vehicles = vehicles;
     }
 
-    //methodes
-    public void updateVehicles(){
-        vehicles.update();
-    }
 
 
 

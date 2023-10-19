@@ -1,30 +1,45 @@
+import java.awt.*;
 import java.sql.Array;
 import java.util.LinkedList;
+import java.util.concurrent.CountDownLatch;
 
 public class Vehicle {
     private String name;
     private int x;
     private int y;
-    private boolean availible;
+    private Constants.statusVehicle state;
     private int speed;
     private int id;
-    private LinkedList<Box> load;   //FIFO datastructure (eerste die geladen wordt is  voor eeste dest)
+    private LinkedList<String> load;   //FIFO datastructure (eerste die geladen wordt is  voor eeste dest)
     private int destX;
     private int destY;
     private BoxStack currentDest;
     private LinkedList<BoxStack> destinations;
+    private int loadingCount;
+    private int capacity;
+
+    private Request currentRequest;
+    private int startTime;
+    private int stopTime;
+    private int startX;
+    private int startY;
 
     //constructor
-    public Vehicle(int id, String name, int speed, int x, int y) {
+    public Vehicle(int id, String name, int capacity, int speed, int x, int y) {
         this.id = id;
         this.name = name;
         this.speed = speed;
         this.x = x;
         this.y = y;
-        availible = true;
-        load = new LinkedList<Box>();
+        this.capacity = capacity;
+        state = Constants.statusVehicle.AVAILABLE;
+        load = new LinkedList<String>();
         destX = 0;
         destY = 0;
+        loadingCount = 0;
+        currentRequest = null;
+        startTime = -1;
+        stopTime = -1;
     }
 
     //getters and setters
@@ -41,12 +56,12 @@ public class Vehicle {
         name = n;
     }
     public boolean isAvailible() {
-        return availible;
+        return state == Constants.statusVehicle.AVAILABLE;
     }
     public int getSpeed() {
         return speed;
     }
-    public LinkedList<Box> getLoad() {
+    public LinkedList<String> getLoad() {
         return load;
     }
     public int getDestY() {
@@ -59,7 +74,13 @@ public class Vehicle {
         this.y = y;
     }
     public void setAvailible(boolean availible) {
-        this.availible = availible;
+        this.state = Constants.statusVehicle.AVAILABLE;
+    }
+    public void setLoading() {
+        this.state = Constants.statusVehicle.LOADING;
+    }
+    public void setMoving() {
+        this.state = Constants.statusVehicle.MOVING;
     }
     public void setSpeed(int speed) {
         this.speed = speed;
@@ -67,7 +88,7 @@ public class Vehicle {
     public int getId(int id) {
         return id;
     }
-    public void setLoad(LinkedList<Box> load) {
+    public void setLoad(LinkedList<String> load) {
         this.load = load;
     }
     public void setDestX(int destX) {
@@ -85,47 +106,123 @@ public class Vehicle {
     public void setDestinations(LinkedList<BoxStack> destinations) {
         this.destinations = destinations;
     };
+    public void setCurrentRequest(Request request) {
+        this.currentRequest = request;
+    }
+    public Request getCurrentRequest() {
+        return currentRequest;
+    }
 
 
     //METHODS
     //each time unit, the vehicle moves to next position
-    public void updatePosition() {
-        if (!availible) {    //if vehicle is not available, that means it has a task, so it has to move
-            if (destX > x) { x++; }
-            else { x--; }
-            if (destY > y) { y++; }
-            else { y--; }
-
-            System.out.println("VehicleId: " + id + " Position: (" + x + "," + y +") and Destination: (" + destX + "," + destY+")" );
-
-            if (destX == x && destY == y) { this.arrivedAtDest(); }
+    public void update() {
+        if (state == Constants.statusVehicle.MOVING) {    //if vehicle is moving, that means it has a task, so it has to move
+            move();
+        }
+        else if (state == Constants.statusVehicle.MOVINGTOPICKUP) {
+            move();
+        }
+        else if (state == Constants.statusVehicle.UNLOADING) {    //if vehicle is loading, update the counter
+            loadingCount++;
+            if (loadingCount == Main.loadingDuration) {
+                loadingCount = 0;
+                finishDropOff();
+            }
+        }
+        else if (state == Constants.statusVehicle.LOADING) {    //if vehicle is loading, update the counter
+            loadingCount++;
+            if (loadingCount == Main.loadingDuration) {
+                loadingCount = 0;
+                finishLoading();
+            }
         }
     }
 
     //function called when vehicle arrives at destination
     public void arrivedAtDest() {
-        System.out.println("VehicleId: " + id + " arrived at destination");
+        if (state == Constants.statusVehicle.MOVING) {
+            handleDropOff();
+        }
+        else if (state == Constants.statusVehicle.MOVINGTOPICKUP) {
+            handlePickup();
+        }
+    }
+
+    //when the unloaded vehicle moves to its pickup location
+    public void handlePickup() {
+        state = Constants.statusVehicle.LOADING;
+        //System.out.println("VehicleId: " + id + " is now loading");
+
+        //load box
+        load.push(currentRequest.getBoxID());
+
+        //give target coordinates to bring load to destination
+        destX = currentRequest.getPlaceLocationXY()[0];
+        destY = currentRequest.getPlaceLocationXY()[1];
+
+        //set startTime and start coordinates for the PL operation
+        startTime = Main.timeCount;
+        startX = x;
+        startY = y;
+
+    }
+
+    public void finishLoading() {
+        state = Constants.statusVehicle.MOVING;
+
+
+        //print the result of the dropoff operation
+        System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PU");
+    }
+
+    //when the loaded vehicle arrives at its destination
+    public void handleDropOff() {
+        state = Constants.statusVehicle.UNLOADING;
+        //System.out.println("VehicleId: " + id + " arrived at destination and started unloading");
 
         //unload box
         if (currentDest.notFull()) {
             currentDest.addBox(load.removeFirst());
             destinations.removeFirst();
-        }
-        else {
+        } else {
             System.out.println("huhhh?");
         }
 
-        //check if other box loaded -> load new destination
-        if (!load.isEmpty()) {
-            //pick new destination
-            currentDest = destinations.getFirst();
-            destX = currentDest.getX();
-            destY = currentDest.getY();
-        }
-        else {
-            //if not, set available
-            availible = true;
-        }
+//        //check if other box loaded -> load new destination (but still wait for loadingDuration to be over)
+//        if (!load.isEmpty()) {
+//            //pick new destination
+//            currentDest = destinations.getFirst();
+//            destX = currentDest.getX();
+//            destY = currentDest.getY();
+//        }
+    }
+
+    //set the state of the request to done and fill in the timeCount
+    public void finishDropOff() {
+        currentRequest.setStatus(Constants.statusRequest.DONE);
+        currentRequest.setStopTime(Main.timeCount);
+
+        //print the result of the dropoff operation
+        System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PL");
+
+        currentRequest = null;
+        state = Constants.statusVehicle.AVAILABLE;
+    }
+
+    public void MoveToPickup(Request r) {
+        state = Constants.statusVehicle.MOVINGTOPICKUP;
+        currentRequest = r;
+        //System.out.println("VehicleId: " + id + " is now moving to pickup");
+
+        //give target coordinates
+        destX = r.getPickupLocationXY()[0];
+        destY = r.getPickupLocationXY()[1];
+
+        //set the attributes for the pickup operation
+        startTime = Main.timeCount;
+        startX = x;
+        startY = y;
     }
 
     public int distanceToPoint(int destX, int destY){
@@ -133,6 +230,17 @@ public class Vehicle {
         int deltaY = destY - this.y;
 
         return (int)Math.sqrt(deltaX*deltaX - deltaY*deltaY);
+    }
+
+    public void move() {
+        if (destX > x) { x++; }
+        else { x--; }
+        if (destY > y) { y++; }
+        else { y--; }
+
+        //System.out.println("VehicleId: " + id + " Position: (" + x + "," + y +") and Destination: (" + destX + "," + destY+")" );
+
+        if (destX == x && destY == y) { this.arrivedAtDest(); }
     }
 
 }

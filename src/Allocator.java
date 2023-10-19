@@ -9,7 +9,7 @@ public class Allocator {
     //methods
     // methode finds the nearest empty boxStack to the placelocation boxstack
     public String findEmptySpace(BoxStacks boxStacks, String placeLocationName) {
-        List<BoxStack> nearestEmptyBoxStacks = new ArrayList<>();
+        ArrayList<BoxStack> nearestEmptyBoxStacks = new ArrayList<>();
         BoxStack placeBoxStack = null;
 
         for(BoxStack boxStack: boxStacks.getBoxStacks()){
@@ -31,21 +31,21 @@ public class Allocator {
             int y = placeBoxStack.getY();
 
             nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
-            return nearestEmptyBoxStacks.getFirst().getName();
+            return nearestEmptyBoxStacks.get(0).getName();
         }
     }
 
-    public Vehicle findClosestVehicleToBoxStack(BoxStack s, Vehicles v) {
-        
-    }
-
-    public Vehicle findClosestVehicleToBuffer() {
-
-    }
-
-    public BoxStack realocate(Box b) {
-
-    }
+//    public Vehicle findClosestVehicleToBoxStack(BoxStack s, Vehicles v) {
+//
+//    }
+//
+//    public Vehicle findClosestVehicleToBuffer() {
+//
+//    }
+//
+//    public BoxStack realocate(Box b) {
+////
+//    }
 
 //    public Request realocationAlgorithm(BoxStacks boxStacks, String pickupLocationName , String associatedBoxId){
 //        List<BoxStack> nearestEmptyBoxStacks = new ArrayList<>();

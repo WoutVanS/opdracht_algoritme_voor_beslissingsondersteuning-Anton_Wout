@@ -19,4 +19,24 @@ public class Requests {
         requests.remove(0);
         return request;
     }
+
+    public ArrayList<Request> getInProgressRequests () {
+        ArrayList<Request> res = new ArrayList<>();
+        for (Request r : requests) {
+            if (r.getStatus() == Constants.statusRequest.INPROGRESS) {
+                res.add(r);
+            }
+        }
+        return res;
+    }
+
+    public Request getRequestByBox(String boxId) {
+        Request res = null;
+        for (Request r : requests) {
+            if (r.getBoxID() == boxId) {
+                res = r;
+            }
+        }
+        return res;
+    }
 }

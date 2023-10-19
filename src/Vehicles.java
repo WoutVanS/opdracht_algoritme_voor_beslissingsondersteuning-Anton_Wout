@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -20,25 +19,32 @@ public class Vehicles {
         vehicles.add(v);
     }
 
+    public ArrayList<Vehicle> findAllAvailableVehicles() {
+        ArrayList<Vehicle> res = new ArrayList<>();
+        for (Vehicle v: vehicles) {
+            if (v.isAvailible()) {
+                res.add(v);
+            }
+        }
+        return res;
+    }
+
     // give the closest available vehicle to the pickup location the instruction to execute
-    public boolean allocateInstructionToFreeVehicle(int[] pickupLocationXY, int[] placeLocationXY, String associatedBoxId){
-        List<Vehicle> availableVehicles = new ArrayList<>();                    // make a new list to add the available vehicles to
-        for(Vehicle vehicle: vehicles)
-            if (vehicle.isAvailible())
-                availableVehicles.add(vehicle);
+    public void allocateInstructionToFreeVehicle(Request r){
+        ArrayList<Vehicle> availableVehicles = findAllAvailableVehicles();
 
-        if(availableVehicles.isEmpty()) return false;                           // if the list is empty that means there are no vehicles available
+        if(availableVehicles.isEmpty()) return;                           // if the list is empty that means there are no vehicles available
 
-        int x = pickupLocationXY[0];
-        int y = pickupLocationXY[1];
+        int x = r.getPickupLocationXY()[0];
+        int y = r.getPickupLocationXY()[1];
         availableVehicles.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));  // sort the list of available vehicles based on the distance to the pickup point
 
-        availableVehicles.getFirst().set                                        // use the first vehicle in the sorted list
-        return true;
+        availableVehicles.get(0).MoveToPickup(r);                                       // use the first vehicle in the sorted list
     }
-    public void update() {
+
+    public void updateVehicles() {
         for (Vehicle v: vehicles) {
-            v.updatePosition();
+            v.update();
         }
     }
 }

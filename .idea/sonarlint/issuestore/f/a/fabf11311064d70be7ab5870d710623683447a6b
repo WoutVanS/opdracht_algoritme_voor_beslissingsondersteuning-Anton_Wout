@@ -1,0 +1,32 @@
+
+o
+java:S2293""YReplace the type specification in this constructor call with the diamond operator ("<>").(ö¥èÆ
+c
+java:S1192™"LDefine a constant instead of duplicating this literal "VehicleId: " 4 times.(ÍÕİÜ
+Œ
+java:S1319>"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(Í¼±•üÿÿÿÿ
+{
+java:S1319Y"eThe type of "load" should be an interface such as "List" rather than the implementation "LinkedList".(°§••
+ƒ
+java:S1319h"mThe type of "destinations" should be an interface such as "List" rather than the implementation "LinkedList".(•÷æ”
+a
+java:S2184å"ECast one of the operands of this subtraction operation to a "double".(°§ï©úÿÿÿÿ
+F
+java:S1172J"0Remove this unused method parameter "availible".(‡ÜÍÀ
+7
+java:S1116d"Remove this empty statement.(ôŸìúÿÿÿÿ
+7
+java:S1116g"Remove this empty statement.(ôŸìúÿÿÿÿ
+7
+java:S1116j"Remove this empty statement.(ôŸìúÿÿÿÿ
+O	java:S106™"9Replace this use of System.out or System.err by a logger.(ÍÕİÜ
+T	java:S106­"9Replace this use of System.out or System.err by a logger.(‡Éµ‰şÿÿÿÿ
+T	java:S106³"9Replace this use of System.out or System.err by a logger.(Ïáóâùÿÿÿÿ
+N	java:S106º"9Replace this use of System.out or System.err by a logger.(ÇK
+R	java:S125¾"<This block of commented-out lines of code should be removed.(ùÓÕ³
+T	java:S106Ì"9Replace this use of System.out or System.err by a logger.(–ï¡ûÿÿÿÿ
+i	java:S100Ò"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õˆş°ûÿÿÿÿ
+[	java:S106Õ"9Replace this use of System.out or System.err by a logger.(°Î³ùÿÿÿÿ8•©Á´1
+V	java:S106î"9Replace this use of System.out or System.err by a logger.(Œ Üœ8ì¿«Á´1
+G
+java:S1068",Remove this unused "stopTime" private field.(ê…Õøüÿÿÿÿ

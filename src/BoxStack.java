@@ -5,7 +5,7 @@ public class BoxStack {
     private int x;
     private int y;
     private int capacity;
-    private Stack<Box> boxes;
+    private Stack<String> boxes;
 
     //Constructors
     public BoxStack(String name, int id, int x, int y, int capacity){
@@ -16,7 +16,7 @@ public class BoxStack {
         this.capacity = capacity;
         this.boxes = new Stack<>();
     }
-    public BoxStack(String name, int id, int x, int y, int capacity, Stack<Box> boxes){
+    public BoxStack(String name, int id, int x, int y, int capacity, Stack<String> boxes){
         this.name = name;
         this.id = id;
         this.x = x;
@@ -39,7 +39,7 @@ public class BoxStack {
     public int getCapacity() {
         return capacity;
     }
-    public Stack<Box> getBoxes() {
+    public Stack<String> getBoxes() {
         return boxes;
     }
     public void setId(int id) {
@@ -54,7 +54,7 @@ public class BoxStack {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    public void setBoxes(Stack<Box> boxes) {
+    public void setBoxes(Stack<String> boxes) {
         this.boxes = boxes;
     }
 
@@ -68,12 +68,12 @@ public class BoxStack {
         }
     }
 
-    public void addBox(Box b) {
+    public void addBox(String b) {
         boxes.push(b);
     }
 
     public String peekStack(){
-        return boxes.peek().getId();
+        return boxes.peek();
     }
 
     public int distanceToPoint(int destX, int destY){
@@ -85,7 +85,7 @@ public class BoxStack {
 
     public int SearchDepthByID(String associatedBoxId){
         for(int i = 0; i < boxes.size(); i++){
-            if(boxes.get(i).getId().equals(associatedBoxId))
+            if(boxes.get(i).equals(associatedBoxId))
                 return i;
         }
         return -1;

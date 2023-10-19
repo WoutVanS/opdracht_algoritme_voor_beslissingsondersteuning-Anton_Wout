@@ -8,4 +8,20 @@ public interface Constants {
      String CSV_DELIMITER = ";"; // Set the delimiter used in your CSV file
 
     Integer BUFFER_POINT_ID = 0;
+
+    enum statusVehicle {
+        AVAILABLE,
+        LOADING,
+        UNLOADING,
+        MOVING,
+        MOVINGTOPICKUP
+    }
+
+    enum statusRequest {
+        WAITING,
+        INPROGRESS,
+        DONE
+    }
+
+
 }

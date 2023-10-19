@@ -1,0 +1,34 @@
+
+v
+java:S1104
+"[Make loadingDuration a static final constant or non-public and provide accessors if needed.(ÿ·€Ÿşÿÿÿÿ
+r
+java:S1104"UMake timeCount a static final constant or non-public and provide accessors if needed.(ÉïÍá8ÃÏœ´1
+P
+java:S1444
+"5Make this "public static loadingDuration" field final(ÿ·€Ÿşÿÿÿÿ
+L
+java:S1444"/Make this "public static timeCount" field final(ÉïÍá8 ÃÏœ´1
+L
+java:S1854"6Remove this useless assignment to local variable "jo".(¶˜Ü“
+Q
+java:S1854L"<Remove this useless assignment to local variable "capacity".(Æ¡Åh
+=
+java:S1481"'Remove this unused "jo" local variable.(¶˜Ü“
+Z
+java:S2147a"DCombine this catch with the one at line 95, which has the same body.(ï­£Ä
+Z
+java:S2147c"DCombine this catch with the one at line 95, which has the same body.(úİ£¦
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ôù¤
+M	java:S106""9Replace this use of System.out or System.err by a logger.(×¼ß}
+N	java:S106%"9Replace this use of System.out or System.err by a logger.(–ƒİÇ
+D
+java:S1905,")Remove this unnecessary cast to "String".(ÊÌ¬Œüÿÿÿÿ
+?
+java:S1905?")Remove this unnecessary cast to "String".(ıÜ­¾
+D
+java:S1905K")Remove this unnecessary cast to "String".(û¼­şÿÿÿÿ
+B
+java:S1481L"-Remove this unused "capacity" local variable.(Æ¡Åh
+D
+java:S1905Z")Remove this unnecessary cast to "String".(éİ¿ûÿÿÿÿÿ
