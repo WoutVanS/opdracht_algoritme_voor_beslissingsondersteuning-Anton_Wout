@@ -59,6 +59,19 @@ public abstract class Location {
         boxes.push(b);
     }
 
+    public int[] getLocationXY() {
+        int[] res = new int[2];
+        res[0] = x;
+        res[1] = y;
+        return res;
+    }
+
+    public void popBox(String boxId) {
+        if (peekStack().equals(boxId)) {
+            boxes.pop();
+        } else System.out.println("huhh");
+    }
+
     public String peekStack(){
         return boxes.peek();
     }
@@ -71,9 +84,11 @@ public abstract class Location {
     }
 
     public int SearchDepthByID(String associatedBoxId){
+
+
         for(int i = 0; i < boxes.size(); i++){
             if(boxes.get(i).equals(associatedBoxId))
-                return i;
+                return boxes.size() - i - 1;
         }
         return -1;
     }

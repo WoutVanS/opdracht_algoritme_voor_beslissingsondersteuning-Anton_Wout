@@ -41,6 +41,9 @@ public class Request {
     }
     public void setPickupLocation(String pickupLocation) {
         this.pickupLocation = pickupLocation;
+        Location newPickup = Main.locations.get(pickupLocation);
+        pickup = newPickup;
+        pickupLocationXY = newPickup.getLocationXY();
     }
     public String getPlaceLocation() {
         return placeLocation;
@@ -93,6 +96,10 @@ public class Request {
     }
     public void setDropOff(Location dropOff) {
         this.dropOff = dropOff;
+    }
+
+    public void vehicleTakesBox() {
+        pickup.popBox(boxID);
     }
 
     @Override

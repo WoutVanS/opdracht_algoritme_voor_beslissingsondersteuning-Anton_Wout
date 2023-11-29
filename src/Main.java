@@ -5,10 +5,14 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.io.FileReader;
+import java.nio.Buffer;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     public static int loadingDuration;
     public static int timeCount;
+    public static HashMap<String, Location> locations = new HashMap<>();
 
 
     public static void main(String[] args) {
@@ -23,7 +27,7 @@ public class Main {
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader("I3_3_1_5.json"));
+            Object obj = parser.parse(new FileReader("I30_100_1_1_10.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
@@ -53,10 +57,12 @@ public class Main {
                 }
 
                 boxStacks.appendBoxStacks(newStack);
+                locations.put(newStack.getName(), newStack);
             }
 
             //loop array of bufferpoints
             JSONArray bufferpoints = (JSONArray) jsonObject.get("bufferpoints");
+            BufferPoint newBuff;
             for (Object o : bufferpoints) {
                 JSONObject bufferpoint = (JSONObject) o;
                 int id = Integer.parseInt(bufferpoint.get("ID").toString());
@@ -64,7 +70,10 @@ public class Main {
                 int x = Integer.parseInt(bufferpoint.get("x").toString());
                 int y = Integer.parseInt(bufferpoint.get("y").toString());
 
-                bufferPoints.add(new BufferPoint(name, id, x, y));
+                newBuff = new BufferPoint(name, id, x, y);
+
+                bufferPoints.add(newBuff);
+                locations.put(newBuff.getName(), newBuff);
             }
 
             //loop array of vehicles
@@ -74,8 +83,8 @@ public class Main {
                 int id = Integer.parseInt(vehicle.get("ID").toString());
                 String name = vehicle.get("name").toString();
                 int capacity = Integer.parseInt(vehicle.get("capacity").toString());
-                int x = Integer.parseInt(vehicle.get("xCoordinate").toString());
-                int y = Integer.parseInt(vehicle.get("yCoordinate").toString());
+                int x = Integer.parseInt(vehicle.get("x").toString());
+                int y = Integer.parseInt(vehicle.get("y").toString());
 
                 vehicles.addVehicle(new Vehicle(id, name, capacity, vehiclespeed, x, y));
             }
@@ -87,9 +96,9 @@ public class Main {
                 int id = Integer.parseInt(request.get("ID").toString());
 
                 String pickupLocation = request.get("pickupLocation").toString();
-                pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
+                //pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
                 String placeLocation = request.get("placeLocation").toString();
-                placeLocation = placeLocation.substring(2, placeLocation.length()-2);
+                //placeLocation = placeLocation.substring(2, placeLocation.length()-2);
                 String boxID = request.get("boxID").toString();
 
                 requests.add(new Request(id, pickupLocation, placeLocation, boxID));

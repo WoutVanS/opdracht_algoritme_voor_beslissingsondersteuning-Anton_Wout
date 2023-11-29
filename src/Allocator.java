@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 public class Allocator {
     //constructor
@@ -47,22 +48,50 @@ public class Allocator {
 ////
 //    }
 
-//    public Request realocationAlgorithm(BoxStacks boxStacks, String pickupLocationName , String associatedBoxId){
-//        List<BoxStack> nearestEmptyBoxStacks = new ArrayList<>();
-//        BoxStack pickupBoxStack = null;
-//
-//        for(BoxStack boxStack: boxStacks.getBoxStacks()){
-//            if(boxStack.notFull())
-//                nearestEmptyBoxStacks.add(boxStack);
-//
-//            if(boxStack.getName().equals(pickupLocationName))
-//                pickupBoxStack = boxStack;
-//        }
-//
-//        int numberOfReallocations = pickupBoxStack.SearchDepthByID(associatedBoxId);
-//        List<Request> requests;
-//        for(int i = 0; i < numberOfReallocations; i++){
-//
-//        }
-//    }
+    public List<Request> realocationAlgorithm(BoxStacks boxStacks, String pickupLocationName , String associatedBoxId){
+
+        System.out.println();
+        System.out.println("==================reallocation======================");
+
+
+        List<BoxStack> nearestEmptyBoxStacks = new ArrayList<>();
+        BoxStack pickupBoxStack = null;
+
+        for(BoxStack boxStack: boxStacks.getBoxStacks()){
+            if(boxStack.getName().equals(pickupLocationName))
+                pickupBoxStack = boxStack;
+            else if(boxStack.notFull())
+                nearestEmptyBoxStacks.add(boxStack);
+
+        }
+
+        int x = pickupBoxStack.getX();
+        int y = pickupBoxStack.getY();
+
+        nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
+
+        int numberOfReallocations = pickupBoxStack.SearchDepthByID(associatedBoxId);
+        System.out.println("number of relocations necessary: " + numberOfReallocations);
+
+        List<Request> requests = new ArrayList<>();
+        int numberOfFreeSpace = nearestEmptyBoxStacks.get(0).freeSpace();
+
+        for(int i = 0; i < numberOfReallocations; i++){
+
+            if(numberOfFreeSpace == 0){
+                nearestEmptyBoxStacks.remove(0);
+                numberOfFreeSpace = nearestEmptyBoxStacks.get(0).freeSpace();
+            }
+
+            Random rand = new Random();
+            int ID = 6969000 + rand.nextInt(1000);
+            Request request = new Request(ID, pickupBoxStack.getName(), nearestEmptyBoxStacks.get(0).getName(), pickupBoxStack.boxes.get(pickupBoxStack.boxes.size() - i -1));
+            requests.add(request);
+            numberOfFreeSpace--;
+
+            System.out.println(request);
+        }
+
+        return requests;
+    }
 }

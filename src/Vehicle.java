@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.image.LookupOp;
 import java.sql.Array;
+import java.util.Currency;
 import java.util.LinkedList;
 import java.util.concurrent.CountDownLatch;
 
@@ -161,12 +162,6 @@ public class Vehicle {
         //give target coordinates to bring load to destination
         destX = currentRequest.getPlaceLocationXY()[0];
         destY = currentRequest.getPlaceLocationXY()[1];
-
-        //set startTime and start coordinates for the PL operation
-        startTime = Main.timeCount;
-        startX = x;
-        startY = y;
-
     }
 
     public void finishLoading() {
@@ -174,8 +169,18 @@ public class Vehicle {
 
         currentDest = currentRequest.getDropOff();
 
+        // remove box from stack
+        currentRequest.vehicleTakesBox();
+        load.add(currentRequest.getBoxID());
+
         //print the result of the dropoff operation
-        System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PU");
+        //System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PU");
+        System.out.println("vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxID() + ";PU");
+
+        //set startTime and start coordinates for the PL operation
+        startTime = Main.timeCount;
+        startX = x;
+        startY = y;
     }
 
     //when the loaded vehicle arrives at its destination
@@ -206,7 +211,9 @@ public class Vehicle {
         currentRequest.setStopTime(Main.timeCount);
 
         //print the result of the dropoff operation
-        System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PL");
+        //System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PL");
+        System.out.println("vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxID() + ";PL");
+
 
         currentRequest = null;
         state = Constants.statusVehicle.AVAILABLE;

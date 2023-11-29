@@ -3,6 +3,8 @@ import java.io.*;
 import java.nio.Buffer;
 import java.util.*;
 
+// uitbreiding: requests preprocessen -> requests samen poolen om zo de capaciteit van vehicle vol te benutten
+
 public class Network {
     private Allocator allocator;
     private BoxStacks boxStacks;
@@ -48,8 +50,13 @@ public class Network {
 
                 System.out.println("current instruction: " + request);
 
+
                 if (!checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
-                    // Execute the reallocation algorithm so to associated Box Id gets to the top
+                    List<Request> requestList = allocator.realocationAlgorithm(boxStacks, pickupLocationName, associatedBoxId);
+                    requestList.add(request);
+                    requests.updateFutureRequests(requestList);
+                    requests.addInfront(requestList);
+                    break;
                 }
 
                 if (!checkPlaceLocation(placeLocationName)) {                                         // checks if the boxstack is not full

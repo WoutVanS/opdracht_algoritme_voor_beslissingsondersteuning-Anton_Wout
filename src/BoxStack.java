@@ -22,6 +22,9 @@ public class BoxStack extends Location{
         }
     }
 
+    public int freeSpace(){
+        return capacity - boxes.size();
+    }
 
 //    public BoxStack(String name, int id, int x, int y, int capacity, Stack<String> boxes){
 //        this.name = name;
