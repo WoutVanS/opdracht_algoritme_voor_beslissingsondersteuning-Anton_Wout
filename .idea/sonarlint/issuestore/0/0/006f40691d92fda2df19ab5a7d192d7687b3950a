@@ -1,14 +1,6 @@
 
-`
-java:S2184S"ECast one of the operands of this subtraction operation to a "double".(°§ï©úÿÿÿÿ
-k
-java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÖÆÀºÿÿÿÿÿ
-f
-java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(¨É«
-f
-java:S1149*"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(´à¬Œ
-k
-java:S11499"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(–¡Ïıÿÿÿÿ
-V
-java:S1126@"AReplace this if-then-else statement by a single return statement.(Ğàh
-c	java:S100V"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øêÜ¥
+l
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÓÀ8±Ó‡Å´1
+]
+java:S1126"AReplace this if-then-else statement by a single return statement.(Ğàh8¨»·Å´1
+X	java:S125"<This block of commented-out lines of code should be removed.(¶ÜÌ€8´Ó‡Å´1

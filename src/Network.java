@@ -43,7 +43,7 @@ public class Network {
                 Request request = requests.getNextRequest();
                 String pickupLocationName = request.getPickupLocation();               // search for the ID number in the hashmap
                 String placeLocationName = request.getPlaceLocation();
-                String associatedBoxId = request.getBoxID();
+                String associatedBoxId = request.getBoxIDs().get(0);
 
                 request.setStartTime(Main.timeCount);                   //set the starttime for the handling of the request
                 request.setStatus(Constants.statusRequest.INPROGRESS);
@@ -69,6 +69,16 @@ public class Network {
                     allocateInstructionToVehicle(request, pickupLocationName, placeLocationName);
                 else
                     System.err.println("there whas an error that prevent the allocation of the instruction to a vehicle");
+
+
+                System.out.println("");
+                System.out.println("------ Printing boxStacks ------");
+                for (String loc : Main.locations.keySet()) {
+                    System.out.print(loc + ": ");
+                    Main.locations.get(loc).printBoxes();
+                }
+                System.out.println("---------------------");
+                System.out.println("");
             }
         }
     }
@@ -78,7 +88,7 @@ public class Network {
     public Boolean checkBoxLocationInPickupLocation(String pickupLocationName, String associatedBoxId){
         if(bufferPoints.isBufferPoint(pickupLocationName)){                             // (if the pickup location is a bufferpoint then a box should first be added.)
             BufferPoint bp = bufferPoints.getBufferPointByName(pickupLocationName);     // get the correct bufferpoint
-            addBoxToBufferPoint(associatedBoxId, bp);                                   // add box to the bufferpoint
+//            addBoxToBufferPoint(associatedBoxId, bp);                                   // add box to the bufferpoint
             return true;
         }
         else{

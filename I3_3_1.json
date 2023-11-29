@@ -82,6 +82,26 @@
       "boxID": "B13"
     },
     {
+      "ID": 21,
+      "pickupLocation": [
+        "stack0_3"
+      ],
+      "placeLocation": [
+        "BufferPoint"
+      ],
+      "boxID": "B19"
+    },
+    {
+      "ID": 22,
+      "pickupLocation": [
+        "BufferPoint"
+      ],
+      "placeLocation": [
+        "stack0_2"
+      ],
+      "boxID": "B19"
+    },
+    {
       "ID": 6,
       "pickupLocation": [
         "stack0_1"
@@ -100,6 +120,16 @@
         "BufferPoint"
       ],
       "boxID": "B12"
+    },
+    {
+      "ID": 8,
+      "pickupLocation": [
+        "stack0_2"
+      ],
+      "placeLocation": [
+        "BufferPoint"
+      ],
+      "boxID": "B10"
     }
   ]
 }

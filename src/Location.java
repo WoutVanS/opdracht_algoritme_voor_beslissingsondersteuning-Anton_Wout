@@ -56,6 +56,7 @@ public abstract class Location {
     }
 
     public void addBox(String b) {
+        System.out.println("adding box to " + name + " -> " + b);
         boxes.push(b);
     }
 
@@ -94,4 +95,11 @@ public abstract class Location {
     }
 
     public abstract boolean notFull();
+
+    public void printBoxes() {
+        for (String boxId: boxes) {
+            System.out.print(boxId + "; ");
+        }
+        System.out.println("");
+    }
 }

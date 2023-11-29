@@ -85,7 +85,7 @@ public class Allocator {
 
             Random rand = new Random();
             int ID = 6969000 + rand.nextInt(1000);
-            Request request = new Request(ID, pickupBoxStack.getName(), nearestEmptyBoxStacks.get(0).getName(), pickupBoxStack.boxes.get(pickupBoxStack.boxes.size() - i -1));
+            Request request = new Request(ID, pickupBoxStack, nearestEmptyBoxStacks.get(0), pickupBoxStack.boxes.get(pickupBoxStack.boxes.size() - i -1));
             requests.add(request);
             numberOfFreeSpace--;
 

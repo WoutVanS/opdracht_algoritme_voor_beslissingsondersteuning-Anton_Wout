@@ -1,7 +1,11 @@
 
+E
+java:S54113"(Use a primitive boolean expression here.(¨ŞÚÀ8„ï£Å´1
+E
+java:S54117"(Use a primitive boolean expression here.(˜ÿÜƒ8„ï£Å´1
+L	java:S1061"+Replace this use of System.out by a logger.(¶·ïıÿÿÿÿ8¿ğ£Å´1
+L	java:S106@"+Replace this use of System.err by a logger.(§‡äıÿÿÿÿ8Àğ£Å´1
 @
-java:S54113"*Use the primitive boolean expression here.(¨ŞÚÀ
-@
-java:S54117"*Use the primitive boolean expression here.(˜ÿÜƒ
-S	java:S1061"9Replace this use of System.out or System.err by a logger.(¶·ïıÿÿÿÿ
-S	java:S106@"9Replace this use of System.out or System.err by a logger.(§‡äıÿÿÿÿ
+java:S1128"$Remove this unused import 'java.io'.(¬›ãD8š”ĞÅ´1
+I
+java:S1128",Remove this unused import 'java.nio.Buffer'.(î¦Ïî8š”ĞÅ´1

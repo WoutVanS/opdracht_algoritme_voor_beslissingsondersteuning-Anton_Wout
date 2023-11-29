@@ -1,7 +1,7 @@
 
-t
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(õ›»ºûÿÿÿÿ
 †
-java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÃÛ„Ñ
-2
-java:S1700"Rename field "requests"(®»¨ãùÿÿÿÿ
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÃÛ„Ñ
+^
+java:S4973%"<Strings and Boxed types should be compared using "equals()".(Ññ•“þÿÿÿÿ8œÝ›Ä´1
+-
+java:S1700"Rename field "requests"(Åüæÿ

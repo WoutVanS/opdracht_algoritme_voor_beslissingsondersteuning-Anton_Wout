@@ -8,5 +8,7 @@ java:S2293"YReplace the type specification in this constructor call with the d
 java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¨É¾¤ûÿÿÿÿ
 2
 java:S1700"Rename field "vehicles"(æ–¹—ÿÿÿÿÿ
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8”ß›Ä´1
 J
 java:S1068"4Remove this unused "amountOfVehicles" private field.(ÜÌ€ä

@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Request {
@@ -6,6 +8,8 @@ public class Request {
     private String pickupLocation;
     private String placeLocation;
     private String boxID;
+
+    private ArrayList<String> boxIDs;
     private Constants.statusRequest status;
     private int startTime;
     private int stopTime;
@@ -15,18 +19,34 @@ public class Request {
     private Location pickup;
     private Location dropOff;
 
-    public Request(int ID, String pickupLocation, String placeLocation, String box ){
+    public Request(int ID, Location pickup, Location place, String box ){
         this.ID = ID;
-        this.pickupLocation = pickupLocation;
-        this.placeLocation = placeLocation;
+        this.pickupLocation = pickup.getName();
+        this.placeLocation = place.getName();
         this.boxID = box;
         status = Constants.statusRequest.WAITING;
         startTime = -1;
         stopTime = -1;
         pickupLocationXY = new int[]{-1, -1};
         placeLocationXY = new int[]{-1, -1};
-        pickup = null;
-        dropOff = null;
+        this.pickup = pickup;
+        dropOff = place;
+        this.boxIDs = new ArrayList<>();
+        boxIDs.add(box);
+    }
+
+    public Request(int ID, Location pickup, Location place, ArrayList<String> boxes) {
+        this.ID = ID;
+        this.pickupLocation = pickup.getName();
+        this.placeLocation = place.getName();
+        this.boxIDs = boxes;
+        status = Constants.statusRequest.WAITING;
+        startTime = -1;
+        stopTime = -1;
+        pickupLocationXY = new int[]{-1, -1};
+        placeLocationXY = new int[]{-1, -1};
+        this.pickup = pickup;
+        dropOff = place;
     }
 
     //getters and setters
@@ -43,6 +63,7 @@ public class Request {
         this.pickupLocation = pickupLocation;
         Location newPickup = Main.locations.get(pickupLocation);
         pickup = newPickup;
+        System.out.println(pickup);
         pickupLocationXY = newPickup.getLocationXY();
     }
     public String getPlaceLocation() {
@@ -51,12 +72,12 @@ public class Request {
     public void setPlaceLocation(String placeLocation) {
         this.placeLocation = placeLocation;
     }
-    public String getBoxID() {
-        return boxID;
-    }
-    public void setBoxID(String boxID) {
-        this.boxID = boxID;
-    }
+//    public String getBoxID() {
+//        return boxID;
+//    }
+//    public void setBoxID(String boxID) {
+//        this.boxID = boxID;
+//    }
     public void setStatus(Constants.statusRequest newStatus) {
         status = newStatus;
     }
@@ -97,9 +118,33 @@ public class Request {
     public void setDropOff(Location dropOff) {
         this.dropOff = dropOff;
     }
-
+    public String getBoxIDsToString() {
+        StringBuilder sb = new StringBuilder();
+        for (String boxId: boxIDs) {
+            sb.append(boxId).append(", ");
+        }
+        return sb.toString();
+    }
+    public ArrayList<String> getBoxIDs() {
+        return boxIDs;
+    }
     public void vehicleTakesBox() {
-        pickup.popBox(boxID);
+        for (String boxID: boxIDs) {
+            pickup.popBox(boxID);
+        }
+    }
+    public String getBoxID() {
+        return boxID;
+    }
+    public String printBoxIds() {
+        if (boxIDs.isEmpty()) return "";
+        else {
+            StringBuilder sb = new StringBuilder();
+            for (String boxId: boxIDs) {
+                sb.append(boxId).append("; ");
+            }
+            return sb.toString();
+        }
     }
 
     @Override
@@ -108,7 +153,7 @@ public class Request {
                 "ID=" + ID +
                 ", pickupLocation='" + pickupLocation + '\'' +
                 ", placeLocation='" + placeLocation + '\'' +
-                ", boxID='" + boxID + '\'' +
+                ", boxIDs='" + printBoxIds() + '\'' +
                 '}';
     }
 }

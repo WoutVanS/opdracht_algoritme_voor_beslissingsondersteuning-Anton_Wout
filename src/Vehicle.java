@@ -130,6 +130,11 @@ public class Vehicle {
             if (loadingCount == Main.loadingDuration) {
                 loadingCount = 0;
                 finishDropOff();
+                System.out.print("load vehicle after dropoff: ");
+                for (int i = 0; i < load.size(); i++) {
+                    System.out.print(load.get(i) + "; ");
+                }
+                System.out.println(" ");
             }
         }
         else if (state == Constants.statusVehicle.LOADING) {    //if vehicle is loading, update the counter
@@ -137,6 +142,11 @@ public class Vehicle {
             if (loadingCount == Main.loadingDuration) {
                 loadingCount = 0;
                 finishLoading();
+                System.out.print("load vehicle after loading: ");
+                for (int i = 0; i < load.size(); i++) {
+                    System.out.print(load.get(i) + "; ");
+                }
+                System.out.println(" ");
             }
         }
     }
@@ -156,8 +166,13 @@ public class Vehicle {
         state = Constants.statusVehicle.LOADING;
         //System.out.println("VehicleId: " + id + " is now loading");
 
-        //load box
-        load.push(currentRequest.getBoxID());
+        // remove box from stack
+        currentRequest.vehicleTakesBox();
+
+        // load boxes
+        for (String boxId: currentRequest.getBoxIDs()) {
+            load.push(boxId);
+        }
 
         //give target coordinates to bring load to destination
         destX = currentRequest.getPlaceLocationXY()[0];
@@ -169,13 +184,9 @@ public class Vehicle {
 
         currentDest = currentRequest.getDropOff();
 
-        // remove box from stack
-        currentRequest.vehicleTakesBox();
-        load.add(currentRequest.getBoxID());
-
         //print the result of the dropoff operation
         //System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PU");
-        System.out.println("vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxID() + ";PU");
+        System.out.println("vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxIDsToString() + ";PU");
 
         //set startTime and start coordinates for the PL operation
         startTime = Main.timeCount;
@@ -190,7 +201,10 @@ public class Vehicle {
 
         //unload box
         if (currentDest.notFull()) {
-            currentDest.addBox(load.removeFirst());
+            int size = load.size();
+            for (int i = 0; i < size; i++) {
+                currentDest.addBox(load.pop());
+            }
             //destinations.removeFirst();
         } else {
             System.out.println("huhhh?");
@@ -212,10 +226,13 @@ public class Vehicle {
 
         //print the result of the dropoff operation
         //System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PL");
-        System.out.println("vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxID() + ";PL");
+        System.out.println("vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxIDsToString() + ";PL");
 
 
+        // prepare vehicle for next instruction
         currentRequest = null;
+        currentDest = null;
+
         state = Constants.statusVehicle.AVAILABLE;
     }
 

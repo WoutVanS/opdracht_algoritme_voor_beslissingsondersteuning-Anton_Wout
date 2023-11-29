@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoxStacks {
-    private List<BoxStack> boxStacks;
+    private List<BoxStack> boxStacks;   //beter als hashmap?
 
     public BoxStacks(){
         boxStacks = new ArrayList<>();
