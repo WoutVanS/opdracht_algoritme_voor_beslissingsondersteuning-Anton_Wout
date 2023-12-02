@@ -12,8 +12,8 @@ import java.util.HashMap;
 /* TODO:
     GRONDIG NAKIJKEN ALS ALLES NOG CORRECT WERKT,
     UITBREIDEN NAAR MEERDERE VEHICLES,
-    VOORLOPIG WORDT BIJ PREPROCESSING NOG GEEN REKENING GEHOUDEN MET MAX CAPACITY VAN VEHICLES -> IN ORDE BRENGEN (meerdere requests forgen als capaciteit niet voldaan is)
     REPORT 2 SCHRIJVEN
+    PROGRAMMA WERKT NIET BIJ GROTERE FILES. BIJ PREPROCCESING ZIJN ER REQUEST ZONDER BOX
  */
 
 public class Main {
@@ -35,7 +35,7 @@ public class Main {
 
         try {
 //            Object obj = parser.parse(new FileReader("I30_100_1_1_10.json"));
-            Object obj = parser.parse(new FileReader("I3_3_1.json"));
+            Object obj = parser.parse(new FileReader("I20_20_2_2_8b2.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
@@ -95,8 +95,8 @@ public class Main {
                 int capacity = Integer.parseInt(vehicle.get("capacity").toString());
 //                int x = Integer.parseInt(vehicle.get("x").toString());
 //                int y = Integer.parseInt(vehicle.get("y").toString());
-                int x = Integer.parseInt(vehicle.get("xCoordinate").toString());
-                int y = Integer.parseInt(vehicle.get("yCoordinate").toString());
+                int x = Integer.parseInt(vehicle.get("x").toString());
+                int y = Integer.parseInt(vehicle.get("y").toString());
 
                 vehicles.addVehicle(new Vehicle(id, name, capacity, vehiclespeed, x, y));
             }
@@ -108,9 +108,9 @@ public class Main {
                 int id = Integer.parseInt(request.get("ID").toString());
 
                 String pickupLocation = request.get("pickupLocation").toString();
-                pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
+                //pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
                 String placeLocation = request.get("placeLocation").toString();
-                placeLocation = placeLocation.substring(2, placeLocation.length()-2);
+                //placeLocation = placeLocation.substring(2, placeLocation.length()-2);
                 String boxID = request.get("boxID").toString();
 
                 Location pickup = locations.get(pickupLocation);
@@ -138,19 +138,20 @@ public class Main {
 
         System.out.println("\n============= running program ==============");
         timeCount = 0;
-        while(timeCount < 100000) {
+        boolean networkState = true;
+        boolean vehiclesWorking = true;
+        while( networkState || vehiclesWorking) {
 
 //            let all vehicles move closer to destination
-            vehicles.updateVehicles();
+            vehiclesWorking = vehicles.updateVehicles();
 
             //run the network and assing requests to new vehicles
-            network.run();
+            networkState = network.run();
 
             timeCount++;
         }
 
-        System.out.println(" ");
-        System.out.println("ALL REQUESTS ARE HANDLED");
+        System.out.println("\n======== ALL REQUESTS ARE HANDLED ==========");
 
         System.out.println("");
         System.out.println("------ Printing boxStacks ------");
@@ -160,6 +161,8 @@ public class Main {
         }
         System.out.println("--------------------------------");
         System.out.println("");
+
+        System.out.println("total time needed: " + timeCount);
 
     }
 }

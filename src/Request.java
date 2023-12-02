@@ -125,6 +125,9 @@ public class Request {
         }
         return sb.toString();
     }
+
+    public void setBoxIDs(ArrayList<String> boxIDs) {this.boxIDs = boxIDs;}
+
     public ArrayList<String> getBoxIDs() {
         return boxIDs;
     }

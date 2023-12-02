@@ -125,6 +125,10 @@ public class Requests {
         requests.addAll(0, requestList);
     }
 
+    public void addInfront(Request request){
+        requests.add(0, request);
+    }
+
     public void updateFutureRequests(List<Request> newRequests){
         HashMap<String, String> newLocation = new HashMap<>();
 

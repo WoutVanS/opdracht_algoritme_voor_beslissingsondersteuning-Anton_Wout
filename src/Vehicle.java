@@ -114,7 +114,7 @@ public class Vehicle {
     public Request getCurrentRequest() {
         return currentRequest;
     }
-
+    public int getCapacity() {return capacity;}
 
     //METHODS
     //each time unit, the vehicle moves to next position

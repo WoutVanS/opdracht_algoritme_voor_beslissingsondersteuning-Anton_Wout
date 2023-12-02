@@ -36,7 +36,7 @@ public class Network {
     //OPM ik zou dit anders aanpakken, elke loop van de while in main (dus een tijdseenheid) kijk je welke vehicles vrij zijn genkomen
     //en je voert het aantal requests uit dat er vrije vehicles zijn
 
-    public void run(){
+    public boolean run(){
         ArrayList<Vehicle> availableVehicles = vehicles.findAllAvailableVehicles();
         if (!requests.isEmpty()) {
             for (int i = 0; i < availableVehicles.size(); i++) {
@@ -80,7 +80,9 @@ public class Network {
                 System.out.println("--------------------------------");
                 System.out.println("");
             }
+            return true;
         }
+        return false;
     }
 
 
@@ -134,7 +136,10 @@ public class Network {
         request.setPlaceLocationXY(placeLocationXY);
         request.setDropOff(dropOff);
 
-        vehicles.allocateInstructionToFreeVehicle(request);
+        Request splittedRequest =  vehicles.allocateInstructionToFreeVehicle(request);
+
+        if(splittedRequest != null)
+            requests.addInfront(splittedRequest);
      }
 
     //getters and setters

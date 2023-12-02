@@ -30,21 +30,48 @@ public class Vehicles {
     }
 
     // give the closest available vehicle to the pickup location the instruction to execute
-    public void allocateInstructionToFreeVehicle(Request r){
+    public Request allocateInstructionToFreeVehicle(Request request){
         ArrayList<Vehicle> availableVehicles = findAllAvailableVehicles();
 
-        if(availableVehicles.isEmpty()) return;                           // if the list is empty that means there are no vehicles available
+        if(availableVehicles.isEmpty()) return null;                           // if the list is empty that means there are no vehicles available
 
-        int x = r.getPickupLocationXY()[0];
-        int y = r.getPickupLocationXY()[1];
+        int x = request.getPickupLocationXY()[0];
+        int y = request.getPickupLocationXY()[1];
         availableVehicles.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));  // sort the list of available vehicles based on the distance to the pickup point
 
-        availableVehicles.get(0).MoveToPickup(r);                                       // use the first vehicle in the sorted list
+        Vehicle availableVehicle = availableVehicles.get(0);
+
+        Request splittedRequest = null;
+        if(request.getBoxIDs().size() > availableVehicle.getCapacity()){                // check if the vehicle can carry all the boxses from the request. if not make a new request.
+            System.out.println("\n---------- dividing request ------------");
+            System.out.println("number of boxes in request: " + request.getBoxIDs().size());
+            System.out.println("capacity of vehicle: " + availableVehicle.getCapacity());
+
+
+            int newID = request.getID() * 100 + 1;                                      // add 001 to the new request to indicate that it's been divided
+
+            List<String> beforeIndex = request.getBoxIDs().subList(0, availableVehicle.getCapacity());
+            List<String> afterIndex = request.getBoxIDs().subList(availableVehicle.getCapacity(), request.getBoxIDs().size());
+
+            System.out.println("request Box list for vehicle: " + beforeIndex.toString());
+            System.out.println("new request Box list: " + afterIndex.toString());
+
+            request.setBoxIDs(new ArrayList<>(beforeIndex));
+            splittedRequest = new Request(newID, request.getPickup(), request.getDropOff(), new ArrayList<>(afterIndex));
+
+            System.out.println("----------------------------------------");
+        }
+            availableVehicle.MoveToPickup(request);                                       // use the first vehicle in the sorted list
+            return splittedRequest;
     }
 
-    public void updateVehicles() {
+
+    public boolean updateVehicles() {
+        boolean vehiclesWorking = false;
         for (Vehicle v: vehicles) {
             v.update();
+            if(!v.isAvailible())vehiclesWorking = true;
         }
+        return  vehiclesWorking;
     }
 }
