@@ -13,6 +13,7 @@ public class BufferPoint extends Location{
         return true;
     }
 
+
 //    private int id;
 //    private String name;
 //    private int x;

@@ -77,7 +77,7 @@ public class Network {
                     System.out.print(loc + ": ");
                     Main.locations.get(loc).printBoxes();
                 }
-                System.out.println("---------------------");
+                System.out.println("--------------------------------");
                 System.out.println("");
             }
         }
@@ -88,7 +88,8 @@ public class Network {
     public Boolean checkBoxLocationInPickupLocation(String pickupLocationName, String associatedBoxId){
         if(bufferPoints.isBufferPoint(pickupLocationName)){                             // (if the pickup location is a bufferpoint then a box should first be added.)
             BufferPoint bp = bufferPoints.getBufferPointByName(pickupLocationName);     // get the correct bufferpoint
-//            addBoxToBufferPoint(associatedBoxId, bp);                                   // add box to the bufferpoint
+            if(!bp.boxes.contains(associatedBoxId))                                     // check if the box doesn't exist yet
+                bp.addBox(associatedBoxId);                                             // add box to the bufferpoint
             return true;
         }
         else{
@@ -101,10 +102,6 @@ public class Network {
         return bufferPoints.isBufferPoint(placeLocationName) || boxStacks.checkBoxStackNotFull(placeLocationName);
     }
 
-    // Methode that adds the new box to the bufferPoint
-    public void addBoxToBufferPoint(String associatedBoxId, BufferPoint bp){
-        bp.addBox(associatedBoxId);
-    }
 
     // this function gets the x and y coordinates of the pickup and place location and gives them to the vehicles object
     public void allocateInstructionToVehicle(Request request, String pickupLocationName, String placeLocationName) {

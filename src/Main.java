@@ -39,16 +39,18 @@ public class Main {
 
             JSONObject jsonObject =  (JSONObject) obj;
 
+            System.out.println("============ Network parameters ============");
             loadingDuration = Integer.parseInt(jsonObject.get("loadingduration").toString());
-            System.out.println(loadingDuration);
+            System.out.println("loading Duration: " + loadingDuration);
 
             int vehiclespeed = Integer.parseInt(jsonObject.get("vehiclespeed").toString());
-            System.out.println(vehiclespeed);
+            System.out.println("vehicle speed: " + vehiclespeed);
 
             int stackcapacity = Integer.parseInt(jsonObject.get("stackcapacity").toString());
-            System.out.println(stackcapacity);
+            System.out.println("stack capacity:" + stackcapacity);
 
             // loop array of stacks
+            System.out.println("\n============== filling stacks ==============");
             JSONArray stacks = (JSONArray) jsonObject.get("stacks");
             for (Object o : stacks) {
                 JSONObject stack = (JSONObject) o;
@@ -126,12 +128,15 @@ public class Main {
         Network network = new Network(allocator, boxStacks, vehicles, bufferPoints, requests);
 
         // preprocess the requests
+        System.out.println("\n========== preprocessing requests ==========");
         requests.preProcess(locations);
 
         System.out.println("Preprocessing done, starting program");
         System.out.println(" ");
 
         // run in loop and increment timeCount each itteration
+
+        System.out.println("\n============= running program ==============");
         timeCount = 0;
         while(timeCount < 100000) {
 
@@ -153,7 +158,7 @@ public class Main {
             System.out.print(loc + ": ");
             Main.locations.get(loc).printBoxes();
         }
-        System.out.println("---------------------");
+        System.out.println("--------------------------------");
         System.out.println("");
 
     }

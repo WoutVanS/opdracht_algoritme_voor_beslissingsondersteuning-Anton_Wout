@@ -105,6 +105,7 @@ public class Requests {
                     requests.add(indexFirstRequest, pooledRequest);
                 }
             }
+            System.out.println();
         }
         // remove the requests marked for removal
         for (Request markedSucker: makedForRemoval) {
