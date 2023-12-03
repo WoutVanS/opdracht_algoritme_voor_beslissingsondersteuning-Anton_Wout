@@ -53,7 +53,7 @@ public class Requests {
         HashSet<Request> makedForRemoval = new HashSet<>();
         // pool requests per pickup location
         for (String pickupLocId: locations.keySet()) {
-            System.out.println("Requests with pickup on: " + pickupLocId);
+            System.out.println("Requests with pickup on: " + pickupLocId + ":");
             ArrayList<Request> requestsOnPickupLocation = new ArrayList<>();
             for (Request r: requests) {
                 if (r.getPickupLocation().equals(pickupLocId)) requestsOnPickupLocation.add(r);
@@ -78,31 +78,41 @@ public class Requests {
                     int indexFirstRequest = requests.indexOf(requestsOnPlaceLocation.get(0));
                     Location pickup = requestsOnPlaceLocation.get(0).getPickup();
                     Location place = requestsOnPlaceLocation.get(0).getDropOff();
+                    ArrayList<ArrayList<String>> allBoxes = new ArrayList<>();          // list of subsequences
                     ArrayList<String> boxes = new ArrayList<>();
                     // forge new request from neighbouring requests
                     int i = 0;
                     while (i < requestsOnPlaceLocation.size()-1) {
                         String boxIdCurrentI = requestsOnPlaceLocation.get(i).getBoxID();
-//                        System.out.println("box id current i: " + boxIdCurrentI);
                         String boxIdNextI = requestsOnPlaceLocation.get(i+1).getBoxID();
-//                        System.out.println("box id next i: " + boxIdNextI);
-                        // two requests follow eachother, so we can pool them together
+                        // two requests follow each other, so we can pool them together
                         if (pickup.getBoxes().indexOf(boxIdCurrentI) - 1 == pickup.getBoxes().indexOf(boxIdNextI)) {
                             if (boxes.isEmpty()) {
                                 boxes.add(requestsOnPlaceLocation.get(i).getBoxID());
                                 makedForRemoval.add(requestsOnPlaceLocation.get(i));
-//                                System.out.println(requestsOnPlaceLocation.get(i).getBoxID());
                             }
                             boxes.add(requestsOnPlaceLocation.get(i+1).getBoxID());
-//                            System.out.println(requestsOnPlaceLocation.get(i+1).getBoxID());
                             makedForRemoval.add(requestsOnPlaceLocation.get(i+1));
+                        } else {
+                            if (!boxes.isEmpty()) {         // if the subsequence we found is not empty, add it to the list of subsequences
+                                allBoxes.add(new ArrayList<>(boxes));
+                                boxes.clear();
+                            }
                         }
                         i++;
                     }
-                    int newId = requestsOnPlaceLocation.get(0).getID() * requestsOnPlaceLocation.get(i-1).getID();
-                    Request pooledRequest = new Request(newId, pickup, place, boxes);
-                    System.out.println("new pooled request: " + pooledRequest.getBoxIDsToString());
-                    requests.add(indexFirstRequest, pooledRequest);
+                    if (!boxes.isEmpty()) {     // for the last subsequence
+                        allBoxes.add(boxes);
+                    }
+
+                    for (int index = 0; index < allBoxes.size(); index++) {
+                        ArrayList<String> subsequence = allBoxes.get(index);
+                        int newId = requestsOnPlaceLocation.get(0).getID() * requestsOnPlaceLocation.get(i-1).getID() + index;
+                        Request pooledRequest = new Request(newId, pickup, place, subsequence);
+                        System.out.println("new pooled request with ID: " + newId + " and boxes: " + pooledRequest.getBoxIDsToString());
+                        requests.add(indexFirstRequest, pooledRequest);
+                    }
+
                 }
             }
             System.out.println();
@@ -125,21 +135,37 @@ public class Requests {
         requests.addAll(0, requestList);
     }
 
+    public void addAtIndex(int index, Request request) {
+        requests.add(index, request);
+    }
+
     public void addInfront(Request request){
         requests.add(0, request);
     }
 
-    public void updateFutureRequests(List<Request> newRequests){
-        HashMap<String, String> newLocation = new HashMap<>();
+    public void updateFutureRequests(List<Request> newRequests) {        // fout gevonden: elke reallocation heeft maar 1 box per keer -> pooledRequests worden nooit geupdate
+        HashMap<String, String> newLocation = new HashMap<>();          // opgelost door eerst de boxIds te splitsen en allemaal te overlopen
 
         for(Request request: newRequests)
             newLocation.put(request.getBoxIDsToString(), request.getPlaceLocation());
 
         for(Request request: requests) {
-            if (newLocation.containsKey(request.getBoxIDsToString())) {
-                request.setPickupLocation(newLocation.get(request.getBoxIDsToString()));
+            if (request.getBoxIDs().size() > 2) {
+                System.out.println("test " + request.getID() + " -> " + request.getBoxIDsToString());
+                String firstBox = request.getBoxIDs().get(request.getBoxIDs().size()-1);
+                System.out.println(firstBox);
+                System.out.println("old location: " + request.getPickupLocation());
+                if (newLocation.containsKey(firstBox)) {
+                    request.setPickupLocation(newLocation.get(firstBox));
+                    System.out.println("new location: " + newLocation.get(firstBox));
+                }
+            }
+            else {
+                if (newLocation.containsKey(request.getBoxIDsToString())) {
+                    request.setPickupLocation(newLocation.get(request.getBoxIDsToString()));
+                }
             }
         }
-
+        newLocation.clear();
     }
 }

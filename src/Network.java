@@ -41,6 +41,16 @@ public class Network {
         if (!requests.isEmpty()) {
             for (int i = 0; i < availableVehicles.size(); i++) {
                 Request request = requests.getNextRequest();
+
+//                int counter = 1;
+//                while (vehicles.boxesAlreadyInProgress(request)) {          // when another vehicle is already busy with the boxes in the request, we best wait untill he is done
+//                    Request temp = request;                                 // because when we move the boxes before he arrives, this will cause an error
+//                    request = requests.getNextRequest();
+//                    requests.addAtIndex(counter, temp);
+//                    counter++;
+//                    System.out.println(counter);
+//                }
+
                 String pickupLocationName = request.getPickupLocation();               // search for the ID number in the hashmap
                 String placeLocationName = request.getPlaceLocation();
                 String associatedBoxId = request.getBoxIDs().get(0);

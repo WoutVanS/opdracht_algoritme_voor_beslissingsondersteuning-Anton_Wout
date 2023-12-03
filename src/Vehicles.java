@@ -29,6 +29,15 @@ public class Vehicles {
         return res;
     }
 
+    public boolean boxesAlreadyInProgress(Request request) {        // function to check if a vehicle is already moving boxes (to avoid a multiple vehicles trying to move the same box)
+        for (Vehicle v: vehicles) {
+            for (String boxId: request.getBoxIDs()) {
+                if (v.getLoad().contains(boxId)) return true;
+            }
+        }
+        return false;
+    }
+
     // give the closest available vehicle to the pickup location the instruction to execute
     public Request allocateInstructionToFreeVehicle(Request request){
         ArrayList<Vehicle> availableVehicles = findAllAvailableVehicles();
@@ -70,7 +79,8 @@ public class Vehicles {
         boolean vehiclesWorking = false;
         for (Vehicle v: vehicles) {
             v.update();
-            if(!v.isAvailible())vehiclesWorking = true;
+            v.checkUpdateRequest();
+            if(!v.isAvailible()) vehiclesWorking = true;
         }
         return  vehiclesWorking;
     }

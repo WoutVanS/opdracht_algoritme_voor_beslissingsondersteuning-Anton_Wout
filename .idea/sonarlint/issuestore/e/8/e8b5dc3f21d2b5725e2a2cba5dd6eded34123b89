@@ -1,9 +1,17 @@
 
+r	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë´Ò±ûÿÿÿÿ8øäşÂ1
+n
+java:S2259D"LA "NullPointerException" could be thrown; "pickupBoxStack" is nullable here.(¥‘³óşÿÿÿÿ8î³äşÂ1
 £
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ì¯şÇùÿÿÿÿ8«°Ã´1
-L	java:S106"+Replace this use of System.err by a logger.(õœşèøÿÿÿÿ8¦«°Ã´1
-L	java:S106"+Replace this use of System.err by a logger.(½«ì¿üÿÿÿÿ8¨«°Ã´1
-W	java:S125&"<This block of commented-out lines of code should be removed.(í™)8©«°Ã´1
-]	java:S1252"<This block of commented-out lines of code should be removed.(·Æ»İüÿÿÿÿ8ª«°Ã´1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8à›Ä´1
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ì¯şÇùÿÿÿÿ8™äşÂ1
+L	java:S106"+Replace this use of System.err by a logger.(õœşèøÿÿÿÿ8œäşÂ1
+L	java:S106"+Replace this use of System.err by a logger.(½«ì¿üÿÿÿÿ8œäşÂ1
+W	java:S125'"<This block of commented-out lines of code should be removed.(í™)8äşÂ1
+L	java:S1065"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8äşÂ1
+G	java:S1066"+Replace this use of System.out by a logger.(œ±¹8äşÂ1
+G	java:S106J"+Replace this use of System.out by a logger.(ÖÉğ8ŸäşÂ1
+K
+java:S5413R")Verify that "remove()" is used correctly.(Ó««‚şÿÿÿÿ8 äşÂ1
+@
+java:S2119V"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8¢äşÂ1
+L	java:S106\"+Replace this use of System.out by a logger.(¶®éÓøÿÿÿÿ8¢äşÂ1

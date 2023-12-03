@@ -1,13 +1,23 @@
 
-k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Åˆ˜îúÿÿÿÿ
-e	java:S117$"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê£°M
-b	java:S116"MRename this field "ID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÌèš
+‚
+java:S1319&"eThe type of "boxes" should be an interface such as "List" rather than the implementation "ArrayList".(ğ¿ğ—8›ÿÅâÁ1
+„
+java:S1319"fThe type of "boxIDs" should be an interface such as "List" rather than the implementation "ArrayList".(šŸö8ˆüæ÷Â1
+“
+java:S1319ƒ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(öè«öÿÿÿÿÿ8›ÿÅâÁ1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú¸ü–úÿÿÿÿ8›ÿÅâÁ1
+m	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ¿ğ—8›ÿÅâÁ1
+l	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê£°M8›ÿÅâÁ1
+i	java:S116"MRename this field "ID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÌèš8«ÿÅâÁ1
+G	java:S106B"+Replace this use of System.out by a logger.(Æ­Ğ8´ÿÅâÁ1
+X	java:S125K"<This block of commented-out lines of code should be removed.(ÉÁäò8´ÿÅâÁ1
+\
+java:S1117‡"9Rename "boxID" which hides the field declared at line 10.(¨Œˆùÿÿÿÿ8¹ÿÅâÁ1
 M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ÈĞÅ´1
-H
-java:S1068
-"-Remove this unused "startTime" private field.(î¢º¹úÿÿÿÿ
-G
-java:S1068",Remove this unused "stopTime" private field.(ê…Õøüÿÿÿÿ
-B
-java:S1068"'Remove this unused "box" private field.(³ï­üÿÿÿÿ
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8øûØøÂ1
+O
+java:S1068"-Remove this unused "startTime" private field.(î¢º¹úÿÿÿÿ8¹ÿÅâÁ1
+N
+java:S1068",Remove this unused "stopTime" private field.(ê…Õøüÿÿÿÿ8¹ÿÅâÁ1
+I
+java:S1068"'Remove this unused "box" private field.(³ï­üÿÿÿÿ8¹ÿÅâÁ1

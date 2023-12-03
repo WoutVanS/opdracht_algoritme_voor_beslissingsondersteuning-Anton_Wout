@@ -1,7 +1,35 @@
 
-†
-java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÃÛ„Ñ
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(õ›»ºûÿÿÿÿ8ıì»ÿÂ1
+v
+java:S22934"YReplace the type specification in this constructor call with the diamond operator ("<>").(ØÁ¾Š8şì»ÿÂ1
+
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÃÛ„Ñ8ÿì»ÿÂ1
+ˆ
+java:S13193"fThe type of "locations" should be an interface such as "Map" rather than the implementation "HashMap".(†ÄáÎúÿÿÿÿ8ÿì»ÿÂ1
 ^
-java:S4973%"<Strings and Boxed types should be compared using "equals()".(Ññ•“şÿÿÿÿ8œİ›Ä´1
--
-java:S1700"Rename field "requests"(Åüæÿ
+java:S4973$"<Strings and Boxed types should be compared using "equals()".(€ğ­øşÿÿÿÿ8€í»ÿÂ1
+9
+java:S1700"Rename field "requests"(®»¨ãùÿÿÿÿ8€í»ÿÂ1
+L	java:S106-"+Replace this use of System.out by a logger.(‚©é·øÿÿÿÿ8Íî»ÿÂ1
+t
+java:S37763"RRefactor this method to reduce its Cognitive Complexity from 53 to the 15 allowed.(†ÄáÎúÿÿÿÿ8Îî»ÿÂ1
+T
+java:S18544"7Remove this useless assignment to local variable "res".(ØÁ¾Š8Îî»ÿÂ1
+E
+java:S14814"(Remove this unused "res" local variable.(ØÁ¾Š8Îî»ÿÂ1
+L	java:S1068"+Replace this use of System.out by a logger.(è©²Âúÿÿÿÿ8Ïî»ÿÂ1
+L	java:S106?"+Replace this use of System.out by a logger.(Ë üÿÿÿÿ8Ñî»ÿÂ1
+G	java:S106H"+Replace this use of System.out by a logger.(ş·şù8Òî»ÿÂ1
+L	java:S106J"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8Óî»ÿÂ1
+L	java:S106p"+Replace this use of System.out by a logger.(™øóÙÿÿÿÿÿ8Úî»ÿÂ1
+L	java:S106v"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8Úî»ÿÂ1
+L	java:S106}"+Replace this use of System.out by a logger.(ÍøÓûùÿÿÿÿ8Ûî»ÿÂ1
+L	java:S106"+Replace this use of System.out by a logger.(Ä¿¼ùùÿÿÿÿ8Ûî»ÿÂ1
+M	java:S106"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8Ûî»ÿÂ1
+H	java:S106š"+Replace this use of System.out by a logger.(ŞåùÍ8ßî»ÿÂ1
+M	java:S106œ"+Replace this use of System.out by a logger.(“‹¬¨şÿÿÿÿ8ßî»ÿÂ1
+H	java:S106"+Replace this use of System.out by a logger.(…´Èİ8ßî»ÿÂ1
+M	java:S106 "+Replace this use of System.out by a logger.(â¯Œùÿÿÿÿ8àî»ÿÂ1
+è
+java:S65413"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 69 to 64, Complexity from 17 to 14, Nesting Level from 6 to 2, Number of Variables from 25 to 6.(†ÄáÎúÿÿÿÿ8áî»ÿÂ1

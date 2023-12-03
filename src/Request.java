@@ -132,7 +132,7 @@ public class Request {
         return boxIDs;
     }
     public void vehicleTakesBox() {
-        for (String boxID: boxIDs) {
+        for (String boxID : boxIDs) {
             pickup.popBox(boxID);
         }
     }

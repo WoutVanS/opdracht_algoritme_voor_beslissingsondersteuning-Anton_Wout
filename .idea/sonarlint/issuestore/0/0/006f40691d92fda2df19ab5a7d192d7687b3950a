@@ -3,4 +3,4 @@ l
 java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(”ç¿8±”á≈¥1
 ]
 java:S1126"AReplace this if-then-else statement by a single return statement.(–‡èh8®ª∑≈¥1
-X	java:S125"<This block of commented-out lines of code should be removed.(∂‹ÃÄ8¥”á≈¥1
+X	java:S125"<This block of commented-out lines of code should be removed.(∂‹ÃÄ8¥”á≈¥1

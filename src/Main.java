@@ -13,7 +13,8 @@ import java.util.HashMap;
     GRONDIG NAKIJKEN ALS ALLES NOG CORRECT WERKT,
     UITBREIDEN NAAR MEERDERE VEHICLES,
     REPORT 2 SCHRIJVEN
-    PROGRAMMA WERKT NIET BIJ GROTERE FILES. BIJ PREPROCCESING ZIJN ER REQUEST ZONDER BOX
+    FOUT BIJ REALLOCATIONS, MEERDERE KEREN ZELFDE REALLOCATION ONDERS VERSCIHLLEDNDE ID (geeft error top tweede want eerste is al uitgevoerd)
+    NAKIJKEN ALS MEERDERE POOLS UIT 1 STACK MAKEN WERKT (anton)
  */
 
 public class Main {
@@ -35,7 +36,8 @@ public class Main {
 
         try {
 //            Object obj = parser.parse(new FileReader("I30_100_1_1_10.json"));
-            Object obj = parser.parse(new FileReader("I20_20_2_2_8b2.json"));
+            Object obj = parser.parse(new FileReader("I100_120_2_2_8b2.json"));
+//            Object obj = parser.parse(new FileReader("I20_20_2_2_8b2.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 

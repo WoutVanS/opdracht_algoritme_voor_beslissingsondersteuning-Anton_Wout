@@ -1,11 +1,19 @@
 
 E
-java:S54113"(Use a primitive boolean expression here.(¨ŞÚÀ8„ï£Å´1
+java:S5411@"(Use a primitive boolean expression here.(¨ŞÚÀ8§òÜşÂ1
 E
-java:S54117"(Use a primitive boolean expression here.(˜ÿÜƒ8„ï£Å´1
-L	java:S1061"+Replace this use of System.out by a logger.(¶·ïıÿÿÿÿ8¿ğ£Å´1
-L	java:S106@"+Replace this use of System.err by a logger.(§‡äıÿÿÿÿ8Àğ£Å´1
+java:S5411H"(Use a primitive boolean expression here.(˜ÿÜƒ8ÑÌìùÂ1
+o
+java:S3776'"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(îæÙ8ŞÌìùÂ1
+X	java:S125-"<This block of commented-out lines of code should be removed.(ëìÁ¹8 …€Ã1
+L	java:S106="+Replace this use of System.out by a logger.(¶·ïıÿÿÿÿ8âÌìùÂ1
+L	java:S106Q"+Replace this use of System.err by a logger.(§‡äıÿÿÿÿ8âÌìùÂ1
+L	java:S106T"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8âÌìùÂ1
+G	java:S106U"+Replace this use of System.out by a logger.(Ø“©Ì8ãÌìùÂ1
+F	java:S106W"+Replace this use of System.out by a logger.(—×™8ãÌìùÂ1
+G	java:S106Z"+Replace this use of System.out by a logger.(òÔÇÍ8ÈÿùùÂ1
+L	java:S106["+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8â«ÛûÂ1
 @
-java:S1128"$Remove this unused import 'java.io'.(¬›ãD8š”ĞÅ´1
+java:S1128"$Remove this unused import 'java.io'.(¬›ãD8ºÓğşÂ1
 I
-java:S1128",Remove this unused import 'java.nio.Buffer'.(î¦Ïî8š”ĞÅ´1
+java:S1128",Remove this unused import 'java.nio.Buffer'.(î¦Ïî8ºÓğşÂ1

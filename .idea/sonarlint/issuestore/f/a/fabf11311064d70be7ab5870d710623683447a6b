@@ -1,45 +1,56 @@
 
 v
-java:S2293%"YReplace the type specification in this constructor call with the diamond operator ("<>").(ö¥èÆ8ý”½Å´1
+java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(ö¥èÆ8²èúÿÂ1
 “
-java:S1319A"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(Í¼±•üÿÿÿÿ8þ”½Å´1
+java:S1319C"qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".(Í¼±•üÿÿÿÿ8ÀèúÿÂ1
 ‚
-java:S1319\"eThe type of "load" should be an interface such as "List" rather than the implementation "LinkedList".(°§••8þ”½Å´1
+java:S1319^"eThe type of "load" should be an interface such as "List" rather than the implementation "LinkedList".(°§••8ÀèúÿÂ1
 Š
-java:S1319k"mThe type of "destinations" should be an interface such as "List" rather than the implementation "LinkedList".(•÷æ”8þ”½Å´1
+java:S1319m"mThe type of "destinations" should be an interface such as "List" rather than the implementation "LinkedList".(•÷æ”8ÁèúÿÂ1
 h
-java:S2184ê"ECast one of the operands of this subtraction operation to a "double".(°§ï©úÿÿÿÿ8€•½Å´1
+java:S2184ˆ"ECast one of the operands of this subtraction operation to a "double".(°§ï©úÿÿÿÿ8ÎèúÿÂ1
 }
-java:S1450"[Remove the "destinations" field and declare it as a local variable in the relevant methods.(ï‹ü¦úÿÿÿÿ8Û¯ÌÅ´1
+java:S1450"[Remove the "destinations" field and declare it as a local variable in the relevant methods.(ï‹ü¦úÿÿÿÿ8üèúÿÂ1
 M
-java:S1172M"0Remove this unused method parameter "availible".(‡ÜÍÀ8•½Å´1
+java:S1172O"0Remove this unused method parameter "availible".(‡ÜÍÀ8‡éúÿÂ1
 >
-java:S1116g"Remove this empty statement.(ôŸŽìúÿÿÿÿ8’•½Å´1
+java:S1116i"Remove this empty statement.(ôŸŽìúÿÿÿÿ8‹éúÿÂ1
 >
-java:S1116j"Remove this empty statement.(ôŸŽìúÿÿÿÿ8’•½Å´1
+java:S1116l"Remove this empty statement.(ôŸŽìúÿÿÿÿ8‹éúÿÂ1
 >
-java:S1116m"Remove this empty statement.(ôŸŽìúÿÿÿÿ8“•½Å´1
-Y	java:S125œ"<This block of commented-out lines of code should be removed.(¤œ±Ø8••½Å´1
-M	java:S106²"+Replace this use of System.out by a logger.(‡Éµ‰þÿÿÿÿ8–•½Å´1
-^	java:S125¸"<This block of commented-out lines of code should be removed.(©–»‚ùÿÿÿÿ8–•½Å´1
-Y	java:S125½"<This block of commented-out lines of code should be removed.(¡‚ŒŒ8ï¯ÌÅ´1
-G	java:S106¿"+Replace this use of System.out by a logger.(ÇK8—•½Å´1
-Y	java:S125Ã"<This block of commented-out lines of code should be removed.(ùÓÕ³8—•½Å´1
-M	java:S106Ñ"+Replace this use of System.out by a logger.(ž–ï¡ûÿÿÿÿ8˜•½Å´1
-p	java:S100×"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õˆþ°ûÿÿÿÿ8˜•½Å´1
-Y	java:S125Ú"<This block of commented-out lines of code should be removed.(ªü¾Î8˜•½Å´1
-Y	java:S125ó"<This block of commented-out lines of code should be removed.(ÍÅçæ8š•½Å´1
+java:S1116o"Remove this empty statement.(ôŸŽìúÿÿÿÿ8ŒéúÿÂ1
+H	java:S106†"+Replace this use of System.out by a logger.(ü¯óà8‘éúÿÂ1
+H	java:S106ˆ"+Replace this use of System.out by a logger.(³ø±Ì8“éúÿÂ1
+M	java:S106Š"+Replace this use of System.out by a logger.(ÞžÒ—üÿÿÿÿ8”éúÿÂ1
+M	java:S106’"+Replace this use of System.out by a logger.(Ì¬¹Àøÿÿÿÿ8éúÿÂ1
+H	java:S106”"+Replace this use of System.out by a logger.(³ø±Ì8ªéúÿÂ1
+M	java:S106–"+Replace this use of System.out by a logger.(ÞžÒ—üÿÿÿÿ8¬éúÿÂ1
+H	java:S106«"+Replace this use of System.out by a logger.(©ßÈ8°éúÿÂ1
+Y	java:S125¨"<This block of commented-out lines of code should be removed.(¤œ±Ø8°éúÿÂ1
+H	java:S106Â"+Replace this use of System.out by a logger.(ïšã‚8µéúÿÂ1
+Y	java:S125Á"<This block of commented-out lines of code should be removed.(¯ØÅ8¶éúÿÂ1
+^	java:S125Í"<This block of commented-out lines of code should be removed.(©–»‚ùÿÿÿÿ8·éúÿÂ1
+Y	java:S125Ö"<This block of commented-out lines of code should be removed.(¡‚ŒŒ8¹éúÿÂ1
+G	java:S106Ø"+Replace this use of System.out by a logger.(ÇK8¹éúÿÂ1
+Y	java:S125Ü"<This block of commented-out lines of code should be removed.(ùÓÕ³8ºéúÿÂ1
+M	java:S106ë"+Replace this use of System.out by a logger.(ò¢žùÿÿÿÿ8¾éúÿÂ1
+^	java:S125ê"<This block of commented-out lines of code should be removed.(ÍØëöýÿÿÿÿ8¾éúÿÂ1
+p	java:S100õ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õˆþ°ûÿÿÿÿ8¿éúÿÂ1
+Y	java:S125ø"<This block of commented-out lines of code should be removed.(ªü¾Î8ÀéúÿÂ1
+Y	java:S125‘"<This block of commented-out lines of code should be removed.(ÍÅçæ8ÃéúÿÂ1
 B
-java:S1128"%Remove this unused import 'java.awt'.(ï´µ©8ö¯ÌÅ´1
+java:S1128"%Remove this unused import 'java.awt'.(ï´µ©8ÅéúÿÂ1
 V
-java:S1128"4Remove this unused import 'java.awt.image.LookupOp'.(†é¯Îûÿÿÿÿ8ö¯ÌÅ´1
+java:S1128"4Remove this unused import 'java.awt.image.LookupOp'.(†é¯Îûÿÿÿÿ8ÅéúÿÂ1
 H
-java:S1128"+Remove this unused import 'java.sql.Array'.(Õø‹ù8ö¯ÌÅ´1
+java:S1128"+Remove this unused import 'java.sql.Array'.(Õø‹ù8ÅéúÿÂ1
+Q
+java:S1128"/Remove this unused import 'java.util.Currency'.(·®õãÿÿÿÿÿ8ÅéúÿÂ1
+\
+java:S1128":Remove this unused import 'java.util.EmptyStackException'.(ì¯¨¯ÿÿÿÿÿ8ÅéúÿÂ1
 ]
-java:S1128"@Remove this unused import 'java.util.concurrent.CountDownLatch'.(¤ƒô§8ö¯ÌÅ´1
+java:S1128"@Remove this unused import 'java.util.concurrent.CountDownLatch'.(¤ƒô§8ÅéúÿÂ1
 R
-java:S1068"0Remove this unused "destinations" private field.(ï‹ü¦úÿÿÿÿ8÷¯ÌÅ´1
+java:S1068"0Remove this unused "destinations" private field.(ï‹ü¦úÿÿÿÿ8ÆéúÿÂ1
 N
-java:S1068",Remove this unused "capacity" private field.(Ò—àçþÿÿÿÿ8š•½Å´1
-N
-java:S1068",Remove this unused "stopTime" private field.(ê…Õøüÿÿÿÿ8›•½Å´1
+java:S1068",Remove this unused "stopTime" private field.(ê…Õøüÿÿÿÿ8ÆéúÿÂ1

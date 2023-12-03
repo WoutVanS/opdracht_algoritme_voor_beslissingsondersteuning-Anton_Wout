@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.image.LookupOp;
 import java.sql.Array;
 import java.util.Currency;
+import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.concurrent.CountDownLatch;
 
@@ -166,8 +167,12 @@ public class Vehicle {
         state = Constants.statusVehicle.LOADING;
         //System.out.println("VehicleId: " + id + " is now loading");
 
-        // remove box from stack
-        currentRequest.vehicleTakesBox();
+        // remove boxes from stack
+        System.out.println("vehicle " + id + " is loading boxes for request " + currentRequest.toString());
+        int amountOfBoxes = currentRequest.getBoxIDs().size();
+        for (int i = 0; i < amountOfBoxes; i++) {
+            currentRequest.vehicleTakesBox();
+        }
 
         // load boxes
         for (String boxId: currentRequest.getBoxIDs()) {
@@ -198,19 +203,20 @@ public class Vehicle {
     public void handleDropOff() {
         state = Constants.statusVehicle.UNLOADING;
         //System.out.println("VehicleId: " + id + " arrived at destination and started unloading");
+        String boxId = load.pop();
 
         //unload box
         if (currentDest.notFull()) {
             int size = load.size();
             for (int i = 0; i < size; i++) {
-                currentDest.addBox(load.pop());
+                currentDest.addBox(boxId);
             }
             //destinations.removeFirst();
         } else {
             System.out.println("huhhh?");
         }
 
-//        //check if other box loaded -> load new destination (but still wait for loadingDuration to be over)
+    //        //check if other box loaded -> load new destination (but still wait for loadingDuration to be over)
 //        if (!load.isEmpty()) {
 //            //pick new destination
 //            currentDest = destinations.getFirst();
@@ -267,6 +273,17 @@ public class Vehicle {
         //System.out.println("VehicleId: " + id + " Position: (" + x + "," + y +") and Destination: (" + destX + "," + destY+")" );
 
         if (destX == x && destY == y) { this.arrivedAtDest(); }
+    }
+
+    public void checkUpdateRequest() {      // function to check if the placelocation in the request has not changed (could be when a reallocation has happend)
+        if (state == Constants.statusVehicle.MOVINGTOPICKUP) {
+            destX = currentRequest.getPickupLocationXY()[0];
+            destY = currentRequest.getPickupLocationXY()[1];
+        }
+        else if (state == Constants.statusVehicle.MOVING) {
+            destX = currentRequest.getPlaceLocationXY()[0];
+            destY = currentRequest.getPlaceLocationXY()[1];
+        }
     }
 
 }
