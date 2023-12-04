@@ -143,29 +143,29 @@ public class Requests {
         requests.add(0, request);
     }
 
-    public void updateFutureRequests(List<Request> newRequests) {        // fout gevonden: elke reallocation heeft maar 1 box per keer -> pooledRequests worden nooit geupdate
-        HashMap<String, String> newLocation = new HashMap<>();          // opgelost door eerst de boxIds te splitsen en allemaal te overlopen
-
-        for(Request request: newRequests)
-            newLocation.put(request.getBoxIDsToString(), request.getPlaceLocation());
-
-        for(Request request: requests) {
-            if (request.getBoxIDs().size() > 2) {
-                System.out.println("test " + request.getID() + " -> " + request.getBoxIDsToString());
-                String firstBox = request.getBoxIDs().get(request.getBoxIDs().size()-1);
-                System.out.println(firstBox);
-                System.out.println("old location: " + request.getPickupLocation());
-                if (newLocation.containsKey(firstBox)) {
-                    request.setPickupLocation(newLocation.get(firstBox));
-                    System.out.println("new location: " + newLocation.get(firstBox));
-                }
-            }
-            else {
-                if (newLocation.containsKey(request.getBoxIDsToString())) {
-                    request.setPickupLocation(newLocation.get(request.getBoxIDsToString()));
-                }
-            }
-        }
-        newLocation.clear();
-    }
+//    public void updateFutureRequests(List<Request> newRequests) {        // fout gevonden: elke reallocation heeft maar 1 box per keer -> pooledRequests worden nooit geupdate
+//        HashMap<String, String> newLocation = new HashMap<>();          // opgelost door eerst de boxIds te splitsen en allemaal te overlopen
+//
+//        for(Request request: newRequests)
+//            newLocation.put(request.getBoxIDsToString(), request.getPlaceLocation());
+//
+//        for(Request request: requests) {
+//            if (request.getBoxIDs().size() > 2) {
+//                System.out.println("test " + request.getID() + " -> " + request.getBoxIDsToString());
+//                String firstBox = request.getBoxIDs().get(request.getBoxIDs().size()-1);
+//                System.out.println(firstBox);
+//                System.out.println("old location: " + request.getPickupLocation());
+//                if (newLocation.containsKey(firstBox)) {
+//                    request.setPickupLocation(newLocation.get(firstBox));
+//                    System.out.println("new location: " + newLocation.get(firstBox));
+//                }
+//            }
+//            else {
+//                if (newLocation.containsKey(request.getBoxIDsToString())) {
+//                    request.setPickupLocation(newLocation.get(request.getBoxIDsToString()));
+//                }
+//            }
+//        }
+//        newLocation.clear();
+//    }
 }

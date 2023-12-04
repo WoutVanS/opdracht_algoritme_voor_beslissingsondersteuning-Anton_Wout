@@ -76,20 +76,44 @@ public class Allocator {
         List<Request> requests = new ArrayList<>();
         int numberOfFreeSpace = nearestEmptyBoxStacks.get(0).freeSpace();
 
+        ArrayList<String> boxes = new ArrayList<>();
+
+        // todo fixs this code beacause it doesn't work
+//        for(int i = 0; i < numberOfReallocations; i++){
+//
+//            if(numberOfFreeSpace == 0){
+//                nearestEmptyBoxStacks.remove(0);
+//                numberOfFreeSpace = nearestEmptyBoxStacks.get(0).freeSpace();
+//
+//                Random rand = new Random();
+//                int ID = 6969000 + rand.nextInt(1000);
+//                Request request = new Request(ID, pickupBoxStack, nearestEmptyBoxStacks.get(0), boxes);
+//                requests.add(request);
+//                boxes.clear();
+//                System.out.println(request);
+//            }
+//
+//            boxes.add(pickupBoxStack.boxes.get(pickupBoxStack.boxes.size() - i -1));
+//
+//            numberOfFreeSpace--;
+//
+//        }
+
         for(int i = 0; i < numberOfReallocations; i++){
-
-            if(numberOfFreeSpace == 0){
-                nearestEmptyBoxStacks.remove(0);
-                numberOfFreeSpace = nearestEmptyBoxStacks.get(0).freeSpace();
-            }
-
-            Random rand = new Random();
-            int ID = 6969000 + rand.nextInt(1000);
-            Request request = new Request(ID, pickupBoxStack, nearestEmptyBoxStacks.get(0), pickupBoxStack.boxes.get(pickupBoxStack.boxes.size() - i -1));
-            requests.add(request);
+            boxes.add(pickupBoxStack.boxes.get(pickupBoxStack.boxes.size() - i -1));
             numberOfFreeSpace--;
 
-            System.out.println(request);
+            if(numberOfFreeSpace == 0 || i == numberOfReallocations -1){
+                nearestEmptyBoxStacks.remove(0);
+                numberOfFreeSpace = nearestEmptyBoxStacks.get(0).freeSpace();
+
+                Random rand = new Random();
+                int ID = 6969000 + rand.nextInt(1000);
+                Request request = new Request(ID, pickupBoxStack, nearestEmptyBoxStacks.get(0), boxes);
+                requests.add(request);
+                boxes = new ArrayList<>();
+                System.out.println(request);
+            }
         }
 
         return requests;

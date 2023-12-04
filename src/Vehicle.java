@@ -169,10 +169,7 @@ public class Vehicle {
 
         // remove boxes from stack
         System.out.println("vehicle " + id + " is loading boxes for request " + currentRequest.toString());
-        int amountOfBoxes = currentRequest.getBoxIDs().size();
-        for (int i = 0; i < amountOfBoxes; i++) {
-            currentRequest.vehicleTakesBox();
-        }
+        currentRequest.vehicleTakesBox();
 
         // load boxes
         for (String boxId: currentRequest.getBoxIDs()) {
@@ -203,13 +200,12 @@ public class Vehicle {
     public void handleDropOff() {
         state = Constants.statusVehicle.UNLOADING;
         //System.out.println("VehicleId: " + id + " arrived at destination and started unloading");
-        String boxId = load.pop();
 
         //unload box
         if (currentDest.notFull()) {
             int size = load.size();
             for (int i = 0; i < size; i++) {
-                currentDest.addBox(boxId);
+                currentDest.addBox(load.pop());
             }
             //destinations.removeFirst();
         } else {

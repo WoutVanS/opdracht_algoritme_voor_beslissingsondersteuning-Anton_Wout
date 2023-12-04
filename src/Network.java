@@ -58,13 +58,13 @@ public class Network {
                 request.setStartTime(Main.timeCount);                   //set the starttime for the handling of the request
                 request.setStatus(Constants.statusRequest.INPROGRESS);
 
-                System.out.println("current instruction: " + request);
+                System.out.println("\ncurrent instruction: " + request);
 
 
                 if (!checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
                     List<Request> requestList = allocator.realocationAlgorithm(boxStacks, pickupLocationName, associatedBoxId);
                     requestList.add(request);
-                    requests.updateFutureRequests(requestList);
+                    //requests.updateFutureRequests(requestList);
                     requests.addInfront(requestList);
                     break;
                 }
