@@ -64,7 +64,6 @@ public class Network {
                 if (!checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
                     List<Request> requestList = allocator.realocationAlgorithm(boxStacks, pickupLocationName, associatedBoxId);
                     requestList.add(request);
-                    //requests.updateFutureRequests(requestList);
                     requests.addInfront(requestList);
                     break;
                 }

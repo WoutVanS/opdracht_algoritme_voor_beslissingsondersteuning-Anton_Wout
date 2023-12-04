@@ -99,20 +99,23 @@ public class Allocator {
 //
 //        }
 
+        if(numberOfReallocations < 0)
+            System.err.println("error");
+
         for(int i = 0; i < numberOfReallocations; i++){
             boxes.add(pickupBoxStack.boxes.get(pickupBoxStack.boxes.size() - i -1));
             numberOfFreeSpace--;
 
             if(numberOfFreeSpace == 0 || i == numberOfReallocations -1){
-                nearestEmptyBoxStacks.remove(0);
-                numberOfFreeSpace = nearestEmptyBoxStacks.get(0).freeSpace();
-
                 Random rand = new Random();
                 int ID = 6969000 + rand.nextInt(1000);
                 Request request = new Request(ID, pickupBoxStack, nearestEmptyBoxStacks.get(0), boxes);
                 requests.add(request);
                 boxes = new ArrayList<>();
                 System.out.println(request);
+
+                nearestEmptyBoxStacks.remove(0);
+                numberOfFreeSpace = (nearestEmptyBoxStacks.isEmpty())? 0 :  nearestEmptyBoxStacks.get(0).freeSpace();
             }
         }
 

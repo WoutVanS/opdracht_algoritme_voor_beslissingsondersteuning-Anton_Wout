@@ -11,14 +11,8 @@ import java.util.HashMap;
 
 /* TODO:
     GRONDIG NAKIJKEN ALS ALLES NOG CORRECT WERKT,
-    UITBREIDEN NAAR MEERDERE VEHICLES,
     REPORT 2 SCHRIJVEN
     NAKIJKEN ALS MEERDERE POOLS UIT 1 STACK MAKEN WERKT (anton)
-
-   TODO:
-    WANNEER EEN BOX GEREALOCEERD WORDT MOET DE EERST VOLGENDE REQUEST DIE BETREKKING TOT DEZE BOX HEEFT GEUPDATE WORDEN
-    DIT MAG PAS ALS DE DROPOFF KLAAR IS (VOORKOMT DAT VOLGENDE VOERTUIG ZOEKT NAAR BOX DIE NOG NIET OP STACK ZIT OMDAT REALOCATIE NOG BEZIG IS)
-    ER MOET OOK REKENING GEHOUDEN WORDEN DAT DEZE NIEUWE LOCATIE ZORGT DAT BOX BIJ EEN PREPROCCES REQUEST BOXES POOL BEHOORT.
  */
 
 public class Main {
@@ -40,7 +34,7 @@ public class Main {
 
         try {
 //            Object obj = parser.parse(new FileReader("I30_100_1_1_10.json"));
-            Object obj = parser.parse(new FileReader("I30_100_1_1_10.json"));
+            Object obj = parser.parse(new FileReader("test.json"));
 //            Object obj = parser.parse(new FileReader("I20_20_2_2_8b2.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
@@ -114,9 +108,9 @@ public class Main {
                 int id = Integer.parseInt(request.get("ID").toString());
 
                 String pickupLocation = request.get("pickupLocation").toString();
-                //pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
+                pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
                 String placeLocation = request.get("placeLocation").toString();
-                //placeLocation = placeLocation.substring(2, placeLocation.length()-2);
+                placeLocation = placeLocation.substring(2, placeLocation.length()-2);
                 String boxID = request.get("boxID").toString();
 
                 Location pickup = locations.get(pickupLocation);
@@ -149,7 +143,7 @@ public class Main {
         while( networkState || vehiclesWorking) {
 
 //            let all vehicles move closer to destination
-            vehiclesWorking = vehicles.updateVehicles();
+            vehiclesWorking = vehicles.updateVehicles(requests);
 
             //run the network and assing requests to new vehicles
             networkState = network.run();

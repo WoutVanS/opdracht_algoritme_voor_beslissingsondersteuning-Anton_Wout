@@ -119,7 +119,7 @@ public class Vehicle {
 
     //METHODS
     //each time unit, the vehicle moves to next position
-    public void update() {
+    public void update(Requests requests) {
         if (state == Constants.statusVehicle.MOVING) {    //if vehicle is moving, that means it has a task, so it has to move
             move();
         }
@@ -130,7 +130,7 @@ public class Vehicle {
             loadingCount++;
             if (loadingCount == Main.loadingDuration) {
                 loadingCount = 0;
-                finishDropOff();
+                finishDropOff(requests);
                 System.out.print("load vehicle after dropoff: ");
                 for (int i = 0; i < load.size(); i++) {
                     System.out.print(load.get(i) + "; ");
@@ -222,7 +222,7 @@ public class Vehicle {
     }
 
     //set the state of the request to done and fill in the timeCount
-    public void finishDropOff() {
+    public void finishDropOff(Requests requests) {
         currentRequest.setStatus(Constants.statusRequest.DONE);
         currentRequest.setStopTime(Main.timeCount);
 
@@ -230,6 +230,7 @@ public class Vehicle {
         //System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PL");
         System.out.println("vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxIDsToString() + ";PL");
 
+        requests.updateRequests(currentRequest, currentDest);
 
         // prepare vehicle for next instruction
         currentRequest = null;

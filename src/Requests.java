@@ -143,6 +143,60 @@ public class Requests {
         requests.add(0, request);
     }
 
+    // updates request when relocations where made. it only updates the first relevant request because it gets executed after every dropoff.
+    public void updateRequests(Request currentRequest, Location currentLocation){
+        int currentRequestSize = currentRequest.getBoxIDs().size();
+        int currentLocationSize = currentLocation.boxes.size();
+        String currentDropoff = currentRequest.getPlaceLocation();
+        String topBoxBeforeDropOff = (currentLocationSize - currentRequestSize -1 < 0)? "" : currentLocation.boxes.get(currentLocationSize - currentRequestSize -1);
+
+        for(String box: currentRequest.getBoxIDs()){                        // look for each box if there are request that need to be updated
+            for(Request request: requests){
+                if(request.getBoxIDs().get(0).equals(box)){                 // if request contains request check if pickup is different from place location of current request
+                    if(!request.getPickupLocation().equals(currentDropoff)){
+                        String requestPLaceLocation = request.getPlaceLocation();
+                        request.getBoxIDs().remove(0);                 // if its different the box needs to be removed from the old request
+
+                        boolean prepocessedRequestUpdated = false;
+                        for(Request nextRequest: requests.subList(requests.indexOf(request), requests.size())){
+                            // checks if there is already a preprocessed request from the same location to the same location and if the pool containts the top box before the dropoff.
+                            // if true then add the box to this already existing request
+                            if(nextRequest.getPickupLocation().equals(currentDropoff) && nextRequest.getPlaceLocation().equals(requestPLaceLocation) && nextRequest.getBoxIDs().contains(topBoxBeforeDropOff)){
+                                prepocessedRequestUpdated = true;
+                                int index = nextRequest.getBoxIDs().indexOf(topBoxBeforeDropOff);
+                                nextRequest.getBoxIDs().add(index, box);
+                                break;
+                            }
+                            // does the same as the if statement above but then checks if this request already contains a box from the currentRequest that the vehicle dropped off
+                            if(nextRequest.getPickupLocation().equals(currentDropoff) && nextRequest.getPlaceLocation().equals(requestPLaceLocation) && nextRequest.getBoxIDs().contains(currentRequest.getBoxIDs().get(0))){
+                                prepocessedRequestUpdated = true;
+                                nextRequest.getBoxIDs().add(box);
+                                break;
+                            }
+                        }
+
+                        // makes a new request if there is none existing from the location to the pickup.
+                        if(!prepocessedRequestUpdated){
+                            int requestID = currentRequest.getID() * 1000 + 1;
+                            Request newRequest = new Request(requestID, currentLocation, request.getDropOff(), box);
+                            requests.add(newRequest);
+                        }
+
+                        if(request.getBoxIDs().isEmpty()) requests.remove(request);
+                    }
+                    break;
+                }
+            }
+        }
+
+        System.out.println("\nrequests after updating them");
+        for (Request r: requests) {
+            System.out.println(r.toString());
+        }
+        System.out.println(" ");
+
+    }
+
 //    public void updateFutureRequests(List<Request> newRequests) {        // fout gevonden: elke reallocation heeft maar 1 box per keer -> pooledRequests worden nooit geupdate
 //        HashMap<String, String> newLocation = new HashMap<>();          // opgelost door eerst de boxIds te splitsen en allemaal te overlopen
 //
