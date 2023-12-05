@@ -110,6 +110,7 @@ public class Allocator {
                 Random rand = new Random();
                 int ID = 6969000 + rand.nextInt(1000);
                 Request request = new Request(ID, pickupBoxStack, nearestEmptyBoxStacks.get(0), boxes);
+                request.setStatus(Constants.statusRequest.INPROGRESS);
                 requests.add(request);
                 boxes = new ArrayList<>();
                 System.out.println(request);

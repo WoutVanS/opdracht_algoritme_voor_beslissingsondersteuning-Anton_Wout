@@ -167,18 +167,20 @@ public class Vehicle {
         state = Constants.statusVehicle.LOADING;
         //System.out.println("VehicleId: " + id + " is now loading");
 
-        // remove boxes from stack
-        System.out.println("vehicle " + id + " is loading boxes for request " + currentRequest.toString());
-        currentRequest.vehicleTakesBox();
 
-        // load boxes
-        for (String boxId: currentRequest.getBoxIDs()) {
-            load.push(boxId);
-        }
+        if(currentRequest.vehicleTakesBox()) {
+            // remove boxes from stack
+            System.out.println("vehicle " + id + " is loading boxes for request " + currentRequest.toString());
 
-        //give target coordinates to bring load to destination
-        destX = currentRequest.getPlaceLocationXY()[0];
-        destY = currentRequest.getPlaceLocationXY()[1];
+            // load boxes
+            for (String boxId : currentRequest.getBoxIDs()) {
+                load.push(boxId);
+            }
+
+            //give target coordinates to bring load to destination
+            destX = currentRequest.getPlaceLocationXY()[0];
+            destY = currentRequest.getPlaceLocationXY()[1];
+        }else state = Constants.statusVehicle.MOVINGTOPICKUP;
     }
 
     public void finishLoading() {

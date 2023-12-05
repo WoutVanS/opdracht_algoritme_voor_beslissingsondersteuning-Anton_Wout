@@ -34,7 +34,7 @@ public class Main {
 
         try {
 //            Object obj = parser.parse(new FileReader("I30_100_1_1_10.json"));
-            Object obj = parser.parse(new FileReader("test.json"));
+            Object obj = parser.parse(new FileReader("I20_20_2_2_8b2.json"));
 //            Object obj = parser.parse(new FileReader("I20_20_2_2_8b2.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
@@ -108,9 +108,9 @@ public class Main {
                 int id = Integer.parseInt(request.get("ID").toString());
 
                 String pickupLocation = request.get("pickupLocation").toString();
-                pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
+                //pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
                 String placeLocation = request.get("placeLocation").toString();
-                placeLocation = placeLocation.substring(2, placeLocation.length()-2);
+                //placeLocation = placeLocation.substring(2, placeLocation.length()-2);
                 String boxID = request.get("boxID").toString();
 
                 Location pickup = locations.get(pickupLocation);

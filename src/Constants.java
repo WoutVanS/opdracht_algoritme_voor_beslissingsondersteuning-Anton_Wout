@@ -20,7 +20,9 @@ public interface Constants {
     enum statusRequest {
         WAITING,
         INPROGRESS,
-        DONE
+        DONE,
+
+        REALOCATIONINPROGRESS
     }
 
 

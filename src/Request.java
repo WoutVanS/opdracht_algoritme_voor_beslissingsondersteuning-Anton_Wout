@@ -131,10 +131,12 @@ public class Request {
     public ArrayList<String> getBoxIDs() {
         return boxIDs;
     }
-    public void vehicleTakesBox() {
+    public boolean vehicleTakesBox() {
         for (String boxID : boxIDs) {
-            pickup.popBox(boxID);
+            if(!pickup.popBox(boxID))
+                return false;
         }
+        return true;
     }
     public String getBoxID() {
         return boxID;

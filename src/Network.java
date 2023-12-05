@@ -55,14 +55,13 @@ public class Network {
                 String placeLocationName = request.getPlaceLocation();
                 String associatedBoxId = request.getBoxIDs().get(0);
 
-                request.setStartTime(Main.timeCount);                   //set the starttime for the handling of the request
-                request.setStatus(Constants.statusRequest.INPROGRESS);
 
                 System.out.println("\ncurrent instruction: " + request);
 
 
-                if (!checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
+                if (request.getStatus() != Constants.statusRequest.INPROGRESS && !checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
                     List<Request> requestList = allocator.realocationAlgorithm(boxStacks, pickupLocationName, associatedBoxId);
+                    request.setStatus(Constants.statusRequest.INPROGRESS);
                     requestList.add(request);
                     requests.addInfront(requestList);
                     break;
@@ -73,12 +72,13 @@ public class Network {
 
                 }
 
-
                 if (pickupLocationName != null && placeLocationName != null)                             // allocate a vehicle to pick up the box if the pickup and place location are valid
                     allocateInstructionToVehicle(request, pickupLocationName, placeLocationName);
                 else
                     System.err.println("there whas an error that prevent the allocation of the instruction to a vehicle");
 
+                request.setStartTime(Main.timeCount);                   //set the starttime for the handling of the request
+                request.setStatus(Constants.statusRequest.INPROGRESS);
 
                 System.out.println("");
                 System.out.println("------ Printing boxStacks ------");
@@ -147,8 +147,10 @@ public class Network {
 
         Request splittedRequest =  vehicles.allocateInstructionToFreeVehicle(request);
 
-        if(splittedRequest != null)
+        if(splittedRequest != null) {
+            splittedRequest.setStatus(Constants.statusRequest.INPROGRESS);
             requests.addInfront(splittedRequest);
+        }
      }
 
     //getters and setters

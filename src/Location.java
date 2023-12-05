@@ -67,10 +67,11 @@ public abstract class Location {
         return res;
     }
 
-    public void popBox(String boxId) {
+    public boolean popBox(String boxId) {
         if (peekStack().equals(boxId)) {
             boxes.pop();
-        } else System.out.println("huhh");
+            return true;
+        } else return false;
     }
 
     public String peekStack(){
