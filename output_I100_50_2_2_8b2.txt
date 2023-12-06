@@ -1,0 +1,156 @@
+vehicleId: 0; start (20;100); startTime: 1; now (510;100); timecount: 496; boxId: B163, B162, ;PU
+vehicleId: 0; start (510;100); startTime: 496; now (500;100); timecount: 511; boxId: B163, B162, ;PL
+vehicleId: 1; start (1180;100); startTime: 1; now (510;100); timecount: 676; boxId: B161, ;PU
+vehicleId: 0; start (500;100); startTime: 511; now (510;100); timecount: 678; boxId: B160, ;PU
+vehicleId: 1; start (510;100); startTime: 676; now (500;100); timecount: 691; boxId: B161, ;PL
+vehicleId: 1; start (500;100); startTime: 692; now (170;100); timecount: 1027; boxId: B27, ;PU
+vehicleId: 1; start (170;100); startTime: 1027; now (160;100); timecount: 1042; boxId: B27, ;PL
+vehicleId: 1; start (160;100); startTime: 1042; now (170;100); timecount: 1057; boxId: B26, ;PU
+vehicleId: 0; start (510;100); startTime: 678; now (0;100); timecount: 1193; boxId: B160, ;PL
+vehicleId: 1; start (170;100); startTime: 1057; now (10;100); timecount: 1222; boxId: B26, ;PL
+vehicleId: 0; start (0;100); startTime: 1194; now (770;100); timecount: 1969; boxId: B267, B266, ;PU
+vehicleId: 0; start (770;100); startTime: 1969; now (760;100); timecount: 1984; boxId: B267, B266, ;PL
+vehicleId: 1; start (10;100); startTime: 1222; now (770;100); timecount: 1987; boxId: B265, ;PU
+vehicleId: 0; start (760;100); startTime: 1985; now (800;100); timecount: 2030; boxId: B279, B278, ;PU
+vehicleId: 0; start (800;100); startTime: 2030; now (790;100); timecount: 2045; boxId: B279, B278, ;PL
+vehicleId: 0; start (790;100); startTime: 2045; now (800;100); timecount: 2060; boxId: B277, ;PU
+vehicleId: 0; start (800;100); startTime: 2060; now (790;100); timecount: 2075; boxId: B277, ;PL
+vehicleId: 0; start (790;100); startTime: 2075; now (800;100); timecount: 2090; boxId: B276, ;PU
+vehicleId: 1; start (770;100); startTime: 1987; now (10;100); timecount: 2752; boxId: B265, ;PL
+vehicleId: 0; start (800;100); startTime: 2090; now (0;100); timecount: 2895; boxId: B276, ;PL
+vehicleId: 0; start (0;100); startTime: 2896; now (160;100); timecount: 3061; boxId: B27, B23, ;PU
+vehicleId: 0; start (160;100); startTime: 3061; now (150;100); timecount: 3076; boxId: B27, B23, ;PL
+vehicleId: 0; start (150;100); startTime: 3076; now (160;100); timecount: 3091; boxId: B22, ;PU
+vehicleId: 0; start (160;100); startTime: 3091; now (0;100); timecount: 3256; boxId: B22, ;PL
+vehicleId: 1; start (10;100); startTime: 2752; now (770;100); timecount: 3517; boxId: B264, ;PU
+vehicleId: 0; start (0;100); startTime: 3256; now (820;100); timecount: 4081; boxId: B287, ;PU
+vehicleId: 1; start (770;100); startTime: 3517; now (0;100); timecount: 4292; boxId: B264, ;PL
+vehicleId: 0; start (820;100); startTime: 4081; now (0;100); timecount: 4906; boxId: B287, ;PL
+vehicleId: 1; start (0;100); startTime: 4293; now (870;100); timecount: 5168; boxId: B307, B306, ;PU
+vehicleId: 1; start (870;100); startTime: 5168; now (860;100); timecount: 5183; boxId: B307, B306, ;PL
+vehicleId: 0; start (0;100); startTime: 4906; now (870;100); timecount: 5781; boxId: B305, ;PU
+vehicleId: 1; start (860;100); startTime: 5183; now (870;100); timecount: 5782; boxId: B304, ;PU
+vehicleId: 0; start (870;100); startTime: 5781; now (860;100); timecount: 5796; boxId: B305, ;PL
+vehicleId: 0; start (860;100); startTime: 5796; now (720;100); timecount: 5941; boxId: B247, ;PU
+vehicleId: 1; start (870;100); startTime: 5782; now (10;100); timecount: 6647; boxId: B304, ;PL
+vehicleId: 0; start (720;100); startTime: 5941; now (0;100); timecount: 6666; boxId: B247, ;PL
+vehicleId: 1; start (10;100); startTime: 6648; now (320;100); timecount: 6963; boxId: B87, B86, ;PU
+vehicleId: 1; start (320;100); startTime: 6963; now (310;100); timecount: 6978; boxId: B87, B86, ;PL
+vehicleId: 0; start (0;100); startTime: 6666; now (320;100); timecount: 6991; boxId: B85, ;PU
+vehicleId: 1; start (310;100); startTime: 6979; now (550;100); timecount: 7224; boxId: B179, B178, ;PU
+vehicleId: 1; start (550;100); startTime: 7224; now (540;100); timecount: 7239; boxId: B179, B178, ;PL
+vehicleId: 1; start (540;100); startTime: 7239; now (550;100); timecount: 7254; boxId: B177, ;PU
+vehicleId: 1; start (550;100); startTime: 7254; now (540;100); timecount: 7269; boxId: B177, ;PL
+vehicleId: 1; start (540;100); startTime: 7269; now (550;100); timecount: 7284; boxId: B176, ;PU
+vehicleId: 0; start (320;100); startTime: 6991; now (0;100); timecount: 7316; boxId: B85, ;PL
+vehicleId: 1; start (550;100); startTime: 7284; now (0;100); timecount: 7839; boxId: B176, ;PL
+vehicleId: 0; start (0;100); startTime: 7317; now (650;100); timecount: 7972; boxId: B219, ;PU
+vehicleId: 0; start (650;100); startTime: 7972; now (640;100); timecount: 7987; boxId: B219, ;PL
+vehicleId: 0; start (640;100); startTime: 7988; now (1000;100); timecount: 8353; boxId: B359, ;PU
+vehicleId: 0; start (1000;100); startTime: 8353; now (990;100); timecount: 8368; boxId: B359, ;PL
+vehicleId: 0; start (990;100); startTime: 8368; now (1000;100); timecount: 8383; boxId: B358, ;PU
+vehicleId: 1; start (0;100); startTime: 7839; now (650;100); timecount: 8494; boxId: B218, ;PU
+vehicleId: 1; start (650;100); startTime: 8494; now (0;100); timecount: 9149; boxId: B218, ;PL
+vehicleId: 0; start (1000;100); startTime: 8383; now (10;100); timecount: 9378; boxId: B358, ;PL
+vehicleId: 1; start (0;100); startTime: 9150; now (680;100); timecount: 9835; boxId: B231, ;PU
+vehicleId: 1; start (680;100); startTime: 9835; now (670;100); timecount: 9850; boxId: B231, ;PL
+vehicleId: 0; start (10;100); startTime: 9378; now (680;100); timecount: 10053; boxId: B230, ;PU
+vehicleId: 1; start (670;100); startTime: 9851; now (220;100); timecount: 10306; boxId: B47, ;PU
+vehicleId: 1; start (220;100); startTime: 10306; now (210;100); timecount: 10321; boxId: B47, ;PL
+vehicleId: 1; start (210;100); startTime: 10321; now (220;100); timecount: 10336; boxId: B46, ;PU
+vehicleId: 1; start (220;100); startTime: 10336; now (0;100); timecount: 10561; boxId: B46, ;PL
+vehicleId: 0; start (680;100); startTime: 10053; now (0;100); timecount: 10738; boxId: B230, ;PL
+vehicleId: 1; start (0;100); startTime: 10562; now (340;100); timecount: 10907; boxId: B95, B94, ;PU
+vehicleId: 1; start (340;100); startTime: 10907; now (330;100); timecount: 10922; boxId: B95, B94, ;PL
+vehicleId: 0; start (0;100); startTime: 10738; now (340;100); timecount: 11083; boxId: B93, B92, ;PU
+vehicleId: 0; start (340;100); startTime: 11083; now (0;100); timecount: 11428; boxId: B93, B92, ;PL
+vehicleId: 1; start (330;100); startTime: 10922; now (850;100); timecount: 11447; boxId: B299, ;PU
+vehicleId: 0; start (0;100); startTime: 11429; now (500;100); timecount: 11934; boxId: B161, B163, ;PU
+vehicleId: 0; start (500;100); startTime: 11934; now (490;100); timecount: 11949; boxId: B161, B163, ;PL
+vehicleId: 0; start (490;100); startTime: 11949; now (500;100); timecount: 11964; boxId: B162, B159, ;PU
+vehicleId: 0; start (500;100); startTime: 11964; now (490;100); timecount: 11979; boxId: B162, B159, ;PL
+vehicleId: 0; start (490;100); startTime: 11979; now (500;100); timecount: 11994; boxId: B158, ;PU
+vehicleId: 1; start (850;100); startTime: 11447; now (0;100); timecount: 12302; boxId: B299, ;PL
+vehicleId: 0; start (500;100); startTime: 11994; now (10;100); timecount: 12489; boxId: B158, ;PL
+vehicleId: 1; start (0;100); startTime: 12302; now (650;100); timecount: 12957; boxId: B217, ;PU
+vehicleId: 0; start (10;100); startTime: 12490; now (630;100); timecount: 13115; boxId: B211, B210, ;PU
+vehicleId: 0; start (630;100); startTime: 13115; now (620;100); timecount: 13130; boxId: B211, B210, ;PL
+vehicleId: 0; start (620;100); startTime: 13130; now (630;100); timecount: 13145; boxId: B209, ;PU
+vehicleId: 0; start (630;100); startTime: 13145; now (620;100); timecount: 13160; boxId: B209, ;PL
+vehicleId: 0; start (620;100); startTime: 13160; now (630;100); timecount: 13175; boxId: B208, ;PU
+vehicleId: 1; start (650;100); startTime: 12957; now (10;100); timecount: 13602; boxId: B217, ;PL
+vehicleId: 0; start (630;100); startTime: 13175; now (0;100); timecount: 13810; boxId: B208, ;PL
+vehicleId: 1; start (10;100); startTime: 13603; now (910;100); timecount: 14508; boxId: B323, ;PU
+vehicleId: 1; start (910;100); startTime: 14508; now (900;100); timecount: 14523; boxId: B323, ;PL
+vehicleId: 1; start (900;100); startTime: 14524; now (840;100); timecount: 14589; boxId: B295, B294, ;PU
+vehicleId: 1; start (840;100); startTime: 14589; now (830;100); timecount: 14604; boxId: B295, B294, ;PL
+vehicleId: 1; start (830;100); startTime: 14604; now (840;100); timecount: 14619; boxId: B293, ;PU
+vehicleId: 0; start (0;100); startTime: 13810; now (910;100); timecount: 14725; boxId: B322, ;PU
+vehicleId: 1; start (840;100); startTime: 14619; now (10;100); timecount: 15454; boxId: B293, ;PL
+vehicleId: 0; start (910;100); startTime: 14725; now (10;100); timecount: 15630; boxId: B322, ;PL
+vehicleId: 0; start (10;100); startTime: 15630; now (270;100); timecount: 15895; boxId: B67, ;PU
+vehicleId: 0; start (270;100); startTime: 15895; now (10;100); timecount: 16160; boxId: B67, ;PL
+vehicleId: 1; start (10;100); startTime: 15454; now (1040;100); timecount: 16489; boxId: B375, ;PU
+vehicleId: 0; start (10;100); startTime: 16160; now (720;100); timecount: 16875; boxId: B246, ;PU
+vehicleId: 1; start (1040;100); startTime: 16489; now (10;100); timecount: 17524; boxId: B375, ;PL
+vehicleId: 0; start (720;100); startTime: 16875; now (10;100); timecount: 17590; boxId: B246, ;PL
+vehicleId: 1; start (10;100); startTime: 17525; now (1010;100); timecount: 18530; boxId: B363, B362, ;PU
+vehicleId: 1; start (1010;100); startTime: 18530; now (1000;100); timecount: 18545; boxId: B363, B362, ;PL
+vehicleId: 0; start (10;100); startTime: 17590; now (1010;100); timecount: 18595; boxId: B361, ;PU
+vehicleId: 1; start (1000;100); startTime: 18545; now (1010;100); timecount: 18596; boxId: B360, ;PU
+vehicleId: 0; start (1010;100); startTime: 18595; now (1000;100); timecount: 18610; boxId: B361, ;PL
+vehicleId: 0; start (1000;100); startTime: 18611; now (1040;100); timecount: 18656; boxId: B374, ;PU
+vehicleId: 0; start (1040;100); startTime: 18656; now (1030;100); timecount: 18671; boxId: B374, ;PL
+vehicleId: 0; start (1030;100); startTime: 18671; now (1040;100); timecount: 18686; boxId: B373, ;PU
+vehicleId: 1; start (1010;100); startTime: 18596; now (10;100); timecount: 19601; boxId: B360, ;PL
+vehicleId: 1; start (10;100); startTime: 19601; now (0;100); timecount: 19616; boxId: B400, ;PU
+vehicleId: 0; start (1040;100); startTime: 18686; now (10;100); timecount: 19721; boxId: B373, ;PL
+vehicleId: 0; start (10;100); startTime: 19721; now (0;100); timecount: 19736; boxId: B401, ;PU
+vehicleId: 0; start (0;100); startTime: 19736; now (330;100); timecount: 20071; boxId: B401, ;PL
+vehicleId: 1; start (0;100); startTime: 19616; now (610;100); timecount: 20231; boxId: B400, ;PL
+vehicleId: 1; start (610;100); startTime: 20231; now (10;100); timecount: 20836; boxId: B403, ;PU
+vehicleId: 0; start (330;100); startTime: 20071; now (10;100); timecount: 20838; boxId: B402, ;PU
+vehicleId: 1; start (10;100); startTime: 20836; now (370;100); timecount: 21201; boxId: B403, ;PL
+vehicleId: 1; start (370;100); startTime: 21201; now (10;100); timecount: 21566; boxId: B404, ;PU
+vehicleId: 0; start (10;100); startTime: 20838; now (1060;100); timecount: 21893; boxId: B402, ;PL
+vehicleId: 1; start (10;100); startTime: 21566; now (450;100); timecount: 22011; boxId: B404, ;PL
+vehicleId: 1; start (450;100); startTime: 22011; now (0;100); timecount: 22466; boxId: B406, ;PU
+vehicleId: 1; start (0;100); startTime: 22466; now (400;100); timecount: 22871; boxId: B406, ;PL
+vehicleId: 0; start (1060;100); startTime: 21893; now (10;100); timecount: 22948; boxId: B405, ;PU
+vehicleId: 1; start (400;100); startTime: 22871; now (0;100); timecount: 23276; boxId: B407, ;PU
+vehicleId: 0; start (10;100); startTime: 22948; now (750;100); timecount: 23693; boxId: B405, ;PL
+vehicleId: 1; start (0;100); startTime: 23276; now (770;100); timecount: 24051; boxId: B407, ;PL
+vehicleId: 1; start (770;100); startTime: 24051; now (10;100); timecount: 24816; boxId: B409, ;PU
+vehicleId: 0; start (750;100); startTime: 23693; now (10;100); timecount: 24818; boxId: B408, ;PU
+vehicleId: 0; start (10;100); startTime: 24818; now (330;100); timecount: 25143; boxId: B408, ;PL
+vehicleId: 1; start (10;100); startTime: 24816; now (610;100); timecount: 25421; boxId: B409, ;PL
+vehicleId: 1; start (610;100); startTime: 25421; now (10;100); timecount: 26026; boxId: B411, ;PU
+vehicleId: 0; start (330;100); startTime: 25143; now (10;100); timecount: 26028; boxId: B410, ;PU
+vehicleId: 0; start (10;100); startTime: 26028; now (540;100); timecount: 26563; boxId: B410, ;PL
+vehicleId: 1; start (10;100); startTime: 26026; now (870;100); timecount: 26891; boxId: B411, ;PL
+vehicleId: 1; start (870;100); startTime: 26891; now (0;100); timecount: 27766; boxId: B413, ;PU
+vehicleId: 0; start (540;100); startTime: 26563; now (0;100); timecount: 27768; boxId: B412, ;PU
+vehicleId: 0; start (0;100); startTime: 27768; now (380;100); timecount: 28153; boxId: B412, ;PL
+vehicleId: 1; start (0;100); startTime: 27766; now (630;100); timecount: 28401; boxId: B413, ;PL
+vehicleId: 1; start (630;100); startTime: 28401; now (0;100); timecount: 29036; boxId: B415, ;PU
+vehicleId: 0; start (380;100); startTime: 28153; now (0;100); timecount: 29038; boxId: B414, ;PU
+vehicleId: 0; start (0;100); startTime: 29038; now (860;100); timecount: 29903; boxId: B414, ;PL
+vehicleId: 1; start (0;100); startTime: 29036; now (950;100); timecount: 29991; boxId: B415, ;PL
+vehicleId: 0; start (860;100); startTime: 29903; now (10;100); timecount: 30758; boxId: B416, ;PU
+vehicleId: 1; start (950;100); startTime: 29991; now (0;100); timecount: 30946; boxId: B417, ;PU
+vehicleId: 0; start (10;100); startTime: 30758; now (450;100); timecount: 31203; boxId: B416, ;PL
+vehicleId: 1; start (0;100); startTime: 30946; now (480;100); timecount: 31431; boxId: B417, ;PL
+vehicleId: 0; start (450;100); startTime: 31203; now (10;100); timecount: 31648; boxId: B418, ;PU
+vehicleId: 1; start (480;100); startTime: 31431; now (0;100); timecount: 31916; boxId: B419, ;PU
+vehicleId: 0; start (10;100); startTime: 31648; now (530;100); timecount: 32173; boxId: B418, ;PL
+vehicleId: 0; start (530;100); startTime: 32174; now (310;100); timecount: 32399; boxId: B87, ;PU
+vehicleId: 0; start (310;100); startTime: 32399; now (300;100); timecount: 32414; boxId: B87, ;PL
+vehicleId: 0; start (300;100); startTime: 32414; now (310;100); timecount: 32429; boxId: B86, ;PU
+vehicleId: 1; start (0;100); startTime: 31916; now (620;100); timecount: 32541; boxId: B419, ;PL
+vehicleId: 0; start (310;100); startTime: 32429; now (10;100); timecount: 32734; boxId: B86, ;PL
+vehicleId: 1; start (620;100); startTime: 32542; now (330;100); timecount: 32837; boxId: B408, B401, ;PU
+vehicleId: 1; start (330;100); startTime: 32837; now (320;100); timecount: 32852; boxId: B408, B401, ;PL
+vehicleId: 0; start (10;100); startTime: 32734; now (330;100); timecount: 33059; boxId: B95, ;PU
+vehicleId: 1; start (320;100); startTime: 32852; now (330;100); timecount: 33059; boxId: B94, ;PU
+vehicleId: 0; start (330;100); startTime: 33059; now (320;100); timecount: 33074; boxId: B95, ;PL
+vehicleId: 1; start (330;100); startTime: 33059; now (10;100); timecount: 33384; boxId: B94, ;PL
