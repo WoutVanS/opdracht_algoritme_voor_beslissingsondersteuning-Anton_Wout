@@ -191,6 +191,8 @@ public class Vehicle {
         //print the result of the dropoff operation
         //System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PU");
         System.out.println("vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxIDsToString() + ";PU");
+        String str = "vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxIDsToString() + ";PU";
+        Main.outputArray.add(str);
 
         //set startTime and start coordinates for the PL operation
         startTime = Main.timeCount;
@@ -231,6 +233,8 @@ public class Vehicle {
         //print the result of the dropoff operation
         //System.out.println(id + ";" + startX + ";" + startY + ";" + startTime + ";" + x + ";" + y + ";" + Main.timeCount + ";" + currentRequest.getBoxID() + ";PL");
         System.out.println("vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxIDsToString() + ";PL");
+        String str = "vehicleId: " + id + "; start (" + startX + ";" + startY + "); startTime: " + startTime + "; now (" + x + ";" + y + "); timecount: " + Main.timeCount + "; boxId: " + currentRequest.getBoxIDsToString() + ";PL";
+        Main.outputArray.add(str);
 
         requests.updateRequests(currentRequest, currentDest);
 

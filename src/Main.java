@@ -13,6 +13,7 @@ import java.util.HashMap;
     GRONDIG NAKIJKEN ALS ALLES NOG CORRECT WERKT,
     REPORT 2 SCHRIJVEN
     NAKIJKEN ALS MEERDERE POOLS UIT 1 STACK MAKEN WERKT (anton)
+    output file genereren
  */
 
 public class Main {
@@ -20,7 +21,10 @@ public class Main {
     public static int timeCount;
     public static HashMap<String, Location> locations = new HashMap<>();
 
+    public static ArrayList<String> outputArray = new ArrayList<>();
 
+    public static String filename = "I100_120_2_2_8b2";       // very congested datastack, risk of box beingn full
+//    public static String filename = "I100_50_2_2_8b2";
     public static void main(String[] args) {
 
         BoxStacks boxStacks = new BoxStacks();
@@ -34,8 +38,9 @@ public class Main {
 
         try {
 //            Object obj = parser.parse(new FileReader("I30_100_1_1_10.json"));
-            Object obj = parser.parse(new FileReader("I20_20_2_2_8b2.json"));
 //            Object obj = parser.parse(new FileReader("I20_20_2_2_8b2.json"));
+            String inputFileName = filename + ".json";
+            Object obj = parser.parse(new FileReader(inputFileName));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
@@ -164,5 +169,16 @@ public class Main {
 
         System.out.println("total time needed: " + timeCount);
 
+        // write output to file
+        String outputFileName = "output_" + filename + ".txt";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFileName))) {
+            for (String str : outputArray) {
+                bw.write(str);
+                bw.newLine();
+            }
+            System.out.println("Successfully wrote ArrayList to File...");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
