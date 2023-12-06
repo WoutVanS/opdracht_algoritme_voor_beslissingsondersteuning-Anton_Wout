@@ -79,8 +79,9 @@ public class Allocator {
 
         ArrayList<String> boxes = new ArrayList<>();
 
-        if(numberOfReallocations < 0)
+        if(numberOfReallocations < 0) {
             System.err.println("error");
+        }
 
         for(int i = 0; i < numberOfReallocations; i++){
             boxes.add(pickupBoxStack.boxes.get(pickupBoxStack.boxes.size() - i -1));
@@ -104,17 +105,22 @@ public class Allocator {
 
     public ArrayList<Request> mirrorRealocatedRequests(List<Request> reallocateRequests) {
         ArrayList<Request> mirroredRequests = new ArrayList<>();
+
         // for each reallocate request the request is broken up in individual mirrored reallocations (box per box), because we are unsure of the order in which they are dumped on the new stack
         for (Request request: reallocateRequests) {
             ArrayList<String> boxIds = request.getBoxIDs();
             Location newPickup = request.getDropOff();      // pickup and dropoff are reversed in mirrored request
             Location newDropOff = request.getPickup();
-            if (newPickup == null) System.out.println("WHYYYYYYYYYYYYYYYYYYYYYYY");
             for (int i = 0; i < boxIds.size(); i++) {
                 int ID = 6968000 + rand.nextInt(1000);
                 ArrayList<String> mirroredBoxes = new ArrayList<>();
-                mirroredBoxes.add(boxIds.get(i));
-                mirroredRequests.add(new Request(ID, newPickup, newDropOff, mirroredBoxes));
+                if (Main.incomingBoxes.contains(boxIds.get(i))) {           // we only put boxes back in their place if they where not in the system at the beginning.
+                    System.out.println("Bringing box back " + boxIds.get(i));
+                    mirroredBoxes.add(boxIds.get(i));
+                    Request mirr = new Request(ID, newPickup, newDropOff, mirroredBoxes);
+                    System.out.println(mirr);
+                    mirroredRequests.add(mirr);
+                }
             }
         }
         return mirroredRequests;

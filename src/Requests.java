@@ -195,11 +195,11 @@ public class Requests {
             topBoxBeforeDropOff = box;
         }
 
-//        System.out.println("\nrequests after updating them");
-//        for (Request r: requests) {
-//            System.out.println(r.toString());
-//        }
-//        System.out.println(" ");
+        System.out.println("\nrequests after updating them");
+        for (Request r: requests) {
+            System.out.println(r.toString());
+        }
+        System.out.println(" ");
 
     }
 

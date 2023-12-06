@@ -55,8 +55,38 @@ public class Network {
                 String placeLocationName = request.getPlaceLocation();
                 String associatedBoxId = request.getBoxIDs().get(0);
 
+                Location dropOff = request.getDropOff();
+
 
                 System.out.println("\ncurrent instruction: " + request);
+
+                if (dropOff.getBoxes().size() == Main.stackcapacity && dropOff instanceof BoxStack) {    // destination boxstack is full -> reallocate box from destiantion to make space
+                    // check if top boxes of dropoff is from incoming request, if not reallocate them
+                    ArrayList<String> reallocate = new ArrayList<>();
+                    int counter = 0;
+                    int j = 0;
+                    while (counter <= request.getBoxIDs().size()-1 && j < dropOff.getBoxes().size()) {      // find the boxes to reallocate
+                        if (!Main.incomingBoxes.contains(dropOff.getBoxes().get(j))) {
+                            reallocate.add(dropOff.getBoxes().get(j));
+                            counter++;
+                        }
+                        j++;
+                    }
+                    System.out.println("REALOCATE BECAUSE BOXSTACK IS FULL");
+                    // forge requests for the boxes to reallocate
+//                    if (reallocate.size() > 1) {
+                        List<Request> requestList = allocator.realocationAlgorithm(boxStacks, dropOff.getName(), reallocate.get(reallocate.size() - 1));
+                        requestList.add(request);
+                        requests.addInfront(requestList);
+//                    } else {
+//                        String newDropoff = allocator.findEmptySpace(boxStacks, placeLocationName);
+//                        int ID = 6669000 + request.getID();
+//                        Request newRequest = new Request(ID, request.getDropOff(), Main.locations.get(newDropoff), reallocate);
+//                        requests.addInfront(request);
+//                        requests.addInfront(newRequest);
+//                    }
+                    break;
+                }
 
 
                 if (request.getStatus() != Constants.statusRequest.INPROGRESS && !checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
@@ -64,9 +94,15 @@ public class Network {
                     request.setStatus(Constants.statusRequest.INPROGRESS);
                     requestList.add(request);
 
+                    int indexOringinal = requestList.size()-1;
                     // enkel doen als bufferpoint involved is in request (anders is request zelf een reallocation)
                     if ((request.getPickup() instanceof BufferPoint) || (request.getDropOff() instanceof BufferPoint)) {
-                        List<Request> mirrorRequests = allocator.mirrorRealocatedRequests(requestList);  // to put the realocated requests back on their original place
+                        List<Request> reallocRequests = new ArrayList<>();
+                        for (Request req: requestList) {
+                            reallocRequests.add(req);
+                        }
+                        reallocRequests.remove(indexOringinal);
+                        List<Request> mirrorRequests = allocator.mirrorRealocatedRequests(reallocRequests);  // to put the realocated requests back on their original place
                         for (Request mirrorRequest : mirrorRequests)
                             requestList.add(mirrorRequest);
                     }

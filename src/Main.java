@@ -8,12 +8,12 @@ import java.io.FileReader;
 import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /* TODO:
     GRONDIG NAKIJKEN ALS ALLES NOG CORRECT WERKT,
     REPORT 2 SCHRIJVEN
     NAKIJKEN ALS MEERDERE POOLS UIT 1 STACK MAKEN WERKT (anton)
-    ZORGEN DAT OP EINDE PROGRAMMA ALLE BOXES DIE ALS PICKUP BUFFERPOINT HADDEN OP HUN ORIGINELE PLACELOCATION ZITTEN
  */
 
 public class Main {
@@ -22,6 +22,11 @@ public class Main {
     public static HashMap<String, Location> locations = new HashMap<>();
 
     public static ArrayList<String> outputArray = new ArrayList<>();
+
+    public static HashSet<String> incomingBoxes = new HashSet<>();
+
+    public static int stackcapacity;
+    public static int vehiclespeed;
 
     public static String filename = "I100_120_2_2_8b2";       // very congested datastack, risk of box beingn full
 //    public static String filename = "I100_50_2_2_8b2";
@@ -49,10 +54,10 @@ public class Main {
             loadingDuration = Integer.parseInt(jsonObject.get("loadingduration").toString());
             System.out.println("loading Duration: " + loadingDuration);
 
-            int vehiclespeed = Integer.parseInt(jsonObject.get("vehiclespeed").toString());
+            vehiclespeed = Integer.parseInt(jsonObject.get("vehiclespeed").toString());
             System.out.println("vehicle speed: " + vehiclespeed);
 
-            int stackcapacity = Integer.parseInt(jsonObject.get("stackcapacity").toString());
+            stackcapacity = Integer.parseInt(jsonObject.get("stackcapacity").toString());
             System.out.println("stack capacity:" + stackcapacity);
 
             // loop array of stacks
@@ -122,6 +127,9 @@ public class Main {
                 Location pickup = locations.get(pickupLocation);
                 Location place = locations.get(placeLocation);
 
+                if (pickup instanceof BufferPoint) {
+                    incomingBoxes.add(boxID);
+                }
 
                 requests.add(new Request(id, pickup, place, boxID));
             }
