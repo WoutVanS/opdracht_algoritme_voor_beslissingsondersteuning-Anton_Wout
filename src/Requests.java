@@ -145,12 +145,16 @@ public class Requests {
 
     // updates request when relocations where made. it only updates the first relevant request because it gets executed after every dropoff.
     public void updateRequests(Request currentRequest, Location currentLocation){
+        
         int currentRequestSize = currentRequest.getBoxIDs().size();
         int currentLocationSize = currentLocation.boxes.size();
         String currentDropoff = currentRequest.getPlaceLocation();
         String topBoxBeforeDropOff = (currentLocationSize - currentRequestSize -1 < 0)? "" : currentLocation.boxes.get(currentLocationSize - currentRequestSize -1);
 
-        for(String box: currentRequest.getBoxIDs()){                        // look for each box if there are request that need to be updated
+        ArrayList<String> boxes = (ArrayList<String>) currentRequest.getBoxIDs().clone();
+        Collections.reverse(boxes);
+
+        for(String box: boxes){                        // look for each box if there are request that need to be updated
             for(Request request: requests){
                 if(request.getBoxIDs().get(0).equals(box)){                 // if request contains request check if pickup is different from place location of current request
                     if(!request.getPickupLocation().equals(currentDropoff)){
@@ -168,11 +172,11 @@ public class Requests {
                                 break;
                             }
                             // does the same as the if statement above but then checks if this request already contains a box from the currentRequest that the vehicle dropped off
-                            if(nextRequest.getPickupLocation().equals(currentDropoff) && nextRequest.getPlaceLocation().equals(requestPLaceLocation) && nextRequest.getBoxIDs().contains(currentRequest.getBoxIDs().get(0))){
-                                prepocessedRequestUpdated = true;
-                                nextRequest.getBoxIDs().add(box);
-                                break;
-                            }
+//                            if(nextRequest.getPickupLocation().equals(currentDropoff) && nextRequest.getPlaceLocation().equals(requestPLaceLocation) && nextRequest.getBoxIDs().contains(boxes.get(0))){
+//                                prepocessedRequestUpdated = true;
+//                                nextRequest.getBoxIDs().add(box);
+//                                break;
+//                            }
                         }
 
                         // makes a new request if there is none existing from the location to the pickup.
@@ -183,10 +187,12 @@ public class Requests {
                         }
 
                         if(request.getBoxIDs().isEmpty()) requests.remove(request);
+
                     }
                     break;
                 }
             }
+            topBoxBeforeDropOff = box;
         }
 
         System.out.println("\nrequests after updating them");
