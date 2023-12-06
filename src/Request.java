@@ -37,8 +37,6 @@ public class Request {
 
     public Request(int ID, Location pickup, Location place, ArrayList<String> boxes) {
         this.ID = ID;
-        this.pickupLocation = pickup.getName();
-        this.placeLocation = place.getName();
         this.boxIDs = boxes;
         status = Constants.statusRequest.WAITING;
         startTime = -1;
@@ -47,6 +45,8 @@ public class Request {
         placeLocationXY = new int[]{-1, -1};
         this.pickup = pickup;
         dropOff = place;
+        this.pickupLocation = pickup.getName();
+        this.placeLocation = place.getName();
     }
 
     //getters and setters

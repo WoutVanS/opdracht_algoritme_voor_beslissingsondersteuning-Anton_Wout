@@ -63,6 +63,13 @@ public class Network {
                     List<Request> requestList = allocator.realocationAlgorithm(boxStacks, pickupLocationName, associatedBoxId);
                     request.setStatus(Constants.statusRequest.INPROGRESS);
                     requestList.add(request);
+
+                    // enkel doen als bufferpoint involved is in request (anders is request zelf een reallocation)
+                    if ((request.getPickup() instanceof BufferPoint) || (request.getDropOff() instanceof BufferPoint)) {
+                        List<Request> mirrorRequests = allocator.mirrorRealocatedRequests(requestList);  // to put the realocated requests back on their original place
+                        for (Request mirrorRequest : mirrorRequests)
+                            requestList.add(mirrorRequest);
+                    }
                     requests.addInfront(requestList);
                     break;
                 }

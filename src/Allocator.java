@@ -6,6 +6,7 @@ import java.util.Random;
 public class Allocator {
     //constructor
     public Allocator(){}
+    public Random rand = new Random();
 
     //methods
     // methode finds the nearest empty boxStack to the placelocation boxstack
@@ -78,27 +79,6 @@ public class Allocator {
 
         ArrayList<String> boxes = new ArrayList<>();
 
-        // todo fixs this code beacause it doesn't work
-//        for(int i = 0; i < numberOfReallocations; i++){
-//
-//            if(numberOfFreeSpace == 0){
-//                nearestEmptyBoxStacks.remove(0);
-//                numberOfFreeSpace = nearestEmptyBoxStacks.get(0).freeSpace();
-//
-//                Random rand = new Random();
-//                int ID = 6969000 + rand.nextInt(1000);
-//                Request request = new Request(ID, pickupBoxStack, nearestEmptyBoxStacks.get(0), boxes);
-//                requests.add(request);
-//                boxes.clear();
-//                System.out.println(request);
-//            }
-//
-//            boxes.add(pickupBoxStack.boxes.get(pickupBoxStack.boxes.size() - i -1));
-//
-//            numberOfFreeSpace--;
-//
-//        }
-
         if(numberOfReallocations < 0)
             System.err.println("error");
 
@@ -107,7 +87,6 @@ public class Allocator {
             numberOfFreeSpace--;
 
             if(numberOfFreeSpace == 0 || i == numberOfReallocations -1){
-                Random rand = new Random();
                 int ID = 6969000 + rand.nextInt(1000);
                 Request request = new Request(ID, pickupBoxStack, nearestEmptyBoxStacks.get(0), boxes);
                 request.setStatus(Constants.statusRequest.INPROGRESS);
@@ -121,5 +100,23 @@ public class Allocator {
         }
 
         return requests;
+    }
+
+    public ArrayList<Request> mirrorRealocatedRequests(List<Request> reallocateRequests) {
+        ArrayList<Request> mirroredRequests = new ArrayList<>();
+        // for each reallocate request the request is broken up in individual mirrored reallocations (box per box), because we are unsure of the order in which they are dumped on the new stack
+        for (Request request: reallocateRequests) {
+            ArrayList<String> boxIds = request.getBoxIDs();
+            Location newPickup = request.getDropOff();      // pickup and dropoff are reversed in mirrored request
+            Location newDropOff = request.getPickup();
+            if (newPickup == null) System.out.println("WHYYYYYYYYYYYYYYYYYYYYYYY");
+            for (int i = 0; i < boxIds.size(); i++) {
+                int ID = 6968000 + rand.nextInt(1000);
+                ArrayList<String> mirroredBoxes = new ArrayList<>();
+                mirroredBoxes.add(boxIds.get(i));
+                mirroredRequests.add(new Request(ID, newPickup, newDropOff, mirroredBoxes));
+            }
+        }
+        return mirroredRequests;
     }
 }

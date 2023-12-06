@@ -13,7 +13,7 @@ import java.util.HashMap;
     GRONDIG NAKIJKEN ALS ALLES NOG CORRECT WERKT,
     REPORT 2 SCHRIJVEN
     NAKIJKEN ALS MEERDERE POOLS UIT 1 STACK MAKEN WERKT (anton)
-    output file genereren
+    ZORGEN DAT OP EINDE PROGRAMMA ALLE BOXES DIE ALS PICKUP BUFFERPOINT HADDEN OP HUN ORIGINELE PLACELOCATION ZITTEN
  */
 
 public class Main {
@@ -25,6 +25,7 @@ public class Main {
 
     public static String filename = "I100_120_2_2_8b2";       // very congested datastack, risk of box beingn full
 //    public static String filename = "I100_50_2_2_8b2";
+//    public static String filename = "I3_3_1_5";
     public static void main(String[] args) {
 
         BoxStacks boxStacks = new BoxStacks();
@@ -113,9 +114,9 @@ public class Main {
                 int id = Integer.parseInt(request.get("ID").toString());
 
                 String pickupLocation = request.get("pickupLocation").toString();
-                //pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
+//                pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
                 String placeLocation = request.get("placeLocation").toString();
-                //placeLocation = placeLocation.substring(2, placeLocation.length()-2);
+//                placeLocation = placeLocation.substring(2, placeLocation.length()-2);
                 String boxID = request.get("boxID").toString();
 
                 Location pickup = locations.get(pickupLocation);
