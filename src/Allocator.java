@@ -49,6 +49,7 @@ public class Allocator {
 ////
 //    }
 
+
     public List<Request> realocationAlgorithm(BoxStacks boxStacks, String pickupLocationName , String associatedBoxId){
 
         System.out.println();
@@ -69,10 +70,13 @@ public class Allocator {
         int x = pickupBoxStack.getX();
         int y = pickupBoxStack.getY();
 
-        nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
+//        nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
+
+        nearestEmptyBoxStacks.sort(Comparator.comparingInt(l -> l.getBoxes().size()));      // sort on most empty boxes first
 
         int numberOfReallocations = pickupBoxStack.SearchDepthByID(associatedBoxId);
         System.out.println("number of relocations necessary: " + numberOfReallocations);
+        Main.amountOfRelocations += numberOfReallocations;
 
         List<Request> requests = new ArrayList<>();
         int numberOfFreeSpace = nearestEmptyBoxStacks.get(0).freeSpace();

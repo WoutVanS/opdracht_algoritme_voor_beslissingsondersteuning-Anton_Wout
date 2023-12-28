@@ -42,6 +42,10 @@ public class Network {
             for (int i = 0; i < availableVehicles.size(); i++) {
                 Request request = requests.getNextRequest();
 
+                if (request.getPickup() == request.getDropOff()) {            // sometimes a bad request is formed whith the same placelocation and destinationlocation -> skip these requests
+                    continue;
+                }
+
 //                int counter = 1;
 //                while (vehicles.boxesAlreadyInProgress(request)) {          // when another vehicle is already busy with the boxes in the request, we best wait untill he is done
 //                    Request temp = request;                                 // because when we move the boxes before he arrives, this will cause an error
@@ -91,6 +95,10 @@ public class Network {
 
                 if (request.getStatus() != Constants.statusRequest.INPROGRESS && !checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
                     List<Request> requestList = allocator.realocationAlgorithm(boxStacks, pickupLocationName, associatedBoxId);
+                    System.out.print("IDs ReallocationRequests: ");
+                    for (Request r: requestList) {
+                        System.out.print(r.getID() + ", ");
+                    }
                     request.setStatus(Constants.statusRequest.INPROGRESS);
                     requestList.add(request);
 
@@ -123,14 +131,14 @@ public class Network {
                 request.setStartTime(Main.timeCount);                   //set the starttime for the handling of the request
                 request.setStatus(Constants.statusRequest.INPROGRESS);
 
-                System.out.println("");
-                System.out.println("------ Printing boxStacks ------");
-                for (String loc : Main.locations.keySet()) {
-                    System.out.print(loc + ": ");
-                    Main.locations.get(loc).printBoxes();
-                }
-                System.out.println("--------------------------------");
-                System.out.println("");
+//                System.out.println("");
+//                System.out.println("------ Printing boxStacks ------");
+//                for (String loc : Main.locations.keySet()) {
+//                    System.out.print(loc + ": ");
+//                    Main.locations.get(loc).printBoxes();
+//                }
+//                System.out.println("--------------------------------");
+//                System.out.println("");
             }
             return true;
         }

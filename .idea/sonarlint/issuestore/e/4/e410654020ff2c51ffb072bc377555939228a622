@@ -1,35 +1,39 @@
 
 {
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(õ›»ºûÿÿÿÿ8ıì»ÿÂ1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(õ›»ºûÿÿÿÿ8ø°º†Ë1
 v
-java:S22934"YReplace the type specification in this constructor call with the diamond operator ("<>").(ØÁ¾Š8şì»ÿÂ1
+java:S22939"YReplace the type specification in this constructor call with the diamond operator ("<>").(ØÁ¾Š8ø°º†Ë1
 
-java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÃÛ„Ñ8ÿì»ÿÂ1
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÃÛ„Ñ8ú°º†Ë1
 ˆ
-java:S13193"fThe type of "locations" should be an interface such as "Map" rather than the implementation "HashMap".(†ÄáÎúÿÿÿÿ8ÿì»ÿÂ1
+java:S13198"fThe type of "locations" should be an interface such as "Map" rather than the implementation "HashMap".(†ÄáÎúÿÿÿÿ8ú°º†Ë1
 ^
-java:S4973$"<Strings and Boxed types should be compared using "equals()".(€ğ­øşÿÿÿÿ8€í»ÿÂ1
+java:S4973)"<Strings and Boxed types should be compared using "equals()".(€ğ­øşÿÿÿÿ8ü°º†Ë1
 9
-java:S1700"Rename field "requests"(®»¨ãùÿÿÿÿ8€í»ÿÂ1
-L	java:S106-"+Replace this use of System.out by a logger.(‚©é·øÿÿÿÿ8Íî»ÿÂ1
+java:S1700"Rename field "requests"(®»¨ãùÿÿÿÿ8ü°º†Ë1
+]	java:S125""<This block of commented-out lines of code should be removed.(Ç·ÃÒıÿÿÿÿ8ÇúÖ†Ë1
+L	java:S1062"+Replace this use of System.out by a logger.(‚©é·øÿÿÿÿ8¤³º†Ë1
 t
-java:S37763"RRefactor this method to reduce its Cognitive Complexity from 53 to the 15 allowed.(†ÄáÎúÿÿÿÿ8Îî»ÿÂ1
+java:S37768"RRefactor this method to reduce its Cognitive Complexity from 53 to the 15 allowed.(†ÄáÎúÿÿÿÿ8¤³º†Ë1
 T
-java:S18544"7Remove this useless assignment to local variable "res".(ØÁ¾Š8Îî»ÿÂ1
+java:S18549"7Remove this useless assignment to local variable "res".(ØÁ¾Š8¦³º†Ë1
 E
-java:S14814"(Remove this unused "res" local variable.(ØÁ¾Š8Îî»ÿÂ1
-L	java:S1068"+Replace this use of System.out by a logger.(è©²Âúÿÿÿÿ8Ïî»ÿÂ1
-L	java:S106?"+Replace this use of System.out by a logger.(Ë üÿÿÿÿ8Ñî»ÿÂ1
-G	java:S106H"+Replace this use of System.out by a logger.(ş·şù8Òî»ÿÂ1
-L	java:S106J"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8Óî»ÿÂ1
-L	java:S106p"+Replace this use of System.out by a logger.(™øóÙÿÿÿÿÿ8Úî»ÿÂ1
-L	java:S106v"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8Úî»ÿÂ1
-L	java:S106}"+Replace this use of System.out by a logger.(ÍøÓûùÿÿÿÿ8Ûî»ÿÂ1
-L	java:S106"+Replace this use of System.out by a logger.(Ä¿¼ùùÿÿÿÿ8Ûî»ÿÂ1
-M	java:S106"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8Ûî»ÿÂ1
-H	java:S106š"+Replace this use of System.out by a logger.(ŞåùÍ8ßî»ÿÂ1
-M	java:S106œ"+Replace this use of System.out by a logger.(“‹¬¨şÿÿÿÿ8ßî»ÿÂ1
-H	java:S106"+Replace this use of System.out by a logger.(…´Èİ8ßî»ÿÂ1
-M	java:S106 "+Replace this use of System.out by a logger.(â¯Œùÿÿÿÿ8àî»ÿÂ1
+java:S14819"(Remove this unused "res" local variable.(ØÁ¾Š8§³º†Ë1
+L	java:S106="+Replace this use of System.out by a logger.(è©²Âúÿÿÿÿ8§³º†Ë1
+L	java:S106D"+Replace this use of System.out by a logger.(Ë üÿÿÿÿ8¨³º†Ë1
+G	java:S106M"+Replace this use of System.out by a logger.(ş·şù8ª³º†Ë1
+L	java:S106O"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8ª³º†Ë1
+L	java:S106u"+Replace this use of System.out by a logger.(™øóÙÿÿÿÿÿ8¯³º†Ë1
+L	java:S106{"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8°³º†Ë1
+M	java:S106‚"+Replace this use of System.out by a logger.(ÍøÓûùÿÿÿÿ8°³º†Ë1
+M	java:S106„"+Replace this use of System.out by a logger.(Ä¿¼ùùÿÿÿÿ8°³º†Ë1
+M	java:S106†"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8±³º†Ë1
+p
+java:S3776˜"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(ƒ†Ï€8²³º†Ë1
+Y	java:S125´"<This block of commented-out lines of code should be removed.(­ıŸû8Î³º†Ë1
+T
+java:S2696À"6Make the enclosing method "static" or remove this set.(Äè°ß8Ï³º†Ë1
+Y	java:S125Ì"<This block of commented-out lines of code should be removed.(Ê³âá8Ğ³º†Ë1
+Y	java:S125×"<This block of commented-out lines of code should be removed.(éÙÙĞ8Ğ³º†Ë1
 è
-java:S65413"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 69 to 64, Complexity from 17 to 14, Nesting Level from 6 to 2, Number of Variables from 25 to 6.(†ÄáÎúÿÿÿÿ8áî»ÿÂ1
+java:S65418"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 69 to 64, Complexity from 17 to 14, Nesting Level from 6 to 2, Number of Variables from 25 to 6.(†ÄáÎúÿÿÿÿ8Ñ³º†Ë1

@@ -30,6 +30,11 @@ public class Requests {
         return res;
     }
 
+    public void sortToCreateSpace() {       // sort the requests so that the incoming boxes are last in array
+//        requests.sort(Comparator.comparing(request -> request.getDropOff() instanceof BufferPoint));
+        requests.sort(Comparator.comparing(request -> request.getPickup() instanceof BufferPoint));
+    }
+
     public Request getRequestByBox(String boxId) {  // functie werkt niet meer met arraylist van boxes
         Request res = null;
         for (Request r : requests) {
@@ -184,6 +189,7 @@ public class Requests {
                             int requestID = currentRequest.getID() * 1000 + 1;
                             Request newRequest = new Request(requestID, currentLocation, request.getDropOff(), box);
                             requests.add(newRequest);
+                            Main.amountOfPooledRequest ++;
                         }
 
                         if(request.getBoxIDs().isEmpty()) requests.remove(request);
@@ -195,11 +201,11 @@ public class Requests {
             topBoxBeforeDropOff = box;
         }
 
-        System.out.println("\nrequests after updating them");
-        for (Request r: requests) {
-            System.out.println(r.toString());
-        }
-        System.out.println(" ");
+//        System.out.println("\nrequests after updating them");
+//        for (Request r: requests) {
+//            System.out.println(r.toString());
+//        }
+//        System.out.println(" ");
 
     }
 

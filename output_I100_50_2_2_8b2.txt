@@ -136,21 +136,35 @@ vehicleId: 1; start (630;100); startTime: 28401; now (0;100); timecount: 29036; 
 vehicleId: 0; start (380;100); startTime: 28153; now (0;100); timecount: 29038; boxId: B414, ;PU
 vehicleId: 0; start (0;100); startTime: 29038; now (860;100); timecount: 29903; boxId: B414, ;PL
 vehicleId: 1; start (0;100); startTime: 29036; now (950;100); timecount: 29991; boxId: B415, ;PL
+vehicleId: 1; start (950;100); startTime: 29992; now (490;100); timecount: 30457; boxId: B162, B159, ;PU
+vehicleId: 1; start (490;100); startTime: 30457; now (480;100); timecount: 30472; boxId: B162, B159, ;PL
+vehicleId: 1; start (480;100); startTime: 30472; now (490;100); timecount: 30487; boxId: B161, B163, ;PU
+vehicleId: 1; start (490;100); startTime: 30487; now (480;100); timecount: 30502; boxId: B161, B163, ;PL
+vehicleId: 1; start (480;100); startTime: 30502; now (490;100); timecount: 30517; boxId: B155, B154, ;PU
+vehicleId: 1; start (490;100); startTime: 30517; now (500;100); timecount: 30532; boxId: B155, B154, ;PL
+vehicleId: 1; start (500;100); startTime: 30532; now (490;100); timecount: 30547; boxId: B153, ;PU
+vehicleId: 1; start (490;100); startTime: 30547; now (500;100); timecount: 30562; boxId: B153, ;PL
 vehicleId: 0; start (860;100); startTime: 29903; now (10;100); timecount: 30758; boxId: B416, ;PU
-vehicleId: 1; start (950;100); startTime: 29991; now (0;100); timecount: 30946; boxId: B417, ;PU
+vehicleId: 1; start (500;100); startTime: 30562; now (0;100); timecount: 31067; boxId: B417, ;PU
 vehicleId: 0; start (10;100); startTime: 30758; now (450;100); timecount: 31203; boxId: B416, ;PL
-vehicleId: 1; start (0;100); startTime: 30946; now (480;100); timecount: 31431; boxId: B417, ;PL
+vehicleId: 1; start (0;100); startTime: 31067; now (490;100); timecount: 31562; boxId: B417, ;PL
 vehicleId: 0; start (450;100); startTime: 31203; now (10;100); timecount: 31648; boxId: B418, ;PU
-vehicleId: 1; start (480;100); startTime: 31431; now (0;100); timecount: 31916; boxId: B419, ;PU
+vehicleId: 1; start (490;100); startTime: 31562; now (0;100); timecount: 32057; boxId: B419, ;PU
 vehicleId: 0; start (10;100); startTime: 31648; now (530;100); timecount: 32173; boxId: B418, ;PL
 vehicleId: 0; start (530;100); startTime: 32174; now (310;100); timecount: 32399; boxId: B87, ;PU
 vehicleId: 0; start (310;100); startTime: 32399; now (300;100); timecount: 32414; boxId: B87, ;PL
 vehicleId: 0; start (300;100); startTime: 32414; now (310;100); timecount: 32429; boxId: B86, ;PU
-vehicleId: 1; start (0;100); startTime: 31916; now (620;100); timecount: 32541; boxId: B419, ;PL
+vehicleId: 1; start (0;100); startTime: 32057; now (620;100); timecount: 32682; boxId: B419, ;PL
 vehicleId: 0; start (310;100); startTime: 32429; now (10;100); timecount: 32734; boxId: B86, ;PL
-vehicleId: 1; start (620;100); startTime: 32542; now (330;100); timecount: 32837; boxId: B408, B401, ;PU
-vehicleId: 1; start (330;100); startTime: 32837; now (320;100); timecount: 32852; boxId: B408, B401, ;PL
+vehicleId: 1; start (620;100); startTime: 32683; now (330;100); timecount: 32978; boxId: B408, B401, ;PU
+vehicleId: 1; start (330;100); startTime: 32978; now (320;100); timecount: 32993; boxId: B408, B401, ;PL
 vehicleId: 0; start (10;100); startTime: 32734; now (330;100); timecount: 33059; boxId: B95, ;PU
-vehicleId: 1; start (320;100); startTime: 32852; now (330;100); timecount: 33059; boxId: B94, ;PU
+vehicleId: 1; start (320;100); startTime: 32993; now (330;100); timecount: 33060; boxId: B94, ;PU
 vehicleId: 0; start (330;100); startTime: 33059; now (320;100); timecount: 33074; boxId: B95, ;PL
-vehicleId: 1; start (330;100); startTime: 33059; now (10;100); timecount: 33384; boxId: B94, ;PL
+vehicleId: 0; start (320;100); startTime: 33075; now (320;100); timecount: 33082; boxId: B95, ;PU
+vehicleId: 0; start (320;100); startTime: 33082; now (310;100); timecount: 33097; boxId: B95, ;PL
+vehicleId: 0; start (310;100); startTime: 33097; now (320;100); timecount: 33112; boxId: B408, ;PU
+vehicleId: 0; start (320;100); startTime: 33112; now (330;100); timecount: 33127; boxId: B408, ;PL
+vehicleId: 0; start (330;100); startTime: 33127; now (320;100); timecount: 33142; boxId: B401, ;PU
+vehicleId: 0; start (320;100); startTime: 33142; now (330;100); timecount: 33157; boxId: B401, ;PL
+vehicleId: 1; start (330;100); startTime: 33060; now (10;100); timecount: 33385; boxId: B94, ;PL

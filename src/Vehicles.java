@@ -15,6 +15,14 @@ public class Vehicles {
         this.amountOfVehicles = amountOfVehicles;
     }
 
+    public ArrayList<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public int getAmountOfVehicles() {
+        return amountOfVehicles;
+    }
+
     public void addVehicle(Vehicle v) {
         vehicles.add(v);
     }
@@ -55,6 +63,7 @@ public class Vehicles {
             System.out.println("\n---------- dividing request ------------");
             System.out.println("number of boxes in request: " + request.getBoxIDs().size());
             System.out.println("capacity of vehicle: " + availableVehicle.getCapacity());
+            System.out.println("free vehicles: " + availableVehicles.size());
 
 
             int newID = request.getID() * 100 + 1;                                      // add 001 to the new request to indicate that it's been divided

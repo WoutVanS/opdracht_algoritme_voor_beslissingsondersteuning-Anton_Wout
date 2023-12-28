@@ -6,9 +6,7 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.io.FileReader;
 import java.nio.Buffer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 /* TODO:
     GRONDIG NAKIJKEN ALS ALLES NOG CORRECT WERKT,
@@ -28,9 +26,18 @@ public class Main {
     public static int stackcapacity;
     public static int vehiclespeed;
 
-    public static String filename = "I100_120_2_2_8b2";       // very congested datastack, risk of box beingn full
-//    public static String filename = "I100_50_2_2_8b2";
+    public static int amountOfRelocations = 0;
+    public static int amountOfPooledRequest = 0;
+
+//    public static String filename = "I100_120_2_2_8b2";       // very congested datastack, risk of box beingn full, werkt
+//    public static String filename = "I100_50_2_2_8b2";              // loopt vast als we sorteren op leegste boxstacks, werkt anders wel nu
+//    public static String filename = "I100_500_3_1_20b2";    // loopt vast op deze
+//    public static String filename = "I100_500_3_5_20";         // error op deze
+//    public static String filename = "I100_800_1_1_20b2";        // werkt sinds fix van requests met zelfde pickup en dropoff weggooien, maar loopt vast als wordt gesorteerd op dichtste vehicle
+    public static String filename = "I100_800_3_1_20b2";        // loopt vast
 //    public static String filename = "I3_3_1_5";
+//    public static String filename = "I10_10_1";
+    public static boolean weirdFile = false;
     public static void main(String[] args) {
 
         BoxStacks boxStacks = new BoxStacks();
@@ -119,9 +126,9 @@ public class Main {
                 int id = Integer.parseInt(request.get("ID").toString());
 
                 String pickupLocation = request.get("pickupLocation").toString();
-//                pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
+                if (weirdFile) pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
                 String placeLocation = request.get("placeLocation").toString();
-//                placeLocation = placeLocation.substring(2, placeLocation.length()-2);
+                if (weirdFile) placeLocation = placeLocation.substring(2, placeLocation.length()-2);
                 String boxID = request.get("boxID").toString();
 
                 Location pickup = locations.get(pickupLocation);
@@ -138,12 +145,20 @@ public class Main {
             e.printStackTrace();
         }
 
+        requests.sortToCreateSpace();
         Allocator allocator = new Allocator();
         Network network = new Network(allocator, boxStacks, vehicles, bufferPoints, requests);
 
+
         // preprocess the requests
         System.out.println("\n========== preprocessing requests ==========");
-        requests.preProcess(locations);
+        int sum = 0;
+        for (Vehicle v: vehicles.getVehicles()) {
+            sum += v.getCapacity();
+        }
+        if (sum > vehicles.getAmountOfVehicles()) {     // don't bother making pooled requests if all the vehicles have a capacity of 1
+            requests.preProcess(locations);
+        }
 
         System.out.println("Preprocessing done, starting program");
         System.out.println(" ");
@@ -177,6 +192,10 @@ public class Main {
         System.out.println("");
 
         System.out.println("total time needed: " + timeCount);
+
+        System.out.println("total relocations: " + amountOfRelocations);
+
+        System.out.println("total pooled requests: " + amountOfPooledRequest);
 
         // write output to file
         String outputFileName = "output_" + filename + ".txt";

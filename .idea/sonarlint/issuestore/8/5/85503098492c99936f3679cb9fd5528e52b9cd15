@@ -1,19 +1,25 @@
 
+u	java:S135*"YReduce the total number of break and continue statements in this loop to use at most one.(±†İˆ8ŞÉ¸üÃ1
+J
+java:S5411\"(Use a primitive boolean expression here.(ñÍ‹şÿÿÿÿ8âÉ¸üÃ1
 E
-java:S5411@"(Use a primitive boolean expression here.(¨ŞÚÀ8§òÜşÂ1
-E
-java:S5411H"(Use a primitive boolean expression here.(˜ÿÜƒ8ÑÌìùÂ1
+java:S5411q"(Use a primitive boolean expression here.(˜ÿÜƒ8âÉ¸üÃ1
 o
-java:S3776'"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(îæÙ8ŞÌìùÂ1
-X	java:S125-"<This block of commented-out lines of code should be removed.(ëìÁ¹8 …€Ã1
-L	java:S106="+Replace this use of System.out by a logger.(¶·ïıÿÿÿÿ8âÌìùÂ1
-L	java:S106Q"+Replace this use of System.err by a logger.(§‡äıÿÿÿÿ8âÌìùÂ1
-L	java:S106T"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8âÌìùÂ1
-G	java:S106U"+Replace this use of System.out by a logger.(Ø“©Ì8ãÌìùÂ1
-F	java:S106W"+Replace this use of System.out by a logger.(—×™8ãÌìùÂ1
-G	java:S106Z"+Replace this use of System.out by a logger.(òÔÇÍ8ÈÿùùÂ1
-L	java:S106["+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8â«ÛûÂ1
+java:S3776'"RRefactor this method to reduce its Cognitive Complexity from 47 to the 15 allowed.(îæÙ8±Ë¸üÃ1
+X	java:S125-"<This block of commented-out lines of code should be removed.(ëìÁ¹8ÀË¸üÃ1
+L	java:S106="+Replace this use of System.out by a logger.(Ù¶£Àüÿÿÿÿ8ÀË¸üÃ1
+G	java:S106K"+Replace this use of System.out by a logger.(­İ×á8ÀË¸üÃ1
+X	java:S125M"<This block of commented-out lines of code should be removed.(¼§ï³8ÀË¸üÃ1
+X	java:S125Q"<This block of commented-out lines of code should be removed.(¡Õ±š8ÀË¸üÃ1
+L	java:S106y"+Replace this use of System.err by a logger.(§‡äıÿÿÿÿ8ÀË¸üÃ1
+L	java:S106~"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8ÀË¸üÃ1
+G	java:S106"+Replace this use of System.out by a logger.(Ø“©Ì8ÀË¸üÃ1
+G	java:S106"+Replace this use of System.out by a logger.(—×™8ÀË¸üÃ1
+H	java:S106„"+Replace this use of System.out by a logger.(òÔÇÍ8ÀË¸üÃ1
+M	java:S106…"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8ÀË¸üÃ1
 @
-java:S1128"$Remove this unused import 'java.io'.(¬›ãD8ºÓğşÂ1
+java:S1128"$Remove this unused import 'java.io'.(¬›ãD8ÏË¸üÃ1
 I
-java:S1128",Remove this unused import 'java.nio.Buffer'.(î¦Ïî8ºÓğşÂ1
+java:S1128",Remove this unused import 'java.nio.Buffer'.(î¦Ïî8ÏË¸üÃ1
+ã
+java:S6541'"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 67 to 64, Complexity from 18 to 14, Nesting Level from 5 to 2, Number of Variables from 18 to 6.(îæÙ8ÏË¸üÃ1

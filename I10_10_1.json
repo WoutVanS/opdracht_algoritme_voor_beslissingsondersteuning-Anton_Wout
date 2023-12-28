@@ -156,6 +156,26 @@
     {
       "ID": 20,
       "pickupLocation": [
+        "BufferPoint"
+      ],
+      "placeLocation": [
+        "stack0_1"
+      ],
+      "boxID": "B114"
+    },
+    {
+      "ID": 20,
+      "pickupLocation": [
+        "BufferPoint"
+      ],
+      "placeLocation": [
+        "stack0_2"
+      ],
+      "boxID": "B124"
+    },
+    {
+      "ID": 20,
+      "pickupLocation": [
         "stack0_2"
       ],
       "placeLocation": [
