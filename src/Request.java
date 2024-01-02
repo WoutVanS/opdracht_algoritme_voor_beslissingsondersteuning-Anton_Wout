@@ -134,6 +134,9 @@ public class Request {
     public boolean vehicleTakesBox() {
         for (String boxID : boxIDs) {
             if(!pickup.popBox(boxID))
+                System.out.print(pickup.getName() + " -> ");
+                pickup.printBoxes();
+
                 return false;
         }
         return true;

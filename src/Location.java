@@ -68,7 +68,7 @@ public abstract class Location {
     }
 
     public boolean popBox(String boxId) {
-        if (peekStack() != null && peekStack().equals(boxId)) {
+        if (peekStack().equals(boxId)) {
             boxes.pop();
             return true;
         } else return false;

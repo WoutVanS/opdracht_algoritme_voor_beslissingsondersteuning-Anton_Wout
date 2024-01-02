@@ -62,7 +62,7 @@ public class Network {
                 Location dropOff = request.getDropOff();
 
 
-                System.out.println("\ncurrent instruction: " + request);
+//                System.out.println("\ncurrent instruction: " + request);
 
                 if (dropOff.getBoxes().size() == Main.stackcapacity && dropOff instanceof BoxStack) {    // destination boxstack is full -> reallocate box from destiantion to make space
                     // check if top boxes of dropoff is from incoming request, if not reallocate them
@@ -95,7 +95,7 @@ public class Network {
 
                 if (request.getStatus() != Constants.statusRequest.INPROGRESS && !checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
                     List<Request> requestList = allocator.realocationAlgorithm(boxStacks, pickupLocationName, associatedBoxId);
-                    System.out.print("IDs ReallocationRequests: ");
+//                    System.out.print("IDs ReallocationRequests: ");
                     for (Request r: requestList) {
                         System.out.print(r.getID() + ", ");
                     }
@@ -131,14 +131,14 @@ public class Network {
                 request.setStartTime(Main.timeCount);                   //set the starttime for the handling of the request
                 request.setStatus(Constants.statusRequest.INPROGRESS);
 
-//                System.out.println("");
-//                System.out.println("------ Printing boxStacks ------");
-//                for (String loc : Main.locations.keySet()) {
-//                    System.out.print(loc + ": ");
-//                    Main.locations.get(loc).printBoxes();
-//                }
-//                System.out.println("--------------------------------");
-//                System.out.println("");
+                System.out.println("");
+                System.out.println("------ Printing boxStacks ------");
+                for (String loc : Main.locations.keySet()) {
+                    System.out.print(loc + ": ");
+                    Main.locations.get(loc).printBoxes();
+                }
+                System.out.println("--------------------------------");
+                System.out.println("");
             }
             return true;
         }

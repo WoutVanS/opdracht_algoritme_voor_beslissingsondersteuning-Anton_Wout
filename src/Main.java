@@ -34,11 +34,16 @@ public class Main {
 //    public static String filename = "I100_500_3_1_20b2";    // loopt vast op deze
 //    public static String filename = "I100_500_3_5_20";         // error op deze
 //    public static String filename = "I100_800_1_1_20b2";        // werkt sinds fix van requests met zelfde pickup en dropoff weggooien, maar loopt vast als wordt gesorteerd op dichtste vehicle
-    public static String filename = "I100_800_3_1_20b2";        // loopt vast
+//    public static String filename = "I100_800_3_1_20b2";        // loopt vast
 //    public static String filename = "I3_3_1_5";
 //    public static String filename = "I10_10_1";
+
+    private static String outputPath;
     public static boolean weirdFile = false;
     public static void main(String[] args) {
+
+        String fileName = args[0];
+        outputPath = args[1];
 
         BoxStacks boxStacks = new BoxStacks();
         BufferPoints bufferPoints = new BufferPoints();
@@ -52,7 +57,7 @@ public class Main {
         try {
 //            Object obj = parser.parse(new FileReader("I30_100_1_1_10.json"));
 //            Object obj = parser.parse(new FileReader("I20_20_2_2_8b2.json"));
-            String inputFileName = filename + ".json";
+            String inputFileName = fileName;
             Object obj = parser.parse(new FileReader(inputFileName));
 
             JSONObject jsonObject =  (JSONObject) obj;
@@ -174,6 +179,10 @@ public class Main {
 //            let all vehicles move closer to destination
             vehiclesWorking = vehicles.updateVehicles(requests);
 
+//            System.out.println("==============================");
+//            vehicles.printStatusVehicles();
+//            System.out.println("==============================");
+
             //run the network and assing requests to new vehicles
             networkState = network.run();
 
@@ -198,7 +207,7 @@ public class Main {
         System.out.println("total pooled requests: " + amountOfPooledRequest);
 
         // write output to file
-        String outputFileName = "output_" + filename + ".txt";
+        String outputFileName = outputPath;
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFileName))) {
             for (String str : outputArray) {
                 bw.write(str);

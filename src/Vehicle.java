@@ -88,7 +88,7 @@ public class Vehicle {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
-    public int getId(int id) {
+    public int getId() {
         return id;
     }
     public void setLoad(LinkedList<String> load) {
@@ -115,6 +115,11 @@ public class Vehicle {
     public Request getCurrentRequest() {
         return currentRequest;
     }
+
+    public Constants.statusVehicle getState() {
+        return state;
+    }
+
     public int getCapacity() {return capacity;}
 
     //METHODS
@@ -164,10 +169,7 @@ public class Vehicle {
 
     //when the unloaded vehicle moves to its pickup location
     public void handlePickup() {
-        state = Constants.statusVehicle.LOADING;
         //System.out.println("VehicleId: " + id + " is now loading");
-
-
         if(currentRequest.vehicleTakesBox()) {
             // remove boxes from stack
             System.out.println("vehicle " + id + " is loading boxes for request " + currentRequest.toString());
@@ -180,7 +182,12 @@ public class Vehicle {
             //give target coordinates to bring load to destination
             destX = currentRequest.getPlaceLocationXY()[0];
             destY = currentRequest.getPlaceLocationXY()[1];
-        }else state = Constants.statusVehicle.MOVINGTOPICKUP;
+        } else {
+            System.out.println("pickup failed, waiting for boxes on top do be picked up");
+            if (load.size() > 0) System.out.print("DEBUG current load vehicle " + id + ": " + getLoadToString());
+            state = Constants.statusVehicle.MOVINGTOPICKUP;       // dit zorgt voor infinte loop, waarin alle vehicles dit doen ipv een die wel box neemt, dan volgende, dan volgende
+        }
+        state = Constants.statusVehicle.LOADING;
     }
 
     public void finishLoading() {
@@ -251,6 +258,7 @@ public class Vehicle {
         //System.out.println("VehicleId: " + id + " is now moving to pickup");
 
         //give target coordinates
+        currentDest = r.getPickup();
         destX = r.getPickupLocationXY()[0];
         destY = r.getPickupLocationXY()[1];
 
@@ -287,6 +295,14 @@ public class Vehicle {
             destX = currentRequest.getPlaceLocationXY()[0];
             destY = currentRequest.getPlaceLocationXY()[1];
         }
+    }
+
+    public String getLoadToString() {
+        StringBuilder sb = new StringBuilder();
+        for (String str: load) {
+            sb.append(str).append(" ");
+        }
+        return sb.toString();
     }
 
 }

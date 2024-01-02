@@ -1,18 +1,33 @@
 
 v
 java:S2293
-"YReplace the type specification in this constructor call with the diamond operator ("<>").(«ßÔÛ8¥ÒÓùÂ1
+"YReplace the type specification in this constructor call with the diamond operator ("<>").(«ßÔÛ8“Ù‘Ë1
 v
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(«ßÔÛ8¥ÒÓùÂ1
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(«ßÔÛ8“Ù‘Ë1
+t
+java:S1192e"RDefine a constant instead of duplicating this literal "-> coordinates: (" 4 times.(À’È¢úÿÿÿÿ8Ôğ”‘Ë1
+ƒ
+java:S1192f"aDefine a constant instead of duplicating this literal "-> current request for vehicle: " 4 times.(ÉÍˆ­øÿÿÿÿ8”Ù‘Ë1
+k
+java:S1192d"IDefine a constant instead of duplicating this literal "Vehicle " 4 times.(÷°²Úûÿÿÿÿ8”Ù‘Ë1
 ’
-java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¨É¾¤ûÿÿÿÿ8¦ÒÓùÂ1
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(šß”ÿÿÿÿÿ8”Ù‘Ë1
+’
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¨É¾¤ûÿÿÿÿ8”Ù‘Ë1
 9
-java:S1700"Rename field "vehicles"(æ–¹—ÿÿÿÿÿ8¦ÒÓùÂ1
-G	java:S1067"+Replace this use of System.out by a logger.(ÇŒÑö8ºÒÓùÂ1
-G	java:S1068"+Replace this use of System.out by a logger.(Ù»–ˆ8»ÒÓùÂ1
-L	java:S1069"+Replace this use of System.out by a logger.(¼ëíöûÿÿÿÿ8»ÒÓùÂ1
-L	java:S106A"+Replace this use of System.out by a logger.(¶ÀİØşÿÿÿÿ8¼ÒÓùÂ1
-L	java:S106B"+Replace this use of System.out by a logger.(Æó”èùÿÿÿÿ8¼ÒÓùÂ1
-G	java:S106G"+Replace this use of System.out by a logger.(íê­…8¿ÒÓùÂ1
-Q
-java:S1068"4Remove this unused "amountOfVehicles" private field.(ÜÌ€ä8ÀÒÓùÂ1
+java:S1700"Rename field "vehicles"(æ–¹—ÿÿÿÿÿ8•Ù‘Ë1
+]	java:S125?"<This block of commented-out lines of code should be removed.(®ë«êúÿÿÿÿ8®Ú‘Ë1
+]	java:S125J"<This block of commented-out lines of code should be removed.(ÿƒ¼Ãøÿÿÿÿ8°Ú‘Ë1
+G	java:S106P"+Replace this use of System.out by a logger.(íê­…8´Ú‘Ë1
+L	java:S106d"+Replace this use of System.out by a logger.(÷°²Úûÿÿÿÿ8»Ú‘Ë1
+L	java:S106e"+Replace this use of System.out by a logger.(À’È¢úÿÿÿÿ8¼Ú‘Ë1
+L	java:S106f"+Replace this use of System.out by a logger.(ÉÍˆ­øÿÿÿÿ8¼Ú‘Ë1
+L	java:S106i"+Replace this use of System.out by a logger.(òï¾­øÿÿÿÿ8¾Ú‘Ë1
+L	java:S106j"+Replace this use of System.out by a logger.(À’È¢úÿÿÿÿ8¾Ú‘Ë1
+L	java:S106k"+Replace this use of System.out by a logger.(ÉÍˆ­øÿÿÿÿ8¿Ú‘Ë1
+L	java:S106n"+Replace this use of System.out by a logger.(¬ÚÑıüÿÿÿÿ8ÀÚ‘Ë1
+L	java:S106o"+Replace this use of System.out by a logger.(À’È¢úÿÿÿÿ8ÁÚ‘Ë1
+L	java:S106p"+Replace this use of System.out by a logger.(ÉÍˆ­øÿÿÿÿ8ÂÚ‘Ë1
+G	java:S106s"+Replace this use of System.out by a logger.(…»æå8œô”‘Ë1
+L	java:S106t"+Replace this use of System.out by a logger.(À’È¢úÿÿÿÿ8ô”‘Ë1
+L	java:S106u"+Replace this use of System.out by a logger.(ÉÍˆ­øÿÿÿÿ8 ô”‘Ë1

@@ -70,9 +70,9 @@ public class Allocator {
         int x = pickupBoxStack.getX();
         int y = pickupBoxStack.getY();
 
-//        nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
+        nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
 
-        nearestEmptyBoxStacks.sort(Comparator.comparingInt(l -> l.getBoxes().size()));      // sort on most empty boxes first
+//        nearestEmptyBoxStacks.sort(Comparator.comparingInt(l -> l.getBoxes().size()));      // sort on most empty boxes first
 
         int numberOfReallocations = pickupBoxStack.SearchDepthByID(associatedBoxId);
         System.out.println("number of relocations necessary: " + numberOfReallocations);
@@ -119,7 +119,7 @@ public class Allocator {
                 int ID = 6968000 + rand.nextInt(1000);
                 ArrayList<String> mirroredBoxes = new ArrayList<>();
                 if (Main.incomingBoxes.contains(boxIds.get(i))) {           // we only put boxes back in their place if they where not in the system at the beginning.
-                    System.out.println("Bringing box back " + boxIds.get(i));
+//                    System.out.println("Bringing box back " + boxIds.get(i));
                     mirroredBoxes.add(boxIds.get(i));
                     Request mirr = new Request(ID, newPickup, newDropOff, mirroredBoxes);
                     System.out.println(mirr);

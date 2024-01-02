@@ -60,10 +60,10 @@ public class Vehicles {
 
         Request splittedRequest = null;
         if(request.getBoxIDs().size() > availableVehicle.getCapacity()){                // check if the vehicle can carry all the boxses from the request. if not make a new request.
-            System.out.println("\n---------- dividing request ------------");
-            System.out.println("number of boxes in request: " + request.getBoxIDs().size());
-            System.out.println("capacity of vehicle: " + availableVehicle.getCapacity());
-            System.out.println("free vehicles: " + availableVehicles.size());
+//            System.out.println("\n---------- dividing request ------------");
+//            System.out.println("number of boxes in request: " + request.getBoxIDs().size());
+//            System.out.println("capacity of vehicle: " + availableVehicle.getCapacity());
+//            System.out.println("free vehicles: " + availableVehicles.size());
 
 
             int newID = request.getID() * 100 + 1;                                      // add 001 to the new request to indicate that it's been divided
@@ -71,8 +71,8 @@ public class Vehicles {
             List<String> beforeIndex = request.getBoxIDs().subList(0, availableVehicle.getCapacity());
             List<String> afterIndex = request.getBoxIDs().subList(availableVehicle.getCapacity(), request.getBoxIDs().size());
 
-            System.out.println("request Box list for vehicle: " + beforeIndex.toString());
-            System.out.println("new request Box list: " + afterIndex.toString());
+//            System.out.println("request Box list for vehicle: " + beforeIndex.toString());
+//            System.out.println("new request Box list: " + afterIndex.toString());
 
             request.setBoxIDs(new ArrayList<>(beforeIndex));
             splittedRequest = new Request(newID, request.getPickup(), request.getDropOff(), new ArrayList<>(afterIndex));
@@ -92,5 +92,30 @@ public class Vehicles {
             if(!v.isAvailible()) vehiclesWorking = true;
         }
         return  vehiclesWorking;
+    }
+
+    public void printStatusVehicles() {
+        for (Vehicle v: vehicles) {
+            if (v.getState() == Constants.statusVehicle.MOVING) {    //if vehicle is moving, that means it has a task, so it has to move
+                System.out.println("Vehicle " + v.getId() + " is currently moving to destination: " + v.getDestination().getName() + " with load: " + v.getLoadToString());
+                System.out.println("-> coordinates: (" + v.getX() + "," + v.getY() + ")");
+                System.out.println("-> current request for vehicle: " + v.getCurrentRequest().toString());
+            }
+            else if (v.getState() == Constants.statusVehicle.MOVINGTOPICKUP) {
+                System.out.println("Vehicle " + v.getId() + " is currently moving to pickup: " + v.getDestination().getName() + " with load: " + v.getLoadToString());
+                System.out.println("-> coordinates: (" + v.getX() + "," + v.getY() + ")");
+                System.out.println("-> current request for vehicle: " + v.getCurrentRequest().toString());
+            }
+            else if (v.getState() == Constants.statusVehicle.UNLOADING) {    //if vehicle is loading, update the counter
+                System.out.println("Vehicle " + v.getId() + " is currently unloading load: " + v.getLoadToString());
+                System.out.println("-> coordinates: (" + v.getX() + "," + v.getY() + ")");
+                System.out.println("-> current request for vehicle: " + v.getCurrentRequest().toString());
+            }
+            else if (v.getState() == Constants.statusVehicle.LOADING) {    //if vehicle is loading, update the counter
+                System.out.println("Vehicle " + v.getId() + " is currently loading: " + v.getLoadToString());
+                System.out.println("-> coordinates: (" + v.getX() + "," + v.getY() + ")");
+                System.out.println("-> current request for vehicle: " + v.getCurrentRequest().toString());
+            }
+        }
     }
 }
