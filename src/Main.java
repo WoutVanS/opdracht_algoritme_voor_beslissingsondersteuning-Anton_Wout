@@ -32,9 +32,9 @@ public class Main {
 //    public static String filename = "I100_120_2_2_8b2";       // very congested datastack, risk of box beingn full, werkt
 //    public static String filename = "I100_50_2_2_8b2";              // loopt vast als we sorteren op leegste boxstacks, werkt anders wel nu
 //    public static String filename = "I100_500_3_1_20b2";    // loopt vast op deze
-//    public static String filename = "I100_500_3_5_20";         // error op deze
+  //  public static String filename = "I100_500_3_5_20.json";         // error op deze
 //    public static String filename = "I100_800_1_1_20b2";        // werkt sinds fix van requests met zelfde pickup en dropoff weggooien, maar loopt vast als wordt gesorteerd op dichtste vehicle
-//    public static String filename = "I100_800_3_1_20b2";        // loopt vast
+    public static String filename = "I100_800_3_1_20b2.json";        // loopt vast
 //    public static String filename = "I3_3_1_5";
 //    public static String filename = "I10_10_1";
 
@@ -42,8 +42,8 @@ public class Main {
     public static boolean weirdFile = false;
     public static void main(String[] args) {
 
-        String fileName = args[0];
-        outputPath = args[1];
+        String fileName = filename;
+        //outputPath = args[1];
 
         BoxStacks boxStacks = new BoxStacks();
         BufferPoints bufferPoints = new BufferPoints();

@@ -149,6 +149,8 @@ public class Vehicle {
                 loadingCount = 0;
                 finishLoading();
                 System.out.print("load vehicle after loading: ");
+                if (load.isEmpty())
+                    System.err.println("load is zero but not posible");
                 for (int i = 0; i < load.size(); i++) {
                     System.out.print(load.get(i) + "; ");
                 }
