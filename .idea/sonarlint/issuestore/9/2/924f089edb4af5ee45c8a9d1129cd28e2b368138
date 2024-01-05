@@ -1,89 +1,88 @@
 
 ƒ
-java:S1319"fThe type of "locations" should be an interface such as "Map" rather than the implementation "HashMap".(ªÀı…8Óç•ŒË1
+java:S1319"fThe type of "locations" should be an interface such as "Map" rather than the implementation "HashMap".(ªÀı…8³Ë¼ŞÌ1
 
-java:S1319"kThe type of "outputArray" should be an interface such as "List" rather than the implementation "ArrayList".(ó”ìÒüÿÿÿÿ8Ôç•ŒË1
+java:S1319"kThe type of "outputArray" should be an interface such as "List" rather than the implementation "ArrayList".(ó”ìÒüÿÿÿÿ8³Ë¼ŞÌ1
 Œ
-java:S1319"jThe type of "incomingBoxes" should be an interface such as "Set" rather than the implementation "HashSet".(€§…Éüÿÿÿÿ8Ôç•ŒË1
+java:S1319"jThe type of "incomingBoxes" should be an interface such as "Set" rather than the implementation "HashSet".(€§…Éüÿÿÿÿ8³Ë¼ŞÌ1
 }
-java:S1104"[Make loadingDuration a static final constant or non-public and provide accessors if needed.(ÿ·€Ÿşÿÿÿÿ8Õç•ŒË1
+java:S1104"[Make loadingDuration a static final constant or non-public and provide accessors if needed.(ÿ·€Ÿşÿÿÿÿ8·Ë¼ŞÌ1
 r
-java:S1104"UMake timeCount a static final constant or non-public and provide accessors if needed.(ÉïÍá8Õç•ŒË1
+java:S1104"UMake timeCount a static final constant or non-public and provide accessors if needed.(ÉïÍá8¹Ë¼ŞÌ1
 r
-java:S1104"UMake locations a static final constant or non-public and provide accessors if needed.(ªÀı…8Õç•ŒË1
+java:S1104"UMake locations a static final constant or non-public and provide accessors if needed.(ªÀı…8¹Ë¼ŞÌ1
 y
-java:S1104"WMake outputArray a static final constant or non-public and provide accessors if needed.(ó”ìÒüÿÿÿÿ8Õç•ŒË1
+java:S1104"WMake outputArray a static final constant or non-public and provide accessors if needed.(ó”ìÒüÿÿÿÿ8¹Ë¼ŞÌ1
 {
-java:S1104"YMake incomingBoxes a static final constant or non-public and provide accessors if needed.(€§…Éüÿÿÿÿ8Õç•ŒË1
+java:S1104"YMake incomingBoxes a static final constant or non-public and provide accessors if needed.(€§…Éüÿÿÿÿ8¹Ë¼ŞÌ1
 v
-java:S1104"YMake stackcapacity a static final constant or non-public and provide accessors if needed.(•Óİº8Õç•ŒË1
+java:S1104"YMake stackcapacity a static final constant or non-public and provide accessors if needed.(•Óİº8¹Ë¼ŞÌ1
 z
-java:S1104"XMake vehiclespeed a static final constant or non-public and provide accessors if needed.(ÂÜÛ‡úÿÿÿÿ8Õç•ŒË1
+java:S1104"XMake vehiclespeed a static final constant or non-public and provide accessors if needed.(ÂÜÛ‡úÿÿÿÿ8¹Ë¼ŞÌ1
 |
-java:S1104"_Make amountOfRelocations a static final constant or non-public and provide accessors if needed.(‘€¤8Õç•ŒË1
+java:S1104"_Make amountOfRelocations a static final constant or non-public and provide accessors if needed.(‘€¤8¹Ë¼ŞÌ1
 ƒ
-java:S1104"aMake amountOfPooledRequest a static final constant or non-public and provide accessors if needed.(Ğ“ºÑıÿÿÿÿ8Õç•ŒË1
+java:S1104"aMake amountOfPooledRequest a static final constant or non-public and provide accessors if needed.(Ğ“ºÑıÿÿÿÿ8¹Ë¼ŞÌ1
 r
-java:S1104*"UMake weirdFile a static final constant or non-public and provide accessors if needed.(Òãéó8Õç•ŒË1
+java:S1104,"UMake weirdFile a static final constant or non-public and provide accessors if needed.(Òãéó8¹Ë¼ŞÌ1
 W
-java:S1444"5Make this "public static loadingDuration" field final(ÿ·€Ÿşÿÿÿÿ8Öç•ŒË1
+java:S1444"5Make this "public static loadingDuration" field final(ÿ·€Ÿşÿÿÿÿ8ºË¼ŞÌ1
 L
-java:S1444"/Make this "public static timeCount" field final(ÉïÍá8Öç•ŒË1
+java:S1444"/Make this "public static timeCount" field final(ÉïÍá8ºË¼ŞÌ1
 L
-java:S1444"/Make this "public static locations" field final(ªÀı…8Öç•ŒË1
+java:S1444"/Make this "public static locations" field final(ªÀı…8ºË¼ŞÌ1
 S
-java:S1444"1Make this "public static outputArray" field final(ó”ìÒüÿÿÿÿ8Öç•ŒË1
+java:S1444"1Make this "public static outputArray" field final(ó”ìÒüÿÿÿÿ8ºË¼ŞÌ1
 U
-java:S1444"3Make this "public static incomingBoxes" field final(€§…Éüÿÿÿÿ8Öç•ŒË1
+java:S1444"3Make this "public static incomingBoxes" field final(€§…Éüÿÿÿÿ8ºË¼ŞÌ1
 P
-java:S1444"3Make this "public static stackcapacity" field final(•Óİº8Öç•ŒË1
+java:S1444"3Make this "public static stackcapacity" field final(•Óİº8ºË¼ŞÌ1
 T
-java:S1444"2Make this "public static vehiclespeed" field final(ÂÜÛ‡úÿÿÿÿ8Öç•ŒË1
+java:S1444"2Make this "public static vehiclespeed" field final(ÂÜÛ‡úÿÿÿÿ8ºË¼ŞÌ1
 V
-java:S1444"9Make this "public static amountOfRelocations" field final(‘€¤8Öç•ŒË1
+java:S1444"9Make this "public static amountOfRelocations" field final(‘€¤8ºË¼ŞÌ1
 ]
-java:S1444";Make this "public static amountOfPooledRequest" field final(Ğ“ºÑıÿÿÿÿ8×ç•ŒË1
+java:S1444";Make this "public static amountOfPooledRequest" field final(Ğ“ºÑıÿÿÿÿ8»Ë¼ŞÌ1
 L
-java:S1444*"/Make this "public static weirdFile" field final(Òãéó8×ç•ŒË1
+java:S1444,"/Make this "public static weirdFile" field final(Òãéó8»Ë¼ŞÌ1
 v
-java:S1450)"YRemove the "outputPath" field and declare it as a local variable in the relevant methods.(ãìÒ‹8¿ë Ë1
+java:S1450+"YRemove the "outputPath" field and declare it as a local variable in the relevant methods.(ãìÒ‹8šÕ¼ŞÌ1
 :
-java:S2386"Make this member "protected".(ªÀı…8ßç•ŒË1
+java:S2386"Make this member "protected".(ªÀı…8œÕ¼ŞÌ1
 ?
-java:S2386"Make this member "protected".(ó”ìÒüÿÿÿÿ8ßç•ŒË1
+java:S2386"Make this member "protected".(ó”ìÒüÿÿÿÿ8œÕ¼ŞÌ1
 ?
-java:S2386"Make this member "protected".(€§…Éüÿÿÿÿ8ßç•ŒË1
+java:S2386"Make this member "protected".(€§…Éüÿÿÿÿ8œÕ¼ŞÌ1
 T
-java:S1135"2Complete the task associated to this TODO comment.(Àå·çøÿÿÿÿ8áç•ŒË1
-X	java:S125&"<This block of commented-out lines of code should be removed.(¾éÂë8¨ÇãŒË1
+java:S1135"2Complete the task associated to this TODO comment.(Àå·çøÿÿÿÿ8¡Õ¼ŞÌ1
+X	java:S125("<This block of commented-out lines of code should be removed.(¾éÂë8ÒÖ½ŞÌ1
 o
-java:S3776+"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(Çµí‘8æç•ŒË1
+java:S3776-"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(Çµí‘8¯Õ¼ŞÌ1
 D
-java:S14815"'Remove this unused "jo" local variable.(¶˜Ü“8èç•ŒË1
-X	java:S125:"<This block of commented-out lines of code should be removed.(×ÿÕÕ8êç•ŒË1
-L	java:S106A"+Replace this use of System.out by a logger.(ò’˜ƒûÿÿÿÿ8ëç•ŒË1
-L	java:S106C"+Replace this use of System.out by a logger.(‘Ö—ûÿÿÿÿ8ìç•ŒË1
-L	java:S106F"+Replace this use of System.out by a logger.(Şêôöüÿÿÿÿ8ìç•ŒË1
-L	java:S106I"+Replace this use of System.out by a logger.(Éí’Şıÿÿÿÿ8íç•ŒË1
-G	java:S106L"+Replace this use of System.out by a logger.(ÏóÙ8íç•ŒË1
-X	java:S125w"<This block of commented-out lines of code should be removed.(•Ï‡ƒ8óç•ŒË1
-M	java:S106Ÿ"+Replace this use of System.out by a logger.(ï»Ùìùÿÿÿÿ8úç•ŒË1
-H	java:S106¨"+Replace this use of System.out by a logger.(ìí­Ç8ûç•ŒË1
-M	java:S106©"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8ûç•ŒË1
-M	java:S106­"+Replace this use of System.out by a logger.(ã‘·ÿşÿÿÿÿ8ûç•ŒË1
-M	java:S106¶"+Replace this use of System.out by a logger.(‘õ¼©ùÿÿÿÿ8üç•ŒË1
-M	java:S106¸"+Replace this use of System.out by a logger.(‘õ¼©ùÿÿÿÿ8ıç•ŒË1
-H	java:S106À"+Replace this use of System.out by a logger.(¸÷Òš8ıç•ŒË1
-M	java:S106Â"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8ıç•ŒË1
-H	java:S106Ã"+Replace this use of System.out by a logger.(Ø“©Ì8şç•ŒË1
-G	java:S106Å"+Replace this use of System.out by a logger.(—×™8şç•ŒË1
-H	java:S106È"+Replace this use of System.out by a logger.(òÔÇÍ8şç•ŒË1
-M	java:S106É"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8şç•ŒË1
-M	java:S106Ë"+Replace this use of System.out by a logger.(Áû²†ùÿÿÿÿ8şç•ŒË1
-M	java:S106Í"+Replace this use of System.out by a logger.(“õ¥Ïıÿÿÿÿ8‚è•ŒË1
-M	java:S106Ï"+Replace this use of System.out by a logger.(½ÏÌÑûÿÿÿÿ8ÇÏË1
-G	java:S106Ø"+Replace this use of System.out by a logger.(–ö‚}8ËúÏË1
+java:S14817"'Remove this unused "jo" local variable.(¶˜Ü“8µÕ¼ŞÌ1
+X	java:S125<"<This block of commented-out lines of code should be removed.(×ÿÕÕ8ºÕ¼ŞÌ1
+L	java:S106C"+Replace this use of System.out by a logger.(ò’˜ƒûÿÿÿÿ8½Õ¼ŞÌ1
+L	java:S106E"+Replace this use of System.out by a logger.(‘Ö—ûÿÿÿÿ8¿Õ¼ŞÌ1
+L	java:S106H"+Replace this use of System.out by a logger.(Şêôöüÿÿÿÿ8ÄÕ¼ŞÌ1
+L	java:S106K"+Replace this use of System.out by a logger.(Éí’Şıÿÿÿÿ8ÅÕ¼ŞÌ1
+G	java:S106N"+Replace this use of System.out by a logger.(ÏóÙ8ÆÕ¼ŞÌ1
+X	java:S125y"<This block of commented-out lines of code should be removed.(•Ï‡ƒ8ÛÕ¼ŞÌ1
+M	java:S106¡"+Replace this use of System.out by a logger.(ï»Ùìùÿÿÿÿ8Ö¼ŞÌ1
+H	java:S106ª"+Replace this use of System.out by a logger.(ìí­Ç8ƒÖ¼ŞÌ1
+M	java:S106«"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8…Ö¼ŞÌ1
+M	java:S106¯"+Replace this use of System.out by a logger.(ã‘·ÿşÿÿÿÿ8“Ö¼ŞÌ1
+Y	java:S125¸"<This block of commented-out lines of code should be removed.(ìÇÌ±8”Ö¼ŞÌ1
+H	java:S106Â"+Replace this use of System.out by a logger.(¸÷Òš8—Ö¼ŞÌ1
+M	java:S106Ä"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8—Ö¼ŞÌ1
+H	java:S106Å"+Replace this use of System.out by a logger.(Ø“©Ì8—Ö¼ŞÌ1
+G	java:S106Ç"+Replace this use of System.out by a logger.(—×™8šÖ¼ŞÌ1
+H	java:S106Ê"+Replace this use of System.out by a logger.(òÔÇÍ8œÖ¼ŞÌ1
+M	java:S106Ë"+Replace this use of System.out by a logger.(ŞÒ—üÿÿÿÿ8œÖ¼ŞÌ1
+M	java:S106Í"+Replace this use of System.out by a logger.(Áû²†ùÿÿÿÿ8Ö¼ŞÌ1
+M	java:S106Ï"+Replace this use of System.out by a logger.(“õ¥Ïıÿÿÿÿ8Ö¼ŞÌ1
+M	java:S106Ñ"+Replace this use of System.out by a logger.(½ÏÌÑûÿÿÿÿ8Ö¼ŞÌ1
+G	java:S106Ú"+Replace this use of System.out by a logger.(–ö‚}8©Ö¼ŞÌ1
 I
-java:S1128",Remove this unused import 'java.nio.Buffer'.(î¦Ïî8Í¿¢Ë1
+java:S1128",Remove this unused import 'java.nio.Buffer'.(î¦Ïî8°Ö¼ŞÌ1
 ä
-java:S6541+"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 125 to 64, Complexity from 15 to 14, Nesting Level from 3 to 2, Number of Variables from 58 to 6.(Çµí‘8„è•ŒË1
+java:S6541-"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 122 to 64, Complexity from 15 to 14, Nesting Level from 3 to 2, Number of Variables from 58 to 6.(Çµí‘8±Ö¼ŞÌ1

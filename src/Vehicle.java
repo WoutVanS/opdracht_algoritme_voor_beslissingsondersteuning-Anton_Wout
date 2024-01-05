@@ -150,7 +150,7 @@ public class Vehicle {
                 finishLoading();
                 System.out.print("load vehicle after loading: ");
                 if (load.isEmpty())
-                    System.err.println("load is zero but not posible");
+                    System.err.println("load is zero but not posible");         // komt echt nog veel hierin
                 for (int i = 0; i < load.size(); i++) {
                     System.out.print(load.get(i) + "; ");
                 }

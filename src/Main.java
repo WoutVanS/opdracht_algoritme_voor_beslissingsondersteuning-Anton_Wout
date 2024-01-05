@@ -32,18 +32,32 @@ public class Main {
 //    public static String filename = "I100_120_2_2_8b2";       // very congested datastack, risk of box beingn full, werkt
 //    public static String filename = "I100_50_2_2_8b2";              // loopt vast als we sorteren op leegste boxstacks, werkt anders wel nu
 //    public static String filename = "I100_500_3_1_20b2";    // loopt vast op deze
-  //  public static String filename = "I100_500_3_5_20.json";         // error op deze
+//    public static String filename = "I100_500_3_5_20";         // error op deze
 //    public static String filename = "I100_800_1_1_20b2";        // werkt sinds fix van requests met zelfde pickup en dropoff weggooien, maar loopt vast als wordt gesorteerd op dichtste vehicle
-    public static String filename = "I100_800_3_1_20b2.json";        // loopt vast
+//    public static String filename = "I100_800_3_1_20b2";        // loopt vast
 //    public static String filename = "I3_3_1_5";
 //    public static String filename = "I10_10_1";
 
     private static String outputPath;
     public static boolean weirdFile = false;
+    public static ArrayList<Request> inputRequests = new ArrayList<>();
     public static void main(String[] args) {
 
-        String fileName = filename;
-        //outputPath = args[1];
+        //String fileName = args[0];
+        outputPath = args[1];
+
+//    String fileName = "I100_120_2_2_8b2.json";       // geeft error message doorheen code, maar runt wel volledig
+//    String fileName = "I100_50_2_2_8b2.json";              // loopt vast als we sorteren op leegste boxstacks, werkt anders wel nu
+//    String fileName = "I100_500_3_1_20b2.json";    // werkt
+//    String fileName = "I100_500_3_5_20.json";         // werkt
+//    String fileName = "I100_800_1_1_20b2.json";        // werkt sinds fix van requests met zelfde pickup en dropoff weggooien, maar loopt vast als wordt gesorteerd op dichtste vehicle
+//    String fileName = "I100_800_3_1_20b2.json";        // errort
+//    String fileName = "I20_20_2_2_8b2.json";
+//    String fileName = "I30_100_1_1_10.json";
+//    String fileName = "I30_100_3_3_10.json";
+        String fileName = "I30_200_3_3_10.json";
+//    String fileName = "I3_3_1_5.json";
+//    String fileName = "I10_10_1.json";
 
         BoxStacks boxStacks = new BoxStacks();
         BufferPoints bufferPoints = new BufferPoints();
@@ -60,7 +74,7 @@ public class Main {
             String inputFileName = fileName;
             Object obj = parser.parse(new FileReader(inputFileName));
 
-            JSONObject jsonObject =  (JSONObject) obj;
+            JSONObject jsonObject = (JSONObject) obj;
 
             System.out.println("============ Network parameters ============");
             loadingDuration = Integer.parseInt(jsonObject.get("loadingduration").toString());
@@ -131,9 +145,9 @@ public class Main {
                 int id = Integer.parseInt(request.get("ID").toString());
 
                 String pickupLocation = request.get("pickupLocation").toString();
-                if (weirdFile) pickupLocation = pickupLocation.substring(2, pickupLocation.length()-2);
+                if (weirdFile) pickupLocation = pickupLocation.substring(2, pickupLocation.length() - 2);
                 String placeLocation = request.get("placeLocation").toString();
-                if (weirdFile) placeLocation = placeLocation.substring(2, placeLocation.length()-2);
+                if (weirdFile) placeLocation = placeLocation.substring(2, placeLocation.length() - 2);
                 String boxID = request.get("boxID").toString();
 
                 Location pickup = locations.get(pickupLocation);
@@ -143,7 +157,9 @@ public class Main {
                     incomingBoxes.add(boxID);
                 }
 
-                requests.add(new Request(id, pickup, place, boxID));
+                Request r = new Request(id, pickup, place, boxID);
+                requests.add(r);
+                inputRequests.add(r);
             }
 
         } catch (IOException | ParseException e) {
@@ -158,7 +174,7 @@ public class Main {
         // preprocess the requests
         System.out.println("\n========== preprocessing requests ==========");
         int sum = 0;
-        for (Vehicle v: vehicles.getVehicles()) {
+        for (Vehicle v : vehicles.getVehicles()) {
             sum += v.getCapacity();
         }
         if (sum > vehicles.getAmountOfVehicles()) {     // don't bother making pooled requests if all the vehicles have a capacity of 1
@@ -174,7 +190,7 @@ public class Main {
         timeCount = 0;
         boolean networkState = true;
         boolean vehiclesWorking = true;
-        while( networkState || vehiclesWorking) {
+        while (networkState || vehiclesWorking) {
 
 //            let all vehicles move closer to destination
             vehiclesWorking = vehicles.updateVehicles(requests);
@@ -217,5 +233,34 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // check result
+        int wrongs = 0;
+        for (Request request : inputRequests) {
+            String boxID = request.getBoxID();
+            if (!incomingBoxes.contains(boxID)) continue;
+            Location dropOffStorage = request.getDropOff();
+
+
+            if (!Main.locations.get(dropOffStorage.getName()).getBoxes().contains(boxID)) {
+                System.out.println("FAIL: Box with id " + boxID + " wasn't located on storage with name " + dropOffStorage.getName());
+                wrongs++;
+            }
+
+//            if(!currentStorage.equals(dropOffStorage)){
+//                System.out.println("FAIL: Box with id " + boxID + " wasn't located on storage with name " + dropOffStorage.getName() + " but on " + currentStorage.getName());
+//                wrongs++;
+//            }
+            else {
+                System.out.println("SUCCESS: Box with id " + boxID + " was located in the right storage");
+            }
+        }
+
+        if (wrongs == 0) {
+            System.out.println("No errors found during processing, all boxes located in the right storages");
+        } else {
+            System.out.println("Found " + wrongs + "/" + inputRequests.size() + " boxes that are not located in the right storage");
+        }
+
     }
 }
