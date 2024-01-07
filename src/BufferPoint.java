@@ -12,6 +12,13 @@ public class BufferPoint extends Location{
     public boolean notFull() {
         return true;
     }
+
+    public boolean popBox(String boxId) {
+        if (boxes.contains(boxId)) {
+            boxes.remove(boxId);
+            return true;
+        } else return false;
+    }
 }
 
 //    private int id;

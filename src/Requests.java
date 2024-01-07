@@ -209,6 +209,29 @@ public class Requests {
 
     }
 
+    public void sortForFixings() {
+        for (int i = 0; i < requests.size(); i++) {
+            Request first = requests.get(i);
+            int indexFirst = requests.indexOf(first);
+            for (int j = i; j < requests.size(); j++) {
+                Request second = requests.get(j);
+                int indexSecond = requests.indexOf(second);
+                // fist is pickup -> make sure it is handeld first to avoid reallocations
+                if (first.getPlaceLocation().equals(second.getPickupLocation())) {
+                    requests.remove(second);
+                    requests.remove(first);
+                    requests.add(indexSecond, first);
+                    requests.add(indexFirst, first);
+                }
+            }
+        }
+
+        System.out.println("new order correcting requests");
+        for (Request r: requests) {
+            System.out.println(r.toString());
+        }
+    }
+
 //    public void updateFutureRequests(List<Request> newRequests) {        // fout gevonden: elke reallocation heeft maar 1 box per keer -> pooledRequests worden nooit geupdate
 //        HashMap<String, String> newLocation = new HashMap<>();          // opgelost door eerst de boxIds te splitsen en allemaal te overlopen
 //

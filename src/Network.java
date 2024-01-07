@@ -131,14 +131,14 @@ public class Network {
                 request.setStartTime(Main.timeCount);                   //set the starttime for the handling of the request
                 request.setStatus(Constants.statusRequest.INPROGRESS);
 
-                System.out.println("");
-                System.out.println("------ Printing boxStacks ------");
-                for (String loc : Main.locations.keySet()) {
-                    System.out.print(loc + ": ");
-                    Main.locations.get(loc).printBoxes();
-                }
-                System.out.println("--------------------------------");
-                System.out.println("");
+//                System.out.println("");
+//                System.out.println("------ Printing boxStacks ------");
+//                for (String loc : Main.locations.keySet()) {
+//                    System.out.print(loc + ": ");
+//                    Main.locations.get(loc).printBoxes();
+//                }
+//                System.out.println("--------------------------------");
+//                System.out.println("");
             }
             return true;
         }

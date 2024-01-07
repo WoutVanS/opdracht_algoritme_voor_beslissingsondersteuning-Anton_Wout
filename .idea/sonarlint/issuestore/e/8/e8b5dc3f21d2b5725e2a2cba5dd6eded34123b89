@@ -1,23 +1,32 @@
 
 ’
-java:S1319n"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ó»°Õûÿÿÿÿ8ç×‹Ë1
-r	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë´Ò±ûÿÿÿÿ8è×‹Ë1
-m	java:S117w"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™ò®§8è×‹Ë1
+java:S1319k"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ó»°Õûÿÿÿÿ8ç×‹Ë1
+r	java:S117\"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ë´Ò±ûÿÿÿÿ8è×‹Ë1
+m	java:S117t"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™ò®§8è×‹Ë1
 m
-java:S1104	"PMake rand a static final constant or non-public and provide accessors if needed.(”€í8è×‹Ë1
+java:S1104"PMake rand a static final constant or non-public and provide accessors if needed.(”€í8è×‹Ë1
 £
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ì¯şÇùÿÿÿÿ8µ‘×‹Ë1
-L	java:S106"+Replace this use of System.err by a logger.(õœşèøÿÿÿÿ8»‘×‹Ë1
-L	java:S106"+Replace this use of System.err by a logger.(½«ì¿üÿÿÿÿ8¼‘×‹Ë1
-W	java:S125("<This block of commented-out lines of code should be removed.(í™)8¾‘×‹Ë1
-L	java:S1067"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8¿‘×‹Ë1
-G	java:S1068"+Replace this use of System.out by a logger.(œ±¹8¿‘×‹Ë1
-G	java:S106N"+Replace this use of System.out by a logger.(ÖÉğ8Á‘×‹Ë1
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ì¯şÇùÿÿÿÿ8µ‘×‹Ë1
+L	java:S106"+Replace this use of System.err by a logger.(õœşèøÿÿÿÿ8»‘×‹Ë1
+L	java:S106"+Replace this use of System.err by a logger.(½«ì¿üÿÿÿÿ8¼‘×‹Ë1
+W
+java:S1854D"5Remove this useless assignment to local variable "y".(Õë¸óşÿÿÿÿ8£óÛÚÍ1
+W
+java:S1854C"5Remove this useless assignment to local variable "x".(¥‘³óşÿÿÿÿ8¤óÛÚÍ1
+W	java:S125%"<This block of commented-out lines of code should be removed.(í™)8¾‘×‹Ë1
+L	java:S1064"+Replace this use of System.out by a logger.(ªÓ¼áşÿÿÿÿ8¿‘×‹Ë1
+G	java:S1065"+Replace this use of System.out by a logger.(œ±¹8¿‘×‹Ë1
+H
+java:S1481C"&Remove this unused "x" local variable.(¥‘³óşÿÿÿÿ8«óÛÚÍ1
+H
+java:S1481D"&Remove this unused "y" local variable.(Õë¸óşÿÿÿÿ8¬óÛÚÍ1
+]	java:S125F"<This block of commented-out lines of code should be removed.(•ªªúûÿÿÿÿ8¬óÛÚÍ1
+G	java:S106K"+Replace this use of System.out by a logger.(ÖÉğ8Á‘×‹Ë1
 S
-java:S2696O"6Make the enclosing method "static" or remove this set.(úïª8Á‘×‹Ë1
-L	java:S106W"+Replace this use of System.err by a logger.(œĞàõùÿÿÿÿ8Â‘×‹Ë1
+java:S2696L"6Make the enclosing method "static" or remove this set.(úïª8Á‘×‹Ë1
+L	java:S106T"+Replace this use of System.err by a logger.(œĞàõùÿÿÿÿ8Â‘×‹Ë1
 K
-java:S5413f")Verify that "remove()" is used correctly.(Ó««‚şÿÿÿÿ8Â‘×‹Ë1
-L	java:S106d"+Replace this use of System.out by a logger.(¶®éÓøÿÿÿÿ8Å‘×‹Ë1
-]	java:S125z"<This block of commented-out lines of code should be removed.(àÍ‡Ÿÿÿÿÿÿ8Êî¤Ë1
-G	java:S106}"+Replace this use of System.out by a logger.(îı¤8È‘×‹Ë1
+java:S5413c")Verify that "remove()" is used correctly.(Ó««‚şÿÿÿÿ8Â‘×‹Ë1
+L	java:S106a"+Replace this use of System.out by a logger.(¶®éÓøÿÿÿÿ8Å‘×‹Ë1
+]	java:S125w"<This block of commented-out lines of code should be removed.(àÍ‡Ÿÿÿÿÿÿ8Êî¤Ë1
+G	java:S106z"+Replace this use of System.out by a logger.(îı¤8È‘×‹Ë1

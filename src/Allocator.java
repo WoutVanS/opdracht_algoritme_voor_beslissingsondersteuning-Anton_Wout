@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Allocator {
     //constructor
@@ -70,9 +67,9 @@ public class Allocator {
         int x = pickupBoxStack.getX();
         int y = pickupBoxStack.getY();
 
-        nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
+//        nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
 
-//        nearestEmptyBoxStacks.sort(Comparator.comparingInt(l -> l.getBoxes().size()));      // sort on most empty boxes first
+        nearestEmptyBoxStacks.sort(Comparator.comparingInt(l -> l.getBoxes().size()));      // sort on most empty boxes first
 
         int numberOfReallocations = pickupBoxStack.SearchDepthByID(associatedBoxId);
         System.out.println("number of relocations necessary: " + numberOfReallocations);
@@ -127,6 +124,7 @@ public class Allocator {
                 }
             }
         }
+        Collections.reverse(mirroredRequests);
         return mirroredRequests;
     }
 }

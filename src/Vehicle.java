@@ -150,22 +150,47 @@ public class Vehicle {
                 finishLoading();
                 System.out.print("load vehicle after loading: ");
                 if (load.isEmpty())
-                    System.err.println("load is zero but not posible");         // komt echt nog veel hierin
+                    System.err.println("load is zero but not posible " + currentRequest.toString());         // komt echt nog veel hierin
                 for (int i = 0; i < load.size(); i++) {
                     System.out.print(load.get(i) + "; ");
                 }
                 System.out.println(" ");
             }
         }
+        else if (state == Constants.statusVehicle.BUSSYWAITINGFORPICKUP) {    // location is occupied, so wait
+            loadingCount++;
+            if (loadingCount == Main.loadingDuration+1) {
+                loadingCount = 0;
+                state = Constants.statusVehicle.MOVINGTOPICKUP;
+                arrivedAtDest();
+            }
+        }
+        else if (state == Constants.statusVehicle.BUSSYWAITINGFORDROPOFF) {    // location is occupieds, so wait
+            loadingCount++;
+            if (loadingCount == Main.loadingDuration+1) {
+                loadingCount = 0;
+                state = Constants.statusVehicle.MOVING;
+                arrivedAtDest();
+            }
+        }
     }
 
     //function called when vehicle arrives at destination
     public void arrivedAtDest() {
-        if (state == Constants.statusVehicle.MOVING) {
-            handleDropOff();
+        if (!currentDest.isBussy) {                             // no other vehicle is using boxStack
+            currentDest.isBussy = true;
+            if (state == Constants.statusVehicle.MOVING) {
+                handleDropOff();
+            } else if (state == Constants.statusVehicle.MOVINGTOPICKUP) {
+                handlePickup();
+            }
         }
-        else if (state == Constants.statusVehicle.MOVINGTOPICKUP) {
-            handlePickup();
+        else {
+            if (state == Constants.statusVehicle.MOVING) {
+                state = Constants.statusVehicle.BUSSYWAITINGFORDROPOFF;
+            } else if (state == Constants.statusVehicle.MOVINGTOPICKUP) {
+                state = Constants.statusVehicle.BUSSYWAITINGFORPICKUP;
+            }
         }
     }
 
@@ -179,6 +204,7 @@ public class Vehicle {
             // load boxes
             for (String boxId : currentRequest.getBoxIDs()) {
                 load.push(boxId);
+                System.out.println("Loading box: " + boxId + " on vehicle: " + id);
             }
 
             //give target coordinates to bring load to destination
@@ -194,6 +220,7 @@ public class Vehicle {
 
     public void finishLoading() {
         state = Constants.statusVehicle.MOVING;
+        currentDest.isBussy = false;
 
         currentDest = currentRequest.getDropOff();
 
@@ -218,7 +245,9 @@ public class Vehicle {
         if (currentDest.notFull()) {
             int size = load.size();
             for (int i = 0; i < size; i++) {
+                String boxId = load.peek();
                 currentDest.addBox(load.pop());
+                System.out.println("Adding box: " + boxId + " to " + currentDest.getName());
             }
             //destinations.removeFirst();
         } else {
@@ -237,6 +266,7 @@ public class Vehicle {
     //set the state of the request to done and fill in the timeCount
     public void finishDropOff(Requests requests) {
         currentRequest.setStatus(Constants.statusRequest.DONE);
+        currentDest.isBussy = false;
         currentRequest.setStopTime(Main.timeCount);
 
         //print the result of the dropoff operation

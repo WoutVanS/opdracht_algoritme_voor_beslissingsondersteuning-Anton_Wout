@@ -1,3 +1,4 @@
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public abstract class Location {
@@ -6,6 +7,8 @@ public abstract class Location {
     private int x;
     private int y;
     protected Stack<String> boxes;
+
+    public boolean isBussy;
 
     public Location(String name, int id, int x, int y) {
         this.name = name;
@@ -68,10 +71,15 @@ public abstract class Location {
     }
 
     public boolean popBox(String boxId) {
-        if (peekStack().equals(boxId)) {
-            boxes.pop();
-            return true;
-        } else return false;
+        try {
+            if (peekStack().equals(boxId)) {
+                boxes.pop();
+                return true;
+            } else return false;
+        }catch (EmptyStackException e) {
+            return false;
+        }
+
     }
 
     public String peekStack(){

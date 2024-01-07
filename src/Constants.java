@@ -13,7 +13,9 @@ public interface Constants {
         LOADING,
         UNLOADING,
         MOVING,
-        MOVINGTOPICKUP
+        MOVINGTOPICKUP,
+        BUSSYWAITINGFORDROPOFF,
+        BUSSYWAITINGFORPICKUP
     }
 
     enum statusRequest {

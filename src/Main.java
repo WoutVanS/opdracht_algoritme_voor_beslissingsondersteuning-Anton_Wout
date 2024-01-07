@@ -46,16 +46,16 @@ public class Main {
         //String fileName = args[0];
         outputPath = args[1];
 
-//    String fileName = "I100_120_2_2_8b2.json";       // geeft error message doorheen code, maar runt wel volledig
-//    String fileName = "I100_50_2_2_8b2.json";              // loopt vast als we sorteren op leegste boxstacks, werkt anders wel nu
-//    String fileName = "I100_500_3_1_20b2.json";    // werkt
-//    String fileName = "I100_500_3_5_20.json";         // werkt
-//    String fileName = "I100_800_1_1_20b2.json";        // werkt sinds fix van requests met zelfde pickup en dropoff weggooien, maar loopt vast als wordt gesorteerd op dichtste vehicle
-//    String fileName = "I100_800_3_1_20b2.json";        // errort
-//    String fileName = "I20_20_2_2_8b2.json";
-//    String fileName = "I30_100_1_1_10.json";
-//    String fileName = "I30_100_3_3_10.json";
-        String fileName = "I30_200_3_3_10.json";
+    String fileName = "I100_120_2_2_8b2.json";       // geeft error message doorheen code, maar runt wel volledig
+//    String fileName = "I100_50_2_2_8b2.json";              // geen fouten
+//    String fileName = "I100_500_3_1_20b2.json";    // 2 fouten
+//    String fileName = "I100_500_3_5_20.json";         // errort
+//    String fileName = "I100_800_1_1_20b2.json";        // 0 fouten werkt sinds fix van requests met zelfde pickup en dropoff weggooien, maar loopt vast als wordt gesorteerd op dichtste vehicle
+//    String fileName = "I100_800_3_1_20b2.json";        // 26 fouten
+//    String fileName = "I20_20_2_2_8b2.json";        // geen fouten
+//    String fileName = "I30_100_1_1_10.json";            // 1 fout
+//    String fileName = "I30_100_3_3_10.json";            // error
+//        String fileName = "I30_200_3_3_10.json";            // geen fouten
 //    String fileName = "I3_3_1_5.json";
 //    String fileName = "I10_10_1.json";
 
@@ -153,11 +153,12 @@ public class Main {
                 Location pickup = locations.get(pickupLocation);
                 Location place = locations.get(placeLocation);
 
+                Request r = new Request(id, pickup, place, boxID);
+
                 if (pickup instanceof BufferPoint) {
                     incomingBoxes.add(boxID);
                 }
 
-                Request r = new Request(id, pickup, place, boxID);
                 requests.add(r);
                 inputRequests.add(r);
             }
@@ -190,6 +191,103 @@ public class Main {
         timeCount = 0;
         boolean networkState = true;
         boolean vehiclesWorking = true;
+        while (networkState || vehiclesWorking) {
+
+//            let all vehicles move closer to destination
+            vehiclesWorking = vehicles.updateVehicles(requests);
+
+//            System.out.println("==============================");
+//            vehicles.printStatusVehicles();
+//            System.out.println("==============================");
+
+            //run the network and assing requests to new vehicles
+            networkState = network.run();
+
+            timeCount++;
+        }
+
+        // fixing misplaced boxes
+        ArrayList<Request> correctingRequests = new ArrayList<>();
+        int offsetCounter = 0;
+        int id = 44444444;
+        for (Request r : inputRequests) {
+            String missingBox = r.getBoxID();
+            if (incomingBoxes.contains(missingBox)) {                                                             // find the requests of incoming boxes
+                if (!Main.locations.get(r.getPlaceLocation()).getBoxes().contains(missingBox)) {                  // if the box was lost during relocation
+                    Location hidingPlace = null;
+                    for (Location l : Main.locations.values()) {                                                  // find the current location of box
+                        if (l.getBoxes().contains(missingBox)) {
+                            hidingPlace = l;
+                            break;
+                        }
+                    }
+                    id += offsetCounter;
+                    offsetCounter++;
+                    if (hidingPlace == null)
+                        System.out.println("panic");
+                    Request corr_r = new Request(id, hidingPlace, r.getDropOff(), missingBox);
+                    correctingRequests.add(corr_r);             // forge correcting request
+                    requests.add(corr_r);
+                }
+            }
+        }
+
+        System.out.println("Correcting requests");
+        for (Request r: correctingRequests) {
+            System.out.println(r.toString());
+        }
+
+//        requests.sortForFixings();
+
+        networkState = true;
+        vehiclesWorking = true;
+        while (networkState || vehiclesWorking) {
+
+//            let all vehicles move closer to destination
+            vehiclesWorking = vehicles.updateVehicles(requests);
+
+//            System.out.println("==============================");
+//            vehicles.printStatusVehicles();
+//            System.out.println("==============================");
+
+            //run the network and assing requests to new vehicles
+            networkState = network.run();
+
+            timeCount++;
+        }
+
+        ArrayList<Request> correctingRequests2 = new ArrayList<>();
+        int offsetCounter2 = 0;
+        int id2 = 555555;
+        for (Request r : inputRequests) {
+            String missingBox = r.getBoxID();
+            if (incomingBoxes.contains(missingBox)) {                                                             // find the requests of incoming boxes
+                if (!Main.locations.get(r.getPlaceLocation()).getBoxes().contains(missingBox)) {                  // if the box was lost during relocation
+                    Location hidingPlace = null;
+                    for (Location l : Main.locations.values()) {                                                  // find the current location of box
+                        if (l.getBoxes().contains(missingBox)) {
+                            hidingPlace = l;
+                            break;
+                        }
+                    }
+                    id += offsetCounter;
+                    offsetCounter++;
+                    if (hidingPlace == null)
+                        System.out.println("panic");
+                    Request corr_r = new Request(id, hidingPlace, r.getDropOff(), missingBox);
+                    correctingRequests.add(corr_r);             // forge correcting request
+                    requests.add(corr_r);
+                }
+            }
+        }
+
+        System.out.println("Correcting requests");
+        for (Request r: correctingRequests) {
+            System.out.println(r.toString());
+        }
+
+        networkState = true;
+        vehiclesWorking = true;
         while (networkState || vehiclesWorking) {
 
 //            let all vehicles move closer to destination
@@ -240,7 +338,6 @@ public class Main {
             String boxID = request.getBoxID();
             if (!incomingBoxes.contains(boxID)) continue;
             Location dropOffStorage = request.getDropOff();
-
 
             if (!Main.locations.get(dropOffStorage.getName()).getBoxes().contains(boxID)) {
                 System.out.println("FAIL: Box with id " + boxID + " wasn't located on storage with name " + dropOffStorage.getName());
