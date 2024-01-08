@@ -38,8 +38,9 @@ public class Network {
 
     public boolean run(){
         ArrayList<Vehicle> availableVehicles = vehicles.findAllAvailableVehicles();
-        if (!requests.isEmpty()) {
             for (int i = 0; i < availableVehicles.size(); i++) {
+                if (requests.isEmpty()) return false;
+
                 Request request = requests.getNextRequest();
 
                 if (request.getPickup() == request.getDropOff()) {            // sometimes a bad request is formed whith the same placelocation and destinationlocation -> skip these requests
@@ -151,8 +152,7 @@ public class Network {
 //                System.out.println("");
             }
             return true;
-        }
-        return false;
+
     }
 
 

@@ -106,12 +106,20 @@ public class Vehicles {
     }
 
 
-    public boolean updateVehicles(Requests requests) {
-        boolean vehiclesWorking = false;
+    public void updateVehicles(Requests requests) {
+
         for (Vehicle v: vehicles) {
             v.update(requests);
             v.checkUpdateRequest();
-            if(!v.isAvailible()) vehiclesWorking = true;
+        }
+    }
+
+    public boolean working(){
+        boolean vehiclesWorking = false;
+        for (Vehicle v: vehicles) {
+            if(!v.isAvailible()) {
+                vehiclesWorking = true;
+            }
         }
         return  vehiclesWorking;
     }

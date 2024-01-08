@@ -44,18 +44,18 @@ public class Main {
     public static void main(String[] args) {
 
         //String fileName = args[0];
-        outputPath = args[1];
+        //outputPath = args[1];
 
-    String fileName = "I100_120_2_2_8b2.json";       // geeft error message doorheen code, maar runt wel volledig
-//    String fileName = "I100_50_2_2_8b2.json";              // geen fouten
-//    String fileName = "I100_500_3_1_20b2.json";    // 2 fouten
-//    String fileName = "I100_500_3_5_20.json";         // errort
-//    String fileName = "I100_800_1_1_20b2.json";        // 0 fouten werkt sinds fix van requests met zelfde pickup en dropoff weggooien, maar loopt vast als wordt gesorteerd op dichtste vehicle
-//    String fileName = "I100_800_3_1_20b2.json";        // 26 fouten
-//    String fileName = "I20_20_2_2_8b2.json";        // geen fouten
-//    String fileName = "I30_100_1_1_10.json";            // 1 fout
-//    String fileName = "I30_100_3_3_10.json";            // error
-//        String fileName = "I30_200_3_3_10.json";            // geen fouten
+//  String fileName = "I100_120_2_2_8b2.json";      // geeft error message doorheen code, maar runt wel volledig
+//    String fileName = "I100_50_2_2_8b2.json";     // geen fouten
+//   String fileName = "I100_500_3_1_20b2.json";    // 2 fouten
+//   String fileName = "I100_500_3_5_20.json";      // errort
+//  String fileName = "I100_800_1_1_20b2.json";     // 0 fouten werkt sinds fix van requests met zelfde pickup en dropoff weggooien, maar loopt vast als wordt gesorteerd op dichtste vehicle
+//  String fileName = "I100_800_3_1_20b2.json";     // 26 fouten
+//   String fileName = "I20_20_2_2_8b2.json";       // geen fouten
+//    String fileName = "I30_100_1_1_10.json";      // geen fouten
+//    String fileName = "I30_100_3_3_10.json";      // geen fouten
+    String fileName = "I30_200_3_3_10.json";      // geen fouten
 //    String fileName = "I3_3_1_5.json";
 //    String fileName = "I10_10_1.json";
 
@@ -194,7 +194,7 @@ public class Main {
         while (networkState || vehiclesWorking) {
 
 //            let all vehicles move closer to destination
-            vehiclesWorking = vehicles.updateVehicles(requests);
+             vehicles.updateVehicles(requests);
 
 //            System.out.println("==============================");
 //            vehicles.printStatusVehicles();
@@ -202,7 +202,7 @@ public class Main {
 
             //run the network and assing requests to new vehicles
             networkState = network.run();
-
+            vehiclesWorking = vehicles.working();
             timeCount++;
         }
 
@@ -244,7 +244,7 @@ public class Main {
         while (networkState || vehiclesWorking) {
 
 //            let all vehicles move closer to destination
-            vehiclesWorking = vehicles.updateVehicles(requests);
+            vehicles.updateVehicles(requests);
 
 //            System.out.println("==============================");
 //            vehicles.printStatusVehicles();
@@ -252,7 +252,7 @@ public class Main {
 
             //run the network and assing requests to new vehicles
             networkState = network.run();
-
+            vehiclesWorking = vehicles.working();
             timeCount++;
         }
 
@@ -291,11 +291,12 @@ public class Main {
         while (networkState || vehiclesWorking) {
 
 //            let all vehicles move closer to destination
-            vehiclesWorking = vehicles.updateVehicles(requests);
+            vehicles.updateVehicles(requests);
 
             //run the network and assing requests to new vehicles
             networkState = network.run();
 
+            vehiclesWorking = vehicles.working();
             timeCount++;
         }
 
@@ -317,7 +318,7 @@ public class Main {
         System.out.println("total pooled requests: " + amountOfPooledRequest);
 
         // write output to file
-        String outputFileName = outputPath;
+        String outputFileName = "outputPath.json";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFileName))) {
             for (String str : outputArray) {
                 bw.write(str);
