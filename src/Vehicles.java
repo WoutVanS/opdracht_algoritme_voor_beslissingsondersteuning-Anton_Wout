@@ -40,8 +40,30 @@ public class Vehicles {
     public boolean boxesAlreadyInProgress(Request request) {        // function to check if a vehicle is already moving boxes (to avoid a multiple vehicles trying to move the same box)
         for (Vehicle v: vehicles) {
             for (String boxId: request.getBoxIDs()) {
-                if (v.getLoad().contains(boxId)) return true;
+                if (!v.isAvailible() && v.getCurrentRequest().getBoxIDs().contains(boxId)) return true;
             }
+        }
+        return false;
+    }
+
+    public boolean movingVehicleCloser(Vehicle vehicle, Request request){
+
+        int distanceClosestVehicle = Integer.MAX_VALUE;
+        for(Vehicle v : vehicles){
+            if(!v.isAvailible() && v.getCurrentRequest().getDropOff().equals(request.getPickup())) {
+                int temp = v.distanceToDropOff();
+                distanceClosestVehicle = Integer.min(temp, distanceClosestVehicle);
+            }
+        }
+
+        return distanceClosestVehicle > request.getPickup().distanceToPoint(vehicle.getX(), vehicle.getY());
+    }
+
+    public boolean aVehicleMovingToLocation(Location location){
+
+        for(Vehicle v : vehicles){
+            if(!v.isAvailible() && v.getCurrentRequest().getDropOff().getName().equals(location.getName()))
+                return true;
         }
         return false;
     }

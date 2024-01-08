@@ -307,6 +307,13 @@ public class Vehicle {
         return (int)Math.sqrt(deltaX*deltaX - deltaY*deltaY);
     }
 
+    public int distanceToDropOff(){
+        int deltaX = this.destX - this.x;
+        int deltaY = this.destY - this.y;
+
+        return (int)Math.sqrt(deltaX*deltaX - deltaY*deltaY);
+    }
+
     public void move() {
         if (destX > x) { x++; }
         else { x--; }

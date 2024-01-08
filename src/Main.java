@@ -293,10 +293,6 @@ public class Main {
 //            let all vehicles move closer to destination
             vehiclesWorking = vehicles.updateVehicles(requests);
 
-//            System.out.println("==============================");
-//            vehicles.printStatusVehicles();
-//            System.out.println("==============================");
-
             //run the network and assing requests to new vehicles
             networkState = network.run();
 

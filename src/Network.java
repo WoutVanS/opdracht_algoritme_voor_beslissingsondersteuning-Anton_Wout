@@ -46,6 +46,10 @@ public class Network {
                     continue;
                 }
 
+                if(!vehicles.movingVehicleCloser(availableVehicles.get(i), request) || vehicles.boxesAlreadyInProgress(request)){
+                    requests.addInfront(request);
+                    continue;
+                }
 //                int counter = 1;
 //                while (vehicles.boxesAlreadyInProgress(request)) {          // when another vehicle is already busy with the boxes in the request, we best wait untill he is done
 //                    Request temp = request;                                 // because when we move the boxes before he arrives, this will cause an error
@@ -79,7 +83,7 @@ public class Network {
                     System.out.println("REALOCATE BECAUSE BOXSTACK IS FULL");
                     // forge requests for the boxes to reallocate
 //                    if (reallocate.size() > 1) {
-                        List<Request> requestList = allocator.realocationAlgorithm(boxStacks, dropOff.getName(), reallocate.get(reallocate.size() - 1));
+                        List<Request> requestList = allocator.realocationAlgorithm(boxStacks, dropOff.getName(), reallocate.get(reallocate.size() - 1), vehicles);
                         requestList.add(request);
                         requests.addInfront(requestList);
 //                    } else {
@@ -94,7 +98,13 @@ public class Network {
 
 
                 if (request.getStatus() != Constants.statusRequest.INPROGRESS && !checkBoxLocationInPickupLocation(pickupLocationName, associatedBoxId)) {         // checks if the Box is in the pickuplocation and if it sits on top
-                    List<Request> requestList = allocator.realocationAlgorithm(boxStacks, pickupLocationName, associatedBoxId);
+
+                    if(vehicles.aVehicleMovingToLocation(request.getPickup())){
+                        requests.addInfront(request);
+                        continue;
+                    }
+
+                    List<Request> requestList = allocator.realocationAlgorithm(boxStacks, pickupLocationName, associatedBoxId, vehicles);
 //                    System.out.print("IDs ReallocationRequests: ");
                     for (Request r: requestList) {
                         System.out.print(r.getID() + ", ");

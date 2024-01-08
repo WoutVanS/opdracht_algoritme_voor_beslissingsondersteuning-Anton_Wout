@@ -46,8 +46,7 @@ public class Allocator {
 ////
 //    }
 
-
-    public List<Request> realocationAlgorithm(BoxStacks boxStacks, String pickupLocationName , String associatedBoxId){
+    public List<Request> realocationAlgorithm(BoxStacks boxStacks, String pickupLocationName , String associatedBoxId, Vehicles vehicles){
 
         System.out.println();
         System.out.println("==================reallocation======================");
@@ -59,7 +58,7 @@ public class Allocator {
         for(BoxStack boxStack: boxStacks.getBoxStacks()){
             if(boxStack.getName().equals(pickupLocationName))
                 pickupBoxStack = boxStack;
-            else if(boxStack.notFull())
+            else if(boxStack.notFull() && !vehicles.aVehicleMovingToLocation(boxStack))
                 nearestEmptyBoxStacks.add(boxStack);
 
         }
@@ -67,9 +66,7 @@ public class Allocator {
         int x = pickupBoxStack.getX();
         int y = pickupBoxStack.getY();
 
-//        nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
-
-        nearestEmptyBoxStacks.sort(Comparator.comparingInt(l -> l.getBoxes().size()));      // sort on most empty boxes first
+        nearestEmptyBoxStacks.sort(Comparator.comparingInt(v -> v.distanceToPoint(x, y)));
 
         int numberOfReallocations = pickupBoxStack.SearchDepthByID(associatedBoxId);
         System.out.println("number of relocations necessary: " + numberOfReallocations);

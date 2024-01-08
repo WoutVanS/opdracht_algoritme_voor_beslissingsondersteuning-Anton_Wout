@@ -19,7 +19,6 @@ public class BufferPoint extends Location{
             return true;
         } else return false;
     }
-}
 
 //    private int id;
 //    private String name;
@@ -84,4 +83,4 @@ public class BufferPoint extends Location{
 //    public void AddBox(Box box) {
 //        this.boxes.add(box);
 //    }
-
+}

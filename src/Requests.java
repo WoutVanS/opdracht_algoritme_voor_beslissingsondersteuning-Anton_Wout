@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Requests {
-    private ArrayList<Request> requests;
+    public ArrayList<Request> requests;
 
     public Requests() {
         requests = new ArrayList<Request>();
@@ -153,15 +153,32 @@ public class Requests {
         
         int currentRequestSize = currentRequest.getBoxIDs().size();
         int currentLocationSize = currentLocation.boxes.size();
+        String currentPickUp = currentRequest.getPickupLocation();
         String currentDropoff = currentRequest.getPlaceLocation();
         String topBoxBeforeDropOff = (currentLocationSize - currentRequestSize -1 < 0)? "" : currentLocation.boxes.get(currentLocationSize - currentRequestSize -1);
+
+
+        ////////debug//////////////////////////
+        if(currentPickUp.equals("stack0_18") && currentDropoff.equals("stack0_17") && currentRequest.getBoxIDs().contains("B1008"))
+            System.err.println("funcy buesnness here");
+
+
+        /////////////// debug ///////////////
 
         ArrayList<String> boxes = (ArrayList<String>) currentRequest.getBoxIDs().clone();
         Collections.reverse(boxes);
 
+
         for(String box: boxes){                        // look for each box if there are request that need to be updated
             for(Request request: requests){
-                if(request.getBoxIDs().get(0).equals(box)){                 // if request contains request check if pickup is different from place location of current request
+                if(request.getBoxIDs().get(0).equals(box)){                 // if request contains request
+
+                    // checks if there is still a mirror action in the requests list and deletes this action.
+                    if(request.getPickupLocation().equals(currentPickUp) && request.getPlaceLocation().equals(currentDropoff)){
+                        requests.remove(request);
+                        break;
+                    }
+                    // check if pickup is different from place location of current request
                     if(!request.getPickupLocation().equals(currentDropoff)){
                         String requestPLaceLocation = request.getPlaceLocation();
                         request.getBoxIDs().remove(0);                 // if its different the box needs to be removed from the old request
