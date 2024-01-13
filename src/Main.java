@@ -43,8 +43,8 @@ public class Main {
     public static ArrayList<Request> inputRequests = new ArrayList<>();
     public static void main(String[] args) {
 
-        String fileName = args[0];
-        outputPath = args[1];
+        //String fileName = args[0];
+        //outputPath = args[1];
 
 //  String fileName = "I100_120_2_2_8b2.json";      // geeft error message doorheen code, maar runt wel volledig
 //    String fileName = "I100_50_2_2_8b2.json";     // geen fouten
