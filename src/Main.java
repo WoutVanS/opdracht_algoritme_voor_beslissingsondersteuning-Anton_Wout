@@ -43,8 +43,8 @@ public class Main {
     public static ArrayList<Request> inputRequests = new ArrayList<>();
     public static void main(String[] args) {
 
-        //String fileName = args[0];
-        //outputPath = args[1];
+        String fileName = args[0];
+        outputPath = args[1];
 
 //  String fileName = "I100_120_2_2_8b2.json";      // geeft error message doorheen code, maar runt wel volledig
 //    String fileName = "I100_50_2_2_8b2.json";     // geen fouten
@@ -55,7 +55,7 @@ public class Main {
 //   String fileName = "I20_20_2_2_8b2.json";       // geen fouten
 //    String fileName = "I30_100_1_1_10.json";      // geen fouten
 //    String fileName = "I30_100_3_3_10.json";      // geen fouten
-    String fileName = "I30_200_3_3_10.json";      // geen fouten
+//    String fileName = "I30_200_3_3_10.json";      // geen fouten
 //    String fileName = "I3_3_1_5.json";
 //    String fileName = "I10_10_1.json";
 
