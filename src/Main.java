@@ -318,8 +318,8 @@ public class Main {
         System.out.println("total pooled requests: " + amountOfPooledRequest);
 
         // write output to file
-        String outputFileName = "outputPath.json";
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFileName))) {
+        //String outputFileName = "outputPath.json";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputPath))) {
             for (String str : outputArray) {
                 bw.write(str);
                 bw.newLine();
